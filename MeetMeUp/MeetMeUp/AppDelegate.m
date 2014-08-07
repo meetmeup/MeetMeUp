@@ -19,10 +19,12 @@
     
     //check if app run first time (Login purposes)
     BOOL isRunMoreThanOnce = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRunMoreThanOnce"];
+    //check if user is logged in
     BOOL isLoggedIn = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLoggedIn"];
     
     if (!isRunMoreThanOnce)
     {
+        //make app knows its not first time
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isRunMoreThanOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         

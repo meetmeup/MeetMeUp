@@ -9,7 +9,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <UIKit/UIKit.h>
 
-@interface SignUpViewController : UIViewController<FBLoginViewDelegate, UITextFieldDelegate>
+@interface SignUpViewController : UIViewController<FBLoginViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
 @property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePicture;
@@ -20,7 +20,7 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *profileIDs;
 @property (nonatomic, strong) NSString *username;
-@property (nonatomic, readwrite) int interfaceCount;
+@property (nonatomic, strong) NSString *interfaceCount;
 
 
 

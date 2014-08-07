@@ -37,6 +37,8 @@
 		2BB7B55B199221040062467E /* Login_UserIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BB7B558199221040062467E /* Login_UserIcon.png */; };
 		2BB7B563199230890062467E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB7B562199230890062467E /* FacebookSDK.framework */; };
 		2BB7B565199290960062467E /* SignUp_CameraIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BB7B564199290960062467E /* SignUp_CameraIcon@2x.png */; };
+		2BF5794D199409A100FC1D8E /* SignUpProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5794C199409A100FC1D8E /* SignUpProxy.m */; };
+		2BF57953199417EE00FC1D8E /* ImagePickHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF57952199417EE00FC1D8E /* ImagePickHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,10 @@
 		2BB7B558199221040062467E /* Login_UserIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_UserIcon.png; sourceTree = "<group>"; };
 		2BB7B562199230890062467E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2BB7B564199290960062467E /* SignUp_CameraIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SignUp_CameraIcon@2x.png"; sourceTree = "<group>"; };
+		2BF5794B199409A100FC1D8E /* SignUpProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpProxy.h; sourceTree = "<group>"; };
+		2BF5794C199409A100FC1D8E /* SignUpProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpProxy.m; sourceTree = "<group>"; };
+		2BF57951199417EE00FC1D8E /* ImagePickHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickHelper.h; sourceTree = "<group>"; };
+		2BF57952199417EE00FC1D8E /* ImagePickHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +247,10 @@
 			children = (
 				2BB7B54A199163CD0062467E /* SignUpViewController.h */,
 				2BB7B54B199163CD0062467E /* SignUpViewController.m */,
+				2BF57951199417EE00FC1D8E /* ImagePickHelper.h */,
+				2BF57952199417EE00FC1D8E /* ImagePickHelper.m */,
+				2BF5794B199409A100FC1D8E /* SignUpProxy.h */,
+				2BF5794C199409A100FC1D8E /* SignUpProxy.m */,
 			);
 			name = SignUpView;
 			sourceTree = "<group>";
@@ -366,6 +376,8 @@
 				2BB7B50D199159420062467E /* AppDelegate.m in Sources */,
 				2BB444A81993C86F00AFEC46 /* MainViewController.m in Sources */,
 				2BB7B54C199163CD0062467E /* SignUpViewController.m in Sources */,
+				2BF5794D199409A100FC1D8E /* SignUpProxy.m in Sources */,
+				2BF57953199417EE00FC1D8E /* ImagePickHelper.m in Sources */,
 				2BB7B509199159420062467E /* main.m in Sources */,
 				2BB7B536199159B90062467E /* LoginProxy.m in Sources */,
 				2BB7B52F199159790062467E /* LoginViewController.m in Sources */,

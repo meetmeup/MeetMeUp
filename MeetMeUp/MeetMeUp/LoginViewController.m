@@ -60,7 +60,6 @@
     }
     else if (isLoggedIn)
     {
-        
     }
 }
 
@@ -72,13 +71,20 @@
 }
 
 
-- (IBAction)SignInClicked:(id)sender {
-    
+#pragma mark - sign in clicked
+- (IBAction)SignInClicked:(id)sender
+{
+#warning check sign in with server
+#warning tell app delegate user signed in
+}
+
+#pragma mark - new user clicked
+- (IBAction)newUserClicked:(id)sender
+{
     SignUpViewController *signUpViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    signUpViewController.interfaceCount = @"1";
     //sign up with email
-    signUpViewController.interfaceCount = 1;
     [self presentViewController:signUpViewController animated:YES completion:^{
-        NSLog(@"signUpViewController got presented");
     }];
 }
 
@@ -86,28 +92,23 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
     
-    //tell appdelegate user signed in
-//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoggedIn"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-    
     SignUpViewController *signUpViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
     signUpViewController.profileIDs = user.id;
     signUpViewController.email = [user objectForKey:@"email"];
     //sign up with facebook
-    signUpViewController.interfaceCount = 0;
     
     if (user.username == nil)
     {
         signUpViewController.username = @"";
+        signUpViewController.interfaceCount = @"0";
         [self presentViewController:signUpViewController animated:YES completion:^{
-            NSLog(@"signUpViewController got presented");
         }];
     }
     else
     {
         signUpViewController.username = user.username;
+        signUpViewController.interfaceCount = @"0";
         [self presentViewController:signUpViewController animated:YES completion:^{
-            NSLog(@"signUpViewController got presented");
         }];
     }
 }

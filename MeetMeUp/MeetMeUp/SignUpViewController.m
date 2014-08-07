@@ -8,16 +8,22 @@
 
 #import "SignUpViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MainViewController.h"
+#import "ImagePickHelper.h"
 
 
 @interface SignUpViewController ()
+{
+    UIButton *profileImageButton;
+}
 
 @end
 
 @implementation SignUpViewController
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     //set delegates
@@ -25,9 +31,14 @@
     [self.usernameTextfield setDelegate:self];
     [self.passwordTextfield setDelegate:self];
     
-    if (self.interfaceCount == 1)
+    if ([self.interfaceCount isEqualToString:@"1"])
     {
         //sign up with email
+        [self.profilePicture removeFromSuperview];
+        profileImageButton = [[UIButton alloc] initWithFrame:CGRectMake(60, 46, 200, 200)];
+        [profileImageButton setImage:[UIImage imageNamed:@"SignUp_CameraIcon.png"] forState:UIControlStateNormal];
+        [profileImageButton addTarget:self action:@selector(selectProfileImage) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:profileImageButton];
     }
     else
     {
@@ -111,7 +122,8 @@
 }
 
 #pragma mark - cancel clicked
-- (IBAction)cancelClicked:(id)sender {
+- (IBAction)cancelClicked:(id)sender
+{
     
     [self dismissViewControllerAnimated:YES
                              completion:^{
@@ -119,10 +131,57 @@
                              }];
 }
 
-- (IBAction)signupClicked:(id)sender {
+#pragma mark - select profile image
+-(void)selectProfileImage
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"Change Profile Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo",@"Choose from Library", nil];
     
+    sheet.delegate = self;
+    sheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [sheet showInView:self.view];
+}
+
+- (IBAction)signupClicked:(id)sender
+{
+#warning upload user data to server using signupproxy
+    //make app delegate know user is logged in
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoggedIn"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //open up MainViewController
+    MainViewController *mainViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    [self presentViewController:mainViewController animated:YES completion:^{
+    }];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+        //        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        //        {
+        //            imagePicker = [[UIImagePickerController alloc] init];
+        //            imagePicker.delegate = self;
+        //            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;//Photo from the camera
+        //            imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        //
+        //            [self presentModalViewController:imagePicker animated:YES];
+        //
+        //        }
+        //        else
+        //        {
+        //            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Camera not available" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+        //            [alert show];
+        //            //[alert release];
+        //        }        
+        
+    }
+    if(buttonIndex == 1)
+    {
+//        ImagePickHelper *imagePicker = [[ImagePickHelper alloc] init];
+//        [profileImageButton setImage:[imagePicker getImageFromLibrayFromViewController:self] forState:UIControlStateNormal];
+    }
+    
 }
 
 @end
