@@ -90,6 +90,9 @@
         [self.emailTextField setText:self.email];
         [self.usernameTextfield setText:self.username];
         self.profilePicture.profileID = self.profileIDs;
+
+        imageSelected = self.profileImageFromURL;
+        
         self.profilePicture.layer.cornerRadius = PROFILE_BUTTON_WIDTH/2.0f;
         self.profilePicture.backgroundColor = [UIColor whiteColor];
         
@@ -193,7 +196,8 @@
 }
 
 //check if user put in right email format
-- (BOOL)validateEmail:(NSString *)emailString {
+- (BOOL)validateEmail:(NSString *)emailString
+{
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:emailString];
@@ -248,23 +252,12 @@
     {
         alertView = [alertViewCreator createAlertViewWithViewController:self andText:@"Please create a password."];
         [self.view addSubview:alertView];
-        
-//        SignUpProxy *signUpProxy = [[SignUpProxy alloc] init];
-//        [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected];
     }
-    else if (imageSelected == nil)
+    else
     {
-        
+        SignUpProxy *signUpProxy = [[SignUpProxy alloc] init];
+        [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected];
     }
-    
-//    //make app delegate know user is logged in
-//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoggedIn"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-//    
-//    //open up MainViewController
-//    MainViewController *mainViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-//    [self presentViewController:mainViewController animated:YES completion:^{
-//    }];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -316,10 +309,9 @@
     
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
-
 
 @end

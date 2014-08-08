@@ -9,8 +9,15 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "SignUpViewController.h"
+#import "GetFacebookImageURL.h"
 
 @interface LoginViewController ()
+{
+    NSData *facebookImageData;
+    NSString *userId;
+    NSString *userUsername;
+    NSString *userEmail;
+}
 
 @property (strong, nonatomic) IBOutlet FBLoginView *fbLoginView;
 
@@ -36,7 +43,7 @@
     
     if (!isLoggedIn)
     {
-        [_fbLoginView setReadPermissions:@[@"email", @"public_profile"]];
+        [_fbLoginView setReadPermissions:@[@"email", @"public_profile", @"user_photos"]];
         [_fbLoginView setDelegate:self];
         [[self view] addSubview:_fbLoginView];
         
@@ -92,25 +99,22 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
     
-    SignUpViewController *signUpViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
-    signUpViewController.profileIDs = user.id;
-    signUpViewController.email = [user objectForKey:@"email"];
-    //sign up with facebook
+    userId = user.id;
+    userUsername = user.username;
+    userEmail = [user objectForKey:@"email"];
     
-    if (user.username == nil)
-    {
-        signUpViewController.username = @"";
-        signUpViewController.interfaceCount = 0;
-        [self presentViewController:signUpViewController animated:YES completion:^{
-        }];
-    }
-    else
-    {
-        signUpViewController.username = user.username;
-        signUpViewController.interfaceCount = 0;
-        [self presentViewController:signUpViewController animated:YES completion:^{
-        }];
-    }
+    //get user profile image
+    NSString *urlString = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=large", user.id];
+    NSLog(@"URL: %@", urlString);
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]
+                                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                          timeoutInterval:2];
+    
+    // Run request asynchronously
+    NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest
+                                                                     delegate:self];
+    if (!urlConnection)
+        NSLog(@"Failed to download picture");
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView
@@ -161,8 +165,8 @@
 
 
 // You need to override loginView:handleError in order to handle possible errors that can occur during login
-- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
-    
+- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error
+{
     NSLog(@"ERROR");
     NSString *alertMessage, *alertTitle;
     
@@ -203,6 +207,38 @@
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil] show];
     }
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    //sign up with facebook
+    //transferring data here
+    SignUpViewController *signUpViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    signUpViewController.profileIDs = userId;
+    signUpViewController.email = userEmail;
+    
+    UIImage *imageFromURL = [UIImage imageWithData:data];
+    signUpViewController.profileImageFromURL = imageFromURL;
+    
+    if (userUsername == nil)
+    {
+        signUpViewController.username = @"";
+        signUpViewController.interfaceCount = 0;
+        [self presentViewController:signUpViewController animated:YES completion:^{
+        }];
+    }
+    else
+    {
+        signUpViewController.username = userUsername;
+        signUpViewController.interfaceCount = 0;
+        [self presentViewController:signUpViewController animated:YES completion:^{
+        }];
+    }
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    
 }
 
 @end

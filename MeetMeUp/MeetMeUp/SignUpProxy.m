@@ -46,6 +46,22 @@
                                                            {
                                                                resultString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
                                                                NSLog(@"Data: %@",resultString);
+                                                               
+                                                               if ([resultString isEqualToString:@"1"])
+                                                               {
+                                                                   //make app delegate know user is logged in
+                                                                   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoggedIn"];
+                                                                   [[NSUserDefaults standardUserDefaults] synchronize];
+                                                                   
+//                                                                   //open up MainViewController
+//                                                                   MainViewController *mainViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+//                                                                   [self presentViewController:mainViewController animated:YES completion:^{
+//                                                                   }];
+                                                               }
+                                                               else
+                                                               {
+#warning dont forget else
+                                                               }
                                                            }
                                                            
                                                            

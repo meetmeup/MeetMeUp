@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSString *profileIDs;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, readwrite) int interfaceCount;
-
+@property (strong, nonatomic) UIImage *profileImageFromURL;
 
 
 
