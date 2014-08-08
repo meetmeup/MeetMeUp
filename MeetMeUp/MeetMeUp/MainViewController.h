@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 ustwo.com.ty. All rights reserved.
 //
 
+#import <FacebookSDK/FacebookSDK.h>
+
 #import <UIKit/UIKit.h>
 
 @interface MainViewController : UIViewController
