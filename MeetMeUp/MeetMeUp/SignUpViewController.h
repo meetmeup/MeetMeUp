@@ -20,8 +20,8 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *profileIDs;
 @property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *interfaceCount;
-
+@property (nonatomic, readwrite) int interfaceCount;
+@property (strong, nonatomic) UIImage *profileImageFromURL;
 
 
 

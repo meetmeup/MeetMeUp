@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2BB444A81993C86F00AFEC46 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB444A71993C86F00AFEC46 /* MainViewController.m */; };
+		2BB6C5DF1994C69900E6D6D4 /* AlertViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C5DE1994C69900E6D6D4 /* AlertViewCreator.m */; };
+		2BB6C5E2199509AF00E6D6D4 /* ViewToImageConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C5E1199509AF00E6D6D4 /* ViewToImageConverter.m */; };
+		2BB6C5E51995277B00E6D6D4 /* GetFacebookImageURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C5E41995277B00E6D6D4 /* GetFacebookImageURL.m */; };
 		2BB7B4FD199159420062467E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB7B4FC199159420062467E /* Foundation.framework */; };
 		2BB7B4FF199159420062467E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB7B4FE199159420062467E /* CoreGraphics.framework */; };
 		2BB7B501199159420062467E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB7B500199159420062467E /* UIKit.framework */; };
@@ -54,6 +57,12 @@
 /* Begin PBXFileReference section */
 		2BB444A61993C86F00AFEC46 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		2BB444A71993C86F00AFEC46 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		2BB6C5DD1994C69900E6D6D4 /* AlertViewCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewCreator.h; sourceTree = "<group>"; };
+		2BB6C5DE1994C69900E6D6D4 /* AlertViewCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewCreator.m; sourceTree = "<group>"; };
+		2BB6C5E0199509AF00E6D6D4 /* ViewToImageConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewToImageConverter.h; sourceTree = "<group>"; };
+		2BB6C5E1199509AF00E6D6D4 /* ViewToImageConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewToImageConverter.m; sourceTree = "<group>"; };
+		2BB6C5E31995277B00E6D6D4 /* GetFacebookImageURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFacebookImageURL.h; sourceTree = "<group>"; };
+		2BB6C5E41995277B00E6D6D4 /* GetFacebookImageURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFacebookImageURL.m; sourceTree = "<group>"; };
 		2BB7B4F9199159420062467E /* MeetMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BB7B4FC199159420062467E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2BB7B4FE199159420062467E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +139,15 @@
 			name = MainView;
 			sourceTree = "<group>";
 		};
+		2BB6C5DC1994C65F00E6D6D4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				2BB6C5DD1994C69900E6D6D4 /* AlertViewCreator.h */,
+				2BB6C5DE1994C69900E6D6D4 /* AlertViewCreator.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		2BB7B4F0199159420062467E = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +182,7 @@
 		2BB7B502199159420062467E /* MeetMeUp */ = {
 			isa = PBXGroup;
 			children = (
+				2BB6C5DC1994C65F00E6D6D4 /* Helper */,
 				2BB7B53719915FDC0062467E /* Images */,
 				2BB7B50B199159420062467E /* AppDelegate.h */,
 				2BB7B50C199159420062467E /* AppDelegate.m */,
@@ -211,6 +230,8 @@
 			children = (
 				2BB7B52D199159790062467E /* LoginViewController.h */,
 				2BB7B52E199159790062467E /* LoginViewController.m */,
+				2BB6C5E31995277B00E6D6D4 /* GetFacebookImageURL.h */,
+				2BB6C5E41995277B00E6D6D4 /* GetFacebookImageURL.m */,
 				2BB7B534199159B90062467E /* LoginProxy.h */,
 				2BB7B535199159B90062467E /* LoginProxy.m */,
 			);
@@ -247,6 +268,8 @@
 			children = (
 				2BB7B54A199163CD0062467E /* SignUpViewController.h */,
 				2BB7B54B199163CD0062467E /* SignUpViewController.m */,
+				2BB6C5E0199509AF00E6D6D4 /* ViewToImageConverter.h */,
+				2BB6C5E1199509AF00E6D6D4 /* ViewToImageConverter.m */,
 				2BF57951199417EE00FC1D8E /* ImagePickHelper.h */,
 				2BF57952199417EE00FC1D8E /* ImagePickHelper.m */,
 				2BF5794B199409A100FC1D8E /* SignUpProxy.h */,
@@ -375,10 +398,13 @@
 			files = (
 				2BB7B50D199159420062467E /* AppDelegate.m in Sources */,
 				2BB444A81993C86F00AFEC46 /* MainViewController.m in Sources */,
+				2BB6C5E2199509AF00E6D6D4 /* ViewToImageConverter.m in Sources */,
 				2BB7B54C199163CD0062467E /* SignUpViewController.m in Sources */,
 				2BF5794D199409A100FC1D8E /* SignUpProxy.m in Sources */,
 				2BF57953199417EE00FC1D8E /* ImagePickHelper.m in Sources */,
+				2BB6C5DF1994C69900E6D6D4 /* AlertViewCreator.m in Sources */,
 				2BB7B509199159420062467E /* main.m in Sources */,
+				2BB6C5E51995277B00E6D6D4 /* GetFacebookImageURL.m in Sources */,
 				2BB7B536199159B90062467E /* LoginProxy.m in Sources */,
 				2BB7B52F199159790062467E /* LoginViewController.m in Sources */,
 			);

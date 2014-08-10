@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "SignUpViewController.h"
 
 @interface MainViewController ()
 
@@ -26,6 +27,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //tell app delegate user is signed in
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoggedIn"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    SignUpViewController *signUpViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    [signUpViewController dismissViewControllerAnimated:NO completion:^{
+        
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,6 +54,5 @@
         [FBSession.activeSession closeAndClearTokenInformation];
         [[FBSession activeSession] close];
     }];
-    
 }
 @end

@@ -19,17 +19,23 @@
 
 - (UIImage *) getImageFromLibrayFromViewController:(UIViewController *)viewController
 {
-    UIViewController *view = [[UIViewController alloc] init];
-    view = viewController;
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.delegate = self;
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [view presentViewController:imagePicker animated:YES completion:^{
-        
+    [viewController presentViewController:imagePicker animated:YES completion:^{
     }];
     
-    return image;
+    if ([self respondsToSelector:@selector(imagePickerController:didFinishPickingMediaWithInfo:)])
+    {
+        return image;
+    }
+    else
+    {
+        NSLog(@"not yet");
+    }
+    UIImage *imageRandom = [UIImage imageNamed:@"SignUp_EmailPass.png"];
+    return imageRandom;
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

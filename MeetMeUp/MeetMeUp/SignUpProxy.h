@@ -10,6 +10,6 @@
 
 @interface SignUpProxy : NSObject<NSURLSessionDelegate>
 
-- (void) signUpUserWithEmail:(NSString *)email username:(NSString *)username password:(NSString *)password photo:(UIImage *)photo;
+- (void) signUpUserWithEmail:(NSString *)email username:(NSString *)username password:(NSString *)password photo:(UIImage *)photo andViewController:(UIViewController *)viewController;
 
 @end

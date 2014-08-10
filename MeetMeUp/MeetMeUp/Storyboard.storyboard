@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lgP-vg-zWp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lgP-vg-zWp">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -20,30 +20,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="DaQ-PT-Web"/>
-                                    <constraint firstAttribute="height" constant="210" id="Q5B-FV-bNd"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="ils-OE-MV4"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="210" id="psb-2v-Lms"/>
+                                    <constraint firstAttribute="height" constant="210" id="4VD-PI-oca"/>
+                                    <constraint firstAttribute="width" constant="320" id="Grs-re-Gaa"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Login_UserPass.png" translatesAutoresizingMaskIntoConstraints="NO" id="pov-u4-9Aw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_UserPass.png" translatesAutoresizingMaskIntoConstraints="NO" id="pov-u4-9Aw">
                                 <rect key="frame" x="25" y="239" width="283" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="108" id="9Is-6k-Abl"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="ChQ-37-bkb"/>
-                                    <constraint firstAttribute="width" constant="271" id="FiW-Qc-ebN"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="283" id="NRX-Dv-BwD"/>
+                                    <constraint firstAttribute="height" constant="130" id="Cu9-SQ-CSr"/>
+                                    <constraint firstAttribute="width" constant="283" id="LAq-D0-3Ue"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocN-HE-VFv">
                                 <rect key="frame" x="46" y="375" width="228" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="ciE-RP-6Qn"/>
-                                    <constraint firstAttribute="height" constant="40" id="oEV-Oo-px4"/>
-                                    <constraint firstAttribute="width" constant="228" id="xad-Gx-3yI"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="228" id="yf2-wF-V7v"/>
+                                    <constraint firstAttribute="height" constant="40" id="Md4-eL-R3Q"/>
+                                    <constraint firstAttribute="width" constant="228" id="nqp-HT-Mjg"/>
                                 </constraints>
                                 <state key="normal" image="Login_SignInButton.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -56,12 +50,8 @@
                                 <rect key="frame" x="20" y="526" width="108" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="108" id="1Jd-HO-65n"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="108" id="3x5-2K-Gn7"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="C3y-xX-eip"/>
-                                    <constraint firstAttribute="height" constant="22" id="NSF-jH-8cI"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="108" id="efn-xR-Tfc"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="22" id="wCb-R6-MVu"/>
+                                    <constraint firstAttribute="height" constant="22" id="3g2-9Z-mef"/>
+                                    <constraint firstAttribute="width" constant="108" id="bUg-eY-RY8"/>
                                 </constraints>
                                 <state key="normal" image="Login_ForgotPassword.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -71,12 +61,8 @@
                                 <rect key="frame" x="183" y="526" width="117" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="1cM-SG-6ks"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="117" id="2yj-ov-LGQ"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="21" id="M82-xn-qYw"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="117" id="O8l-zZ-uat"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="iHy-Fu-8cH"/>
-                                    <constraint firstAttribute="width" constant="117" id="nVP-xl-jen"/>
+                                    <constraint firstAttribute="width" constant="117" id="QFo-aA-h1m"/>
+                                    <constraint firstAttribute="height" constant="21" id="S2Z-8E-4QM"/>
                                 </constraints>
                                 <state key="normal" image="Login_NewUser.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,8 +75,8 @@
                                 <rect key="frame" x="87" y="258" width="191" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="5oD-3d-bnM"/>
-                                    <constraint firstAttribute="width" constant="191" id="7tr-SN-iuQ"/>
+                                    <constraint firstAttribute="width" constant="191" id="VvN-iM-FzZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="nkz-v7-IGu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -99,43 +85,50 @@
                                 <rect key="frame" x="87" y="303" width="191" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="191" id="3f2-3P-j6M"/>
-                                    <constraint firstAttribute="height" constant="30" id="82C-ac-mv3"/>
-                                    <constraint firstAttribute="width" constant="191" id="PDi-eg-2sp"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Vza-fc-ste"/>
+                                    <constraint firstAttribute="height" constant="30" id="1JY-PQ-MNq"/>
+                                    <constraint firstAttribute="width" constant="191" id="NIX-m3-GQN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jCz-H7-14f" customClass="FBLoginView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCz-H7-14f" customClass="FBLoginView">
                                 <rect key="frame" x="46" y="423" width="228" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3YT-W6-sjU"/>
+                                    <constraint firstAttribute="width" constant="228" id="V6d-5Q-uhs"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="66p-Ul-Fya" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="87" id="1TG-th-f6o"/>
-                            <constraint firstItem="Heh-UM-Ef0" firstAttribute="top" secondItem="GfV-2b-pKD" secondAttribute="bottom" constant="48" id="1zQ-Pb-aKj"/>
-                            <constraint firstItem="pov-u4-9Aw" firstAttribute="top" secondItem="GfV-2b-pKD" secondAttribute="bottom" constant="29" id="3Z8-iR-Kr2"/>
-                            <constraint firstAttribute="trailing" secondItem="GfV-2b-pKD" secondAttribute="trailing" id="4H5-P4-Woh"/>
-                            <constraint firstItem="GfV-2b-pKD" firstAttribute="top" secondItem="YvV-jp-Kjy" secondAttribute="top" id="7XF-By-btv"/>
-                            <constraint firstItem="Heh-UM-Ef0" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="87" id="7wD-De-nEr"/>
-                            <constraint firstItem="ocN-HE-VFv" firstAttribute="top" secondItem="pov-u4-9Aw" secondAttribute="bottom" constant="6" id="84H-hO-ac2"/>
-                            <constraint firstItem="fDZ-7C-WHZ" firstAttribute="top" secondItem="JVa-Ri-lYX" secondAttribute="bottom" constant="21" id="Bd5-12-kNX"/>
-                            <constraint firstItem="pov-u4-9Aw" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="25" id="GQx-2x-oQ8"/>
-                            <constraint firstItem="JVa-Ri-lYX" firstAttribute="leading" secondItem="0iN-Gp-MhL" secondAttribute="trailing" constant="55" id="H6T-pa-Hd5"/>
-                            <constraint firstItem="66p-Ul-Fya" firstAttribute="top" secondItem="Heh-UM-Ef0" secondAttribute="bottom" constant="15" id="MCy-OE-fdm"/>
-                            <constraint firstItem="ocN-HE-VFv" firstAttribute="top" secondItem="66p-Ul-Fya" secondAttribute="bottom" constant="42" id="ORb-b1-Csg"/>
-                            <constraint firstAttribute="trailing" secondItem="66p-Ul-Fya" secondAttribute="trailing" constant="42" id="Zwf-Io-53X"/>
-                            <constraint firstAttribute="trailing" secondItem="Heh-UM-Ef0" secondAttribute="trailing" constant="42" id="aYt-cL-hwr"/>
-                            <constraint firstItem="0iN-Gp-MhL" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="20" id="hIG-Zj-XmA"/>
-                            <constraint firstItem="GfV-2b-pKD" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" id="hgn-IG-gKj"/>
-                            <constraint firstItem="ocN-HE-VFv" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="46" id="ioW-S2-k9D"/>
-                            <constraint firstAttribute="trailing" secondItem="JVa-Ri-lYX" secondAttribute="trailing" constant="20" id="nr0-qr-a38"/>
-                            <constraint firstAttribute="trailing" secondItem="pov-u4-9Aw" secondAttribute="trailing" constant="12" id="nxa-zT-njM"/>
-                            <constraint firstItem="fDZ-7C-WHZ" firstAttribute="top" secondItem="0iN-Gp-MhL" secondAttribute="bottom" constant="20" id="pac-gA-oj1"/>
-                            <constraint firstAttribute="trailing" secondItem="ocN-HE-VFv" secondAttribute="trailing" constant="46" id="uqH-cG-cO2"/>
+                            <constraint firstAttribute="trailing" secondItem="pov-u4-9Aw" secondAttribute="trailing" constant="12" id="0XE-rs-NWJ"/>
+                            <constraint firstItem="pov-u4-9Aw" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="25" id="4Sv-Bk-z9y"/>
+                            <constraint firstAttribute="trailing" secondItem="66p-Ul-Fya" secondAttribute="trailing" constant="42" id="8Uf-b3-EUl"/>
+                            <constraint firstItem="ocN-HE-VFv" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="46" id="8is-TE-Fgc"/>
+                            <constraint firstItem="0iN-Gp-MhL" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="20" id="BIC-se-Zuc"/>
+                            <constraint firstAttribute="trailing" secondItem="ocN-HE-VFv" secondAttribute="trailing" constant="46" id="FZj-52-MYq"/>
+                            <constraint firstItem="0iN-Gp-MhL" firstAttribute="top" secondItem="jCz-H7-14f" secondAttribute="bottom" constant="63" id="HgB-ln-DYz"/>
+                            <constraint firstItem="66p-Ul-Fya" firstAttribute="top" secondItem="Heh-UM-Ef0" secondAttribute="bottom" constant="15" id="Jb9-li-GP2"/>
+                            <constraint firstItem="fDZ-7C-WHZ" firstAttribute="top" secondItem="JVa-Ri-lYX" secondAttribute="bottom" constant="21" id="Ktk-Qq-0jk"/>
+                            <constraint firstItem="Heh-UM-Ef0" firstAttribute="top" secondItem="GfV-2b-pKD" secondAttribute="bottom" constant="48" id="Nql-Tj-oNV"/>
+                            <constraint firstAttribute="trailing" secondItem="JVa-Ri-lYX" secondAttribute="trailing" constant="20" id="Qnf-wB-U8K"/>
+                            <constraint firstItem="jCz-H7-14f" firstAttribute="top" secondItem="ocN-HE-VFv" secondAttribute="bottom" constant="8" id="SAK-oS-3Xq"/>
+                            <constraint firstItem="GfV-2b-pKD" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" id="SQW-S2-O8h"/>
+                            <constraint firstAttribute="trailing" secondItem="GfV-2b-pKD" secondAttribute="trailing" id="Xo3-6q-zEU"/>
+                            <constraint firstItem="66p-Ul-Fya" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="87" id="Yfs-8E-OQn"/>
+                            <constraint firstItem="Heh-UM-Ef0" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="87" id="hDv-tH-N1x"/>
+                            <constraint firstAttribute="trailing" secondItem="Heh-UM-Ef0" secondAttribute="trailing" constant="42" id="i2z-dN-CxA"/>
+                            <constraint firstItem="jCz-H7-14f" firstAttribute="leading" secondItem="YvV-jp-Kjy" secondAttribute="leading" constant="46" id="i8Z-d4-Vtt"/>
+                            <constraint firstItem="JVa-Ri-lYX" firstAttribute="top" secondItem="jCz-H7-14f" secondAttribute="bottom" constant="63" id="iCO-Ys-5EH"/>
+                            <constraint firstItem="pov-u4-9Aw" firstAttribute="top" secondItem="GfV-2b-pKD" secondAttribute="bottom" constant="29" id="jsI-EA-5m8"/>
+                            <constraint firstItem="JVa-Ri-lYX" firstAttribute="leading" secondItem="0iN-Gp-MhL" secondAttribute="trailing" constant="55" id="nBg-EJ-11d"/>
+                            <constraint firstItem="fDZ-7C-WHZ" firstAttribute="top" secondItem="0iN-Gp-MhL" secondAttribute="bottom" constant="20" id="oaR-AX-NX1"/>
+                            <constraint firstItem="GfV-2b-pKD" firstAttribute="top" secondItem="YvV-jp-Kjy" secondAttribute="top" id="tqX-07-0mE"/>
+                            <constraint firstItem="ocN-HE-VFv" firstAttribute="top" secondItem="pov-u4-9Aw" secondAttribute="bottom" constant="6" id="x3M-fs-4tg"/>
+                            <constraint firstAttribute="trailing" secondItem="jCz-H7-14f" secondAttribute="trailing" constant="46" id="zla-Cc-VrV"/>
+                            <constraint firstItem="ocN-HE-VFv" firstAttribute="top" secondItem="66p-Ul-Fya" secondAttribute="bottom" constant="42" id="zyV-0B-fnO"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -188,33 +181,33 @@
                         <viewControllerLayoutGuide type="bottom" id="hW6-Qe-Mzz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="I2o-Pw-Sg9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SignUp_EmailPass.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hws-Ah-pij">
-                                <rect key="frame" x="20" y="254" width="280" height="161"/>
+                                <rect key="frame" x="20" y="224" width="280" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dl2-ff-2dt">
-                                <rect key="frame" x="83" y="277" width="191" height="30"/>
+                                <rect key="frame" x="83" y="247" width="191" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81A-94-PdO">
-                                <rect key="frame" x="83" y="315" width="191" height="30"/>
+                                <rect key="frame" x="83" y="285" width="191" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w5E-U6-NbG">
-                                <rect key="frame" x="83" y="356" width="191" height="30"/>
+                                <rect key="frame" x="83" y="326" width="191" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvm-sR-APT">
-                                <rect key="frame" x="46" y="423" width="228" height="40"/>
+                                <rect key="frame" x="46" y="393" width="228" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="SignUp_SignupButton.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -224,19 +217,19 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Login_EmailIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="irw-AU-G9m">
-                                <rect key="frame" x="50" y="284" width="21" height="16"/>
+                                <rect key="frame" x="50" y="254" width="21" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Login_UserIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="4ua-M8-Uq8">
-                                <rect key="frame" x="48" y="318" width="24" height="24"/>
+                                <rect key="frame" x="48" y="288" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Login_LockIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="1S4-vQ-cct">
-                                <rect key="frame" x="52" y="360" width="16" height="21"/>
+                                <rect key="frame" x="52" y="330" width="16" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyE-b1-XTQ">
-                                <rect key="frame" x="0.0" y="518" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="440" width="320" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                 <state key="normal" title="Cancel">
@@ -248,7 +241,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gD-gE-Lvx" customClass="FBProfilePictureView">
-                                <rect key="frame" x="60" y="46" width="200" height="200"/>
+                                <rect key="frame" x="75" y="46" width="170" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -256,6 +249,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="363-X8-uNO"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="emailTextField" destination="Dl2-ff-2dt" id="4va-ff-qaZ"/>
                         <outlet property="passwordTextfield" destination="w5E-U6-NbG" id="p5l-QY-Ag9"/>

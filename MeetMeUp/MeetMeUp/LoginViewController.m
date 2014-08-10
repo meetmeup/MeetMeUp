@@ -9,8 +9,13 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "SignUpViewController.h"
+#import "GetFacebookImageURL.h"
+#import "LoginProxy.h"
 
 @interface LoginViewController ()
+{
+    NSData *facebookImageData;
+}
 
 @property (strong, nonatomic) IBOutlet FBLoginView *fbLoginView;
 
@@ -31,6 +36,9 @@
 {
     [super viewDidLoad];
     
+    //set textField delegate
+    [self.username setDelegate:self];
+    [self.password setDelegate:self];
     
     BOOL isLoggedIn = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLoggedIn"];
     
@@ -63,8 +71,6 @@
     }
 }
 
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -74,15 +80,15 @@
 #pragma mark - sign in clicked
 - (IBAction)SignInClicked:(id)sender
 {
-#warning check sign in with server
-#warning tell app delegate user signed in
+    LoginProxy *loginProxy = [[LoginProxy alloc] init];
+    [loginProxy loginWithUsername:self.username.text andPassword:self.password.text andViewController:self];
 }
 
 #pragma mark - new user clicked
 - (IBAction)newUserClicked:(id)sender
 {
     SignUpViewController *signUpViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
-    signUpViewController.interfaceCount = @"1";
+    signUpViewController.interfaceCount = 1;
     //sign up with email
     [self presentViewController:signUpViewController animated:YES completion:^{
     }];
@@ -90,27 +96,36 @@
 
 #pragma mark - facebook get user info
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
-                            user:(id<FBGraphUser>)user {
-    
+                            user:(id<FBGraphUser>)user
+{
+
     SignUpViewController *signUpViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
     signUpViewController.profileIDs = user.id;
     signUpViewController.email = [user objectForKey:@"email"];
-    //sign up with facebook
+    
+    //get user profile image
+    NSString *urlString = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=large", user.id];
+    NSURL * imageURL = [NSURL URLWithString:urlString];
+    NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
+    UIImage *imageFromURL = [UIImage imageWithData:imageData];
+    
+    signUpViewController.profileImageFromURL = imageFromURL;
     
     if (user.username == nil)
     {
         signUpViewController.username = @"";
-        signUpViewController.interfaceCount = @"0";
+        signUpViewController.interfaceCount = 0;
         [self presentViewController:signUpViewController animated:YES completion:^{
         }];
     }
     else
     {
         signUpViewController.username = user.username;
-        signUpViewController.interfaceCount = @"0";
+        signUpViewController.interfaceCount = 0;
         [self presentViewController:signUpViewController animated:YES completion:^{
         }];
     }
+
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView
@@ -161,8 +176,8 @@
 
 
 // You need to override loginView:handleError in order to handle possible errors that can occur during login
-- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
-    
+- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error
+{
     NSLog(@"ERROR");
     NSString *alertMessage, *alertTitle;
     
@@ -204,5 +219,12 @@
                           otherButtonTitles:nil] show];
     }
 }
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 @end
