@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController<FBLoginViewDelegate>
+@interface LoginViewController : UIViewController<FBLoginViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 - (IBAction)SignInClicked:(id)sender;

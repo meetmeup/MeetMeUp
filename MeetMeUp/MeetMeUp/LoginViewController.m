@@ -10,13 +10,11 @@
 #import "LoginViewController.h"
 #import "SignUpViewController.h"
 #import "GetFacebookImageURL.h"
+#import "LoginProxy.h"
 
 @interface LoginViewController ()
 {
     NSData *facebookImageData;
-    NSString *userId;
-    NSString *userUsername;
-    NSString *userEmail;
 }
 
 @property (strong, nonatomic) IBOutlet FBLoginView *fbLoginView;
@@ -38,12 +36,15 @@
 {
     [super viewDidLoad];
     
+    //set textField delegate
+    [self.username setDelegate:self];
+    [self.password setDelegate:self];
     
     BOOL isLoggedIn = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLoggedIn"];
     
     if (!isLoggedIn)
     {
-        [_fbLoginView setReadPermissions:@[@"email", @"public_profile", @"user_photos"]];
+        [_fbLoginView setReadPermissions:@[@"email", @"public_profile"]];
         [_fbLoginView setDelegate:self];
         [[self view] addSubview:_fbLoginView];
         
@@ -70,8 +71,6 @@
     }
 }
 
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -81,8 +80,8 @@
 #pragma mark - sign in clicked
 - (IBAction)SignInClicked:(id)sender
 {
-#warning check sign in with server
-#warning tell app delegate user signed in
+    LoginProxy *loginProxy = [[LoginProxy alloc] init];
+    [loginProxy loginWithUsername:self.username.text andPassword:self.password.text andViewController:self];
 }
 
 #pragma mark - new user clicked
@@ -97,24 +96,36 @@
 
 #pragma mark - facebook get user info
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
-                            user:(id<FBGraphUser>)user {
-    
-    userId = user.id;
-    userUsername = user.username;
-    userEmail = [user objectForKey:@"email"];
+                            user:(id<FBGraphUser>)user
+{
+
+    SignUpViewController *signUpViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    signUpViewController.profileIDs = user.id;
+    signUpViewController.email = [user objectForKey:@"email"];
     
     //get user profile image
     NSString *urlString = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=large", user.id];
-    NSLog(@"URL: %@", urlString);
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]
-                                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                          timeoutInterval:2];
+    NSURL * imageURL = [NSURL URLWithString:urlString];
+    NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
+    UIImage *imageFromURL = [UIImage imageWithData:imageData];
     
-    // Run request asynchronously
-    NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest
-                                                                     delegate:self];
-    if (!urlConnection)
-        NSLog(@"Failed to download picture");
+    signUpViewController.profileImageFromURL = imageFromURL;
+    
+    if (user.username == nil)
+    {
+        signUpViewController.username = @"";
+        signUpViewController.interfaceCount = 0;
+        [self presentViewController:signUpViewController animated:YES completion:^{
+        }];
+    }
+    else
+    {
+        signUpViewController.username = user.username;
+        signUpViewController.interfaceCount = 0;
+        [self presentViewController:signUpViewController animated:YES completion:^{
+        }];
+    }
+
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView
@@ -209,36 +220,11 @@
     }
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    //sign up with facebook
-    //transferring data here
-    SignUpViewController *signUpViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
-    signUpViewController.profileIDs = userId;
-    signUpViewController.email = userEmail;
-    
-    UIImage *imageFromURL = [UIImage imageWithData:data];
-    signUpViewController.profileImageFromURL = imageFromURL;
-    
-    if (userUsername == nil)
-    {
-        signUpViewController.username = @"";
-        signUpViewController.interfaceCount = 0;
-        [self presentViewController:signUpViewController animated:YES completion:^{
-        }];
-    }
-    else
-    {
-        signUpViewController.username = userUsername;
-        signUpViewController.interfaceCount = 0;
-        [self presentViewController:signUpViewController animated:YES completion:^{
-        }];
-    }
+    [textField resignFirstResponder];
+    return YES;
 }
 
--(void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    
-}
 
 @end

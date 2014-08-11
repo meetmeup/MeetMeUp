@@ -10,4 +10,6 @@
 
 @interface LoginProxy : NSObject
 
+- (void) loginWithUsername:(NSString *)username andPassword:(NSString *)password andViewController:(UIViewController *)viewController;
+
 @end

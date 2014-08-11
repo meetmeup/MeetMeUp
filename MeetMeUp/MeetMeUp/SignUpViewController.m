@@ -8,7 +8,6 @@
 
 #import "SignUpViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "MainViewController.h"
 #import "ImagePickHelper.h"
 #import "SignUpProxy.h"
 #import "AlertViewCreator.h"
@@ -216,9 +215,10 @@
     return YES;
 }
 
+
 - (IBAction)signupClicked:(id)sender
 {
-#warning upload user data to server using signupproxy
+
     //create AlertView
     AlertViewCreator *alertViewCreator = [[AlertViewCreator alloc] init];
     alertView = [[UIView alloc] init];
@@ -255,8 +255,9 @@
     }
     else
     {
+#pragma mark - sign up proxy
         SignUpProxy *signUpProxy = [[SignUpProxy alloc] init];
-        [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected];
+        [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected andViewController:self];
     }
 }
 
@@ -313,5 +314,6 @@
 {
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
+
 
 @end
