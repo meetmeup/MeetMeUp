@@ -5,31 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-<<<<<<< HEAD
-	<string>E58EE74B-89EE-4D3C-9376-74BFD7F91F9D</string>
-=======
-	<string>ABC986D9-9BE6-4069-AD22-7CF5942BEAAB</string>
->>>>>>> FETCH_HEAD
+	<string>1ABCB673-0CE6-41C7-9691-BD18C19AC935</string>
 	<key>IDESourceControlProjectName</key>
 	<string>MeetMeUp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-<<<<<<< HEAD
-		<key>EFA8E001-E404-49A7-A5B7-3DFA4314551D</key>
-=======
-		<key>5697C3AB-9A69-42B5-B494-F61138FA3CDF</key>
->>>>>>> FETCH_HEAD
+		<key>B74A28C8-4E94-439F-818B-B5B291F1D02F</key>
 		<string>https://github.com/meetmeup/MeetMeUp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MeetMeUp/MeetMeUp.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-<<<<<<< HEAD
-		<key>EFA8E001-E404-49A7-A5B7-3DFA4314551D</key>
-=======
-		<key>5697C3AB-9A69-42B5-B494-F61138FA3CDF</key>
->>>>>>> FETCH_HEAD
+		<key>B74A28C8-4E94-439F-818B-B5B291F1D02F</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -37,26 +25,16 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-<<<<<<< HEAD
-	<string>EFA8E001-E404-49A7-A5B7-3DFA4314551D</string>
-=======
-	<string>5697C3AB-9A69-42B5-B494-F61138FA3CDF</string>
->>>>>>> FETCH_HEAD
+	<string>B74A28C8-4E94-439F-818B-B5B291F1D02F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-<<<<<<< HEAD
-			<string>EFA8E001-E404-49A7-A5B7-3DFA4314551D</string>
+			<string>B74A28C8-4E94-439F-818B-B5B291F1D02F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MeetMeUpGithub</string>
-=======
-			<string>5697C3AB-9A69-42B5-B494-F61138FA3CDF</string>
-			<key>IDESourceControlWCCName</key>
-			<string>MeetMeUpGit</string>
->>>>>>> FETCH_HEAD
 		</dict>
 	</array>
 </dict>
