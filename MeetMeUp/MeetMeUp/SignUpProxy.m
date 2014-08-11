@@ -82,6 +82,7 @@
     if ([uploadResponseString intValue] == 1)
     {
         MainViewController *mainViewController = [viewController.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+        mainViewController.signUpViewController = viewController;
         
         [viewController presentViewController:mainViewController animated:YES completion:^{            
         }];

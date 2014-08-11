@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B059FDA1998CD1C00144541 /* SmallActivityIndicatorCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B059FD91998CD1C00144541 /* SmallActivityIndicatorCreator.m */; };
+		2B059FE51998D35700144541 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B059FDC1998D35700144541 /* NSDate+convenience.m */; };
+		2B059FE61998D35700144541 /* NSMutableArray+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B059FDE1998D35700144541 /* NSMutableArray+convenience.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2B059FE71998D35700144541 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B059FE01998D35700144541 /* UIColor+expanded.m */; };
+		2B059FE81998D35700144541 /* UIView+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B059FE21998D35700144541 /* UIView+convenience.m */; };
+		2B059FE91998D35700144541 /* VRGCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B059FE41998D35700144541 /* VRGCalendarView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2B059FEC1998F60C00144541 /* Main_SettingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B059FEB1998F60C00144541 /* Main_SettingsIcon@2x.png */; };
+		2B059FF41998FA1B00144541 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B059FF31998FA1B00144541 /* SettingsTableViewController.m */; };
+		2B059FF81999027E00144541 /* Main_SettingsIcon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B059FF71999027E00144541 /* Main_SettingsIcon2@2x.png */; };
+		2B059FFA1999099000144541 /* Main_BG@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B059FF91999099000144541 /* Main_BG@2x.jpg */; };
+		2B059FFC199914A300144541 /* Main_PlusIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B059FFB199914A300144541 /* Main_PlusIcon@2x.png */; };
+		2B059FFE19991CFA00144541 /* Main_AddEvent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B059FFD19991CFA00144541 /* Main_AddEvent@2x.png */; };
+		2B05A002199922CD00144541 /* Main_AddEventButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B05A001199922CD00144541 /* Main_AddEventButton@2x.png */; };
+		2B05A00519992B8C00144541 /* MainTableViewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A00419992B8C00144541 /* MainTableViewView.m */; };
 		2BB444A81993C86F00AFEC46 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB444A71993C86F00AFEC46 /* MainViewController.m */; };
 		2BB6C5DF1994C69900E6D6D4 /* AlertViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C5DE1994C69900E6D6D4 /* AlertViewCreator.m */; };
 		2BB6C5E2199509AF00E6D6D4 /* ViewToImageConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C5E1199509AF00E6D6D4 /* ViewToImageConverter.m */; };
@@ -55,6 +69,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B059FD81998CD1C00144541 /* SmallActivityIndicatorCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallActivityIndicatorCreator.h; sourceTree = "<group>"; };
+		2B059FD91998CD1C00144541 /* SmallActivityIndicatorCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallActivityIndicatorCreator.m; sourceTree = "<group>"; };
+		2B059FDB1998D35700144541 /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
+		2B059FDC1998D35700144541 /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
+		2B059FDD1998D35700144541 /* NSMutableArray+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+convenience.h"; sourceTree = "<group>"; };
+		2B059FDE1998D35700144541 /* NSMutableArray+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+convenience.m"; sourceTree = "<group>"; };
+		2B059FDF1998D35700144541 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
+		2B059FE01998D35700144541 /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
+		2B059FE11998D35700144541 /* UIView+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+convenience.h"; sourceTree = "<group>"; };
+		2B059FE21998D35700144541 /* UIView+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+convenience.m"; sourceTree = "<group>"; };
+		2B059FE31998D35700144541 /* VRGCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRGCalendarView.h; sourceTree = "<group>"; };
+		2B059FE41998D35700144541 /* VRGCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRGCalendarView.m; sourceTree = "<group>"; };
+		2B059FEB1998F60C00144541 /* Main_SettingsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_SettingsIcon@2x.png"; sourceTree = "<group>"; };
+		2B059FF21998FA1B00144541 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		2B059FF31998FA1B00144541 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		2B059FF71999027E00144541 /* Main_SettingsIcon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_SettingsIcon2@2x.png"; sourceTree = "<group>"; };
+		2B059FF91999099000144541 /* Main_BG@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Main_BG@2x.jpg"; sourceTree = "<group>"; };
+		2B059FFB199914A300144541 /* Main_PlusIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_PlusIcon@2x.png"; sourceTree = "<group>"; };
+		2B059FFD19991CFA00144541 /* Main_AddEvent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_AddEvent@2x.png"; sourceTree = "<group>"; };
+		2B05A001199922CD00144541 /* Main_AddEventButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_AddEventButton@2x.png"; sourceTree = "<group>"; };
+		2B05A00319992B8C00144541 /* MainTableViewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewView.h; sourceTree = "<group>"; };
+		2B05A00419992B8C00144541 /* MainTableViewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewView.m; sourceTree = "<group>"; };
 		2BB444A61993C86F00AFEC46 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		2BB444A71993C86F00AFEC46 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		2BB6C5DD1994C69900E6D6D4 /* AlertViewCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewCreator.h; sourceTree = "<group>"; };
@@ -130,11 +166,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B059FEA1998D7E000144541 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				2B059FDB1998D35700144541 /* NSDate+convenience.h */,
+				2B059FDC1998D35700144541 /* NSDate+convenience.m */,
+				2B059FDD1998D35700144541 /* NSMutableArray+convenience.h */,
+				2B059FDE1998D35700144541 /* NSMutableArray+convenience.m */,
+				2B059FDF1998D35700144541 /* UIColor+expanded.h */,
+				2B059FE01998D35700144541 /* UIColor+expanded.m */,
+				2B059FE11998D35700144541 /* UIView+convenience.h */,
+				2B059FE21998D35700144541 /* UIView+convenience.m */,
+				2B059FE31998D35700144541 /* VRGCalendarView.h */,
+				2B059FE41998D35700144541 /* VRGCalendarView.m */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		2B059FED1998F61100144541 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2B059FEB1998F60C00144541 /* Main_SettingsIcon@2x.png */,
+				2B059FF71999027E00144541 /* Main_SettingsIcon2@2x.png */,
+				2B059FF91999099000144541 /* Main_BG@2x.jpg */,
+				2B059FFB199914A300144541 /* Main_PlusIcon@2x.png */,
+				2B05A001199922CD00144541 /* Main_AddEventButton@2x.png */,
+				2B059FFD19991CFA00144541 /* Main_AddEvent@2x.png */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		2B059FEE1998F9AF00144541 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				2B059FF21998FA1B00144541 /* SettingsTableViewController.h */,
+				2B059FF31998FA1B00144541 /* SettingsTableViewController.m */,
+			);
+			name = SettingsView;
+			sourceTree = "<group>";
+		};
 		2BB444A51993C84E00AFEC46 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
 				2BB444A61993C86F00AFEC46 /* MainViewController.h */,
 				2BB444A71993C86F00AFEC46 /* MainViewController.m */,
+				2B05A00319992B8C00144541 /* MainTableViewView.h */,
+				2B05A00419992B8C00144541 /* MainTableViewView.m */,
 			);
 			name = MainView;
 			sourceTree = "<group>";
@@ -142,8 +219,11 @@
 		2BB6C5DC1994C65F00E6D6D4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				2B059FEA1998D7E000144541 /* Calendar */,
 				2BB6C5DD1994C69900E6D6D4 /* AlertViewCreator.h */,
 				2BB6C5DE1994C69900E6D6D4 /* AlertViewCreator.m */,
+				2B059FD81998CD1C00144541 /* SmallActivityIndicatorCreator.h */,
+				2B059FD91998CD1C00144541 /* SmallActivityIndicatorCreator.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -189,6 +269,7 @@
 				2BB7B549199163B60062467E /* SignUpView */,
 				2BB7B5301991598C0062467E /* LoginView */,
 				2BB444A51993C84E00AFEC46 /* MainView */,
+				2B059FEE1998F9AF00144541 /* SettingsView */,
 				2BB7B50E199159420062467E /* Images.xcassets */,
 				2BB7B503199159420062467E /* Supporting Files */,
 			);
@@ -241,6 +322,7 @@
 		2BB7B53719915FDC0062467E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2B059FED1998F61100144541 /* Main */,
 				2BB7B54D199171060062467E /* SignUp */,
 				2BB7B53819915FEC0062467E /* Login */,
 			);
@@ -365,12 +447,18 @@
 			files = (
 				2BB7B507199159420062467E /* InfoPlist.strings in Resources */,
 				2BB7B54219915FF80062467E /* Login_PhotoBG.png in Resources */,
+				2B059FF81999027E00144541 /* Main_SettingsIcon2@2x.png in Resources */,
 				2BB7B55A199221040062467E /* Login_LockIcon.png in Resources */,
+				2B059FFC199914A300144541 /* Main_PlusIcon@2x.png in Resources */,
 				2BB7B54F199171950062467E /* SignUp_EmailPass.png in Resources */,
 				2BB7B54119915FF80062467E /* Login_NewUser.png in Resources */,
 				2BB7B50F199159420062467E /* Images.xcassets in Resources */,
+				2B059FFA1999099000144541 /* Main_BG@2x.jpg in Resources */,
+				2B059FEC1998F60C00144541 /* Main_SettingsIcon@2x.png in Resources */,
 				2BB7B54419915FF80062467E /* Login_SignInFacebook@2x.png in Resources */,
+				2B059FFE19991CFA00144541 /* Main_AddEvent@2x.png in Resources */,
 				2BB7B54319915FF80062467E /* Login_SignInButton.png in Resources */,
+				2B05A002199922CD00144541 /* Main_AddEventButton@2x.png in Resources */,
 				2BB7B52C199159540062467E /* Storyboard.storyboard in Resources */,
 				2BB7B54019915FF80062467E /* Login_ForgotPassword.png in Resources */,
 				2BB7B551199172880062467E /* SignUp_SignupButton.png in Resources */,
@@ -396,17 +484,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B05A00519992B8C00144541 /* MainTableViewView.m in Sources */,
+				2B059FE81998D35700144541 /* UIView+convenience.m in Sources */,
 				2BB7B50D199159420062467E /* AppDelegate.m in Sources */,
+				2B059FE61998D35700144541 /* NSMutableArray+convenience.m in Sources */,
 				2BB444A81993C86F00AFEC46 /* MainViewController.m in Sources */,
 				2BB6C5E2199509AF00E6D6D4 /* ViewToImageConverter.m in Sources */,
 				2BB7B54C199163CD0062467E /* SignUpViewController.m in Sources */,
+				2B059FE71998D35700144541 /* UIColor+expanded.m in Sources */,
 				2BF5794D199409A100FC1D8E /* SignUpProxy.m in Sources */,
 				2BF57953199417EE00FC1D8E /* ImagePickHelper.m in Sources */,
 				2BB6C5DF1994C69900E6D6D4 /* AlertViewCreator.m in Sources */,
 				2BB7B509199159420062467E /* main.m in Sources */,
 				2BB6C5E51995277B00E6D6D4 /* GetFacebookImageURL.m in Sources */,
+				2B059FF41998FA1B00144541 /* SettingsTableViewController.m in Sources */,
+				2B059FE91998D35700144541 /* VRGCalendarView.m in Sources */,
 				2BB7B536199159B90062467E /* LoginProxy.m in Sources */,
+				2B059FE51998D35700144541 /* NSDate+convenience.m in Sources */,
 				2BB7B52F199159790062467E /* LoginViewController.m in Sources */,
+				2B059FDA1998CD1C00144541 /* SmallActivityIndicatorCreator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

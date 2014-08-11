@@ -12,6 +12,7 @@
 #import "SignUpProxy.h"
 #import "AlertViewCreator.h"
 #import "ViewToImageConverter.h"
+#import "SmallActivityIndicatorCreator.h"
 
 #define PROFILE_BUTTON_WIDTH self.profilePicture.bounds.size.width
 #define PROFILE_BUTTON_HEIGHT self.profilePicture.bounds.size.height
@@ -256,9 +257,22 @@
     else
     {
 #pragma mark - sign up proxy
-        SignUpProxy *signUpProxy = [[SignUpProxy alloc] init];
-        [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected andViewController:self];
+        
+        SmallActivityIndicatorCreator *smallActivityIndicator = [[SmallActivityIndicatorCreator alloc] init];
+        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] init];
+        activityIndicator = [smallActivityIndicator createActivityindicator];
+        [self.signUpButton addSubview:activityIndicator];
+        [activityIndicator startAnimating];
+        
+        //make activity indicator run for 2 second.... HEHE
+        [self performSelector:@selector(SignUpProxy) withObject:nil afterDelay:1.0];
     }
+}
+
+- (void)SignUpProxy
+{
+    SignUpProxy *signUpProxy = [[SignUpProxy alloc] init];
+    [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected andViewController:self];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
