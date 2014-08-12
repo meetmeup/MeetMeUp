@@ -120,12 +120,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetMeUp/MainViewController.m"
-            timestampString = "429466048.012727"
+            timestampString = "429556105.112374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-calendarView:switchedToMonth:targetHeight:animated:"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-previousMonthButtonClicked"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -142,6 +142,54 @@
             startingLineNumber = "85"
             endingLineNumber = "85"
             landmarkName = "-showNextMonth"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetMeUp/MainTableViewView.m"
+            timestampString = "429523970.538316"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetMeUp/MainViewController.m"
+            timestampString = "429556105.112374"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "-addEventButtonClicked"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetMeUp/MainTableViewView.m"
+            timestampString = "429524064.886233"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "-createMainTableViewWithRect:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

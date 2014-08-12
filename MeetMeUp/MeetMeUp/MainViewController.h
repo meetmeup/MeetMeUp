@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController<VRGCalendarViewDelegate>
+@interface MainViewController : UIViewController<VRGCalendarViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UIViewController *signUpViewController;
 @property (strong, nonatomic) IBOutlet UIScrollView *wholeScreenScrollView;
