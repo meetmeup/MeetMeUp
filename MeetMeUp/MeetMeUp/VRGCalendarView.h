@@ -60,6 +60,9 @@
 -(void)updateSize;
 -(UIImage *)drawCurrentState;
 
+///OWN DECLARATION
+-(NSDate *)getCurrentMonth;
+
 @end
 
 @protocol VRGCalendarViewDelegate <NSObject>

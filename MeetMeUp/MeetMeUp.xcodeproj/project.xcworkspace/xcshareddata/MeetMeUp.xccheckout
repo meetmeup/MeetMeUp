@@ -10,29 +10,29 @@
 	<string>MeetMeUp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B74A28C8-4E94-439F-818B-B5B291F1D02F</key>
+		<key>4E69AA8DA76C7635BE484A1852028B7D07F71B2D</key>
 		<string>https://github.com/meetmeup/MeetMeUp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MeetMeUp/MeetMeUp.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B74A28C8-4E94-439F-818B-B5B291F1D02F</key>
+		<key>4E69AA8DA76C7635BE484A1852028B7D07F71B2D</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/meetmeup/MeetMeUp.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B74A28C8-4E94-439F-818B-B5B291F1D02F</string>
+	<string>4E69AA8DA76C7635BE484A1852028B7D07F71B2D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B74A28C8-4E94-439F-818B-B5B291F1D02F</string>
+			<string>4E69AA8DA76C7635BE484A1852028B7D07F71B2D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MeetMeUpGithub</string>
 		</dict>
