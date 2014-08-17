@@ -17,6 +17,12 @@
     [FBLoginView class];
     [FBProfilePictureView class];
     
+    //get user location: lat and long
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    [locationManager startUpdatingLocation];
+    
     //check if app run first time (Login purposes)
     BOOL isRunMoreThanOnce = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRunMoreThanOnce"];
     //check if user is logged in

@@ -7,10 +7,20 @@
 //
 
 #import <FacebookSDK/FacebookSDK.h>
+#import "VRGCalendarView.h"
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController<VRGCalendarViewDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+
+@property (strong, nonatomic) UIViewController *signUpViewController;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *SettingsBarButtonItem;
+
+@property (nonatomic, retain, getter = selectedDate) NSDate *selectedDate;
+
+
 - (IBAction)logoutClicked:(id)sender;
+- (IBAction)settingsButtonClicked:(id)sender;
 
 @end
