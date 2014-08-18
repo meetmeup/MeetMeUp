@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "SWTableViewCell.h"
 #import "AddEventViewController.h"
+#import "AddFriendsViewController.h"
 
 #define SIDE_BUTTON_HEIGHT 58
 #define SIDE_BUTTON_WIDTH 160
@@ -29,7 +30,7 @@
 #define   IsIphone5     ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
 
-@interface MainViewController ()<SWTableViewCellDelegate>
+@interface MainViewController ()<SWTableViewCellDelegate, UIActionSheetDelegate>
 {
     VRGCalendarView *calendar;
     NSDate *currentMonth;
@@ -56,17 +57,6 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Main_BG.jpg"]]];
-    
-    //set translucent navigation bar
-    [self.navigationBar setBackgroundImage:[UIImage new]
-                             forBarMetrics:UIBarMetricsDefault];
-    self.navigationBar.shadowImage = [UIImage new];
-    self.navigationBar.translucent = YES;
-
-    
-    //set settings bar button image
-    UIImage *settingsImage = [[UIImage imageNamed:@"Main_SettingsIcon2.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [self.SettingsBarButtonItem setImage:settingsImage];
     
     //tell app delegate user is signed in
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoggedIn"];
@@ -102,10 +92,21 @@
     calendar.layer.shadowOpacity = 0.5;
     [self.view addSubview:calendar];
     
+    UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(270, 35, 24, 24)];
+    [settingsButton setImage:[UIImage imageNamed:@"Main_Settings.png"] forState:UIControlStateNormal];
+    [settingsButton setShowsTouchWhenHighlighted:YES];
+    [self.view addSubview:settingsButton];
+    
+    UIButton *addFriendsButton = [[UIButton alloc] initWithFrame:CGRectMake(26, 35, 24, 24)];
+    [addFriendsButton setImage:[UIImage imageNamed:@"Main_AddFriends.png"] forState:UIControlStateNormal];
+    [addFriendsButton setShowsTouchWhenHighlighted:YES];
+    [addFriendsButton addTarget:self action:@selector(addfriendsButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addFriendsButton];
+    
     UIButton *previousMonthButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CURRENT_MONTH_LABEL_Y, SIDE_BUTTON_WIDTH, SIDE_BUTTON_HEIGHT)];
     [previousMonthButton setTitle:@"" forState:UIControlStateNormal];
     [previousMonthButton setBackgroundColor:[UIColor clearColor]];
-    [previousMonthButton addTarget:self action:@selector(nextMonthButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [previousMonthButton addTarget:self action:@selector(previousMonthButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:previousMonthButton];
     
     UIButton *nextMonthButton = [[UIButton alloc] initWithFrame:CGRectMake(320-SIDE_BUTTON_WIDTH, CURRENT_MONTH_LABEL_Y, SIDE_BUTTON_WIDTH, SIDE_BUTTON_HEIGHT)];
@@ -363,6 +364,51 @@
     {
         AddEventViewController *addEventViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addevent"];
         [self presentViewController:addEventViewController animated:YES completion:^{
+            
+        }];
+    }
+}
+
+#pragma mark - add friends clicked
+- (void) addfriendsButtonClicked
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Find your friends by" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Username", @"Facebook", @"Email", nil];
+    [actionSheet showInView:self.view];
+}
+
+-(void)willPresentActionSheet:(UIActionSheet *)actionSheet
+{
+    for (UIView *subview in actionSheet.subviews) {
+        if ([subview isKindOfClass:[UIButton class]]) {
+            UIButton *button = (UIButton *)subview;
+            [button setTitleColor:[UIColor colorWithRed:249.0f/255.0f green:103.0f/255.0f blue:30.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+        }
+    }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
+        addFriendsViewController.addFriendsBy = @"username";
+        [self presentViewController:addFriendsViewController animated:YES completion:^{
+            
+        }];
+    }
+    if (buttonIndex == 1)
+    {
+        AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
+        addFriendsViewController.addFriendsBy = @"facebook";
+        [self presentViewController:addFriendsViewController animated:YES completion:^{
+            
+        }];
+    }
+    if (buttonIndex == 2)
+    {
+        AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
+        addFriendsViewController.addFriendsBy = @"email";
+        [self presentViewController:addFriendsViewController animated:YES completion:^{
             
         }];
     }

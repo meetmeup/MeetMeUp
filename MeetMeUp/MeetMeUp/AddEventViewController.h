@@ -10,12 +10,22 @@
 
 @interface AddEventViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *titleTextField;
-@property (strong, nonatomic) IBOutlet UITextField *startTimeTextField;
-@property (strong, nonatomic) IBOutlet UITextField *endTimeTextField;
 @property (strong, nonatomic) IBOutlet UITextField *inviteeTextField;
 @property (strong, nonatomic) IBOutlet UITextField *urlTextfield;
 @property (strong, nonatomic) IBOutlet UITextField *notesTextField;
+@property (strong, nonatomic) IBOutlet UILabel *startLabel;
+@property (strong, nonatomic) IBOutlet UILabel *endsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *locationLabel;
+
+
 - (IBAction)cancelButtonClicked:(id)sender;
 - (IBAction)locationSearchClicked:(id)sender;
+- (IBAction)startsButtonClicked:(id)sender;
+- (IBAction)endsButtonClicked:(id)sender;
+
+@property (nonatomic, strong) NSString *LocationSelectedString;
+@property (nonatomic) CGFloat latitude;
+@property (nonatomic) CGFloat longtitude;
+
 
 @end
