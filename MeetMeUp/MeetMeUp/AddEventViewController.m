@@ -291,7 +291,7 @@
             UITableView *friendsChoicesTableView = [[UITableView alloc] initWithFrame:CGRectMake(10, origin.y + 5, 300, 130)];
             //self.view.frame.size.height - origin.y - keyboardHeight
             [friendsChoicesTableView setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.8f]];
-            [self.view addSubview:friendsChoicesTableView];
+            [self.view addSubview:friendsChoicesTableView];  
             
         }
     }
