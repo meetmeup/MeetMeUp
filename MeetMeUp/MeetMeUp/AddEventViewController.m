@@ -56,7 +56,6 @@
     self.inviteeTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Who's going?" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.notesTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Notes" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.urlTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"URL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-
     
     [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, SCROLLVIEW_HEIGHT)];
 }
@@ -283,55 +282,36 @@
 {
     NSLog(@"string: %@", string);
     
+    
+    inviteesSearchArray = [[NSMutableArray alloc] init];
+    inviteesImageSearchArray = [[NSMutableArray array] init];
+    
     if (textField == self.inviteeTextField)
     {
         NSString *searchText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-
-//        NSError *error;
-//        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"(@(\\w+))"
-//                                                                               options:0
-//                                                                                 error:&error];
-//
-//        NSArray * matches = [regex matchesInString:searchText options:0 range:NSMakeRange(0, [searchText length])];
-//        for (NSTextCheckingResult* match in matches ) {
-        
-//            NSRange wordRange = [match rangeAtIndex:1];
-//            NSString* usernameSearch = [searchText substringWithRange:wordRange];
-//            NSLog(@"%@", usernameSearch);
-        
-            //get usernames added from nsuserdefaults
-        
-//        }
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSMutableArray *savedFriendsArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_FRIENDS_ARRAY"]];
         NSMutableArray *savedFriendsPhotoArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_PHOTO_ARRAY"]];
         
         NSLog(@"current text: %@", searchText);
-        
-        inviteesSearchArray = [NSMutableArray array];
-        inviteesImageSearchArray = [NSMutableArray array];
-        
-        for (NSString* item in savedFriendsArray)
+
+        for (NSString *str in savedFriendsArray)
         {
-            if ([item rangeOfString:searchText].location != NSNotFound)
+            if (savedFriendsArray.count > 0)
             {
-                [inviteesSearchArray addObject:item];
-                NSUInteger index = [savedFriendsArray indexOfObject:item];
-                [inviteesImageSearchArray addObject:[savedFriendsPhotoArray objectAtIndex:index]];
-//                NSLog(@"invitee images: %@", inviteesImageSearchArray);
-                [friendsChoicesTableView reloadData];
-            }
-            else
-            {
-                inviteesSearchArray = [NSMutableArray array];
-                inviteesImageSearchArray = [NSMutableArray array];
-                [friendsChoicesTableView reloadData];
+                NSRange stringRange = [str rangeOfString:searchText options:NSCaseInsensitiveSearch];
+                if (stringRange.location != NSNotFound)
+                {
+                    [inviteesSearchArray addObject:str];
+                    NSLog(@"invitee array: %@", inviteesSearchArray);
+                    NSUInteger index = [savedFriendsArray indexOfObject:str];
+                    [inviteesImageSearchArray addObject:[savedFriendsPhotoArray objectAtIndex:index]];
+                }
             }
         }
-
     }
-    
+    [friendsChoicesTableView reloadData];
     return YES;
 }
 
