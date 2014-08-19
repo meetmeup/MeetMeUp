@@ -185,7 +185,14 @@
     
     [savedFriendsArray addObject:friendUsername];
     [savedFriendPhotoArray addObject:friendPhotoURL];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:savedFriendsArray forKey:@"USER_FRIENDS_ARRAY"];
+    [[NSUserDefaults standardUserDefaults] setObject:savedFriendPhotoArray forKey:@"USER_PHOTO_ARRAY"];
     [userDefaults synchronize];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void) cancelAddFriendButtonClicked

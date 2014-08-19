@@ -10,16 +10,22 @@
 #import "LocationSearchViewController.h"
 #import "SmallActivityIndicatorCreator.h"
 #import "DatePickerCreator.h"
+#import "AsyncImageView.h"
 
-#define TEXTFIELD_SCROLL_UP_HEIGHT (self.view.frame.size.height == 586.0f ? 50 : 70)
+#define TEXTFIELD_SCROLL_UP_HEIGHT (self.view.frame.size.height == 568.0f ? 70 : 70)
+#define SCROLLVIEW_HEIGHT 568
 
 
-@interface AddEventViewController ()<UITextFieldDelegate, LocationSearchDelegate>
+@interface AddEventViewController ()<UITextFieldDelegate, LocationSearchDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UIDatePicker *datePicker;
     UIView *datePickerView;
     NSString *dateSelected;
     int keyboardHeight;
+    NSMutableArray *inviteesSearchArray;
+    NSMutableArray *inviteesImageSearchArray;
+    UITableView *friendsChoicesTableView;
+    DatePickerCreator *datePickerCreator;
 }
 
 @end
@@ -40,12 +46,19 @@
     [super viewDidLoad];
     
     //set backgrounf color
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Main_BG.jpg"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"AddEvent_WhiteBG.png"]]];
     
     [self.titleTextField setDelegate:self];
     [self.inviteeTextField setDelegate:self];
     [self.urlTextfield setDelegate:self];
     [self.notesTextField setDelegate:self];
+    self.titleTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Title" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    self.inviteeTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Who's going?" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    self.notesTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Notes" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    self.urlTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"URL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+
+    
+    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, SCROLLVIEW_HEIGHT)];
 }
 
 - (IBAction)cancelButtonClicked:(id)sender
@@ -57,6 +70,7 @@
 - (IBAction)locationSearchClicked:(id)sender
 {
 #warning show indicator
+    [self dismissDatePicker];
     LocationSearchViewController *locationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"locationsearchview"];
     locationViewController.locationSearchViewControllerDelegate = self;
     [self presentViewController:locationViewController animated:YES completion:^{
@@ -78,7 +92,13 @@
     [self.urlTextfield resignFirstResponder];
     [self.notesTextField resignFirstResponder];
     
-    DatePickerCreator *datePickerCreator = [[DatePickerCreator alloc] init];
+    for (UIView *subview in [self.view subviews]) {
+        if (subview == datePickerView) {
+            [subview removeFromSuperview];
+        }
+    }
+    
+    datePickerCreator = [[DatePickerCreator alloc] init];
     datePickerView = [[UIView alloc] init];
     datePickerView = [datePickerCreator createDatePickerWithViewController:self withTag:0];
     [self.view addSubview:datePickerView];
@@ -87,6 +107,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MMM dd, yyyy  HH:mm"];
     dateSelected = [dateFormatter stringFromDate:date];
+
 }
 
 - (IBAction)endsButtonClicked:(id)sender
@@ -97,7 +118,13 @@
     [self.urlTextfield resignFirstResponder];
     [self.notesTextField resignFirstResponder];
     
-    DatePickerCreator *datePickerCreator = [[DatePickerCreator alloc] init];
+    for (UIView *subview in [self.view subviews]) {
+        if (subview == datePickerView) {
+            [subview removeFromSuperview];
+        }
+    }
+    
+    datePickerCreator = [[DatePickerCreator alloc] init];
     datePickerView = [[UIView alloc] init];
     datePickerView = [datePickerCreator createDatePickerWithViewController:self withTag:1];
     [self.view addSubview:datePickerView];
@@ -106,6 +133,10 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MMM dd, yyyy  HH:mm"];
     dateSelected = [dateFormatter stringFromDate:date];
+
+}
+
+- (IBAction)DoneButtonClicked:(id)sender {
 }
 
 - (void) dateSelected:(id)sender
@@ -162,49 +193,38 @@
 #pragma mark - textViewShouldReturn
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == self.inviteeTextField)
-    {
-        [textField resignFirstResponder];
-        [self.urlTextfield becomeFirstResponder];
-    }
-    else if (textField == self.urlTextfield)
-    {
-        [textField resignFirstResponder];
-        [self.notesTextField becomeFirstResponder];
-    }
-    else if (textField == self.titleTextField)
-    {
-        [textField resignFirstResponder];
-    }
-    else if (textField == self.notesTextField)
-    {
 #warning if else check any field is missing...
 #warning save in nsuserdefaults??
 #warning update in main view controller
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-    }
+    [self.titleTextField resignFirstResponder];
+    [self.inviteeTextField resignFirstResponder];
+    [self.urlTextfield resignFirstResponder];
+    [self.notesTextField resignFirstResponder];
     return YES;
 }
 
 #pragma mark - didBeginEditing
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWasShown:)
-                                                 name:UIKeyboardDidShowNotification
-                                               object:nil];
+    [self dismissDatePicker];
     
     if (textField == self.inviteeTextField)
     {
+        //invitee textfield accessory view
+        friendsChoicesTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.inviteeTextField.frame.size.height + self.inviteeTextField.frame.origin.y + 5, 320, 100)];
+        [friendsChoicesTableView setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.8f]];
+        [friendsChoicesTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [friendsChoicesTableView setDelegate:self];
+        [friendsChoicesTableView setDataSource:self];
+        [textField setInputAccessoryView:friendsChoicesTableView];
+        
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDuration:0.5];
         [UIView setAnimationBeginsFromCurrentState:YES];
-        self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y - 120), self.view.frame.size.width, self.view.frame.size.height);
+        self.view.frame = CGRectMake(self.scrollView.frame.origin.x , (self.scrollView.frame.origin.y - 150), self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
-        textField.returnKeyType = UIReturnKeyNext;
+        textField.returnKeyType = UIReturnKeyDefault;
     }
     if (textField == self.urlTextfield)
     {
@@ -214,7 +234,7 @@
         [UIView setAnimationBeginsFromCurrentState:YES];
         self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y - TEXTFIELD_SCROLL_UP_HEIGHT*2), self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
-        textField.returnKeyType = UIReturnKeyNext;
+        textField.returnKeyType = UIReturnKeyDefault;
     }
     if (textField == self.notesTextField)
     {
@@ -224,7 +244,7 @@
         [UIView setAnimationBeginsFromCurrentState:YES];
         self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y - TEXTFIELD_SCROLL_UP_HEIGHT*3), self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
-        textField.returnKeyType = UIReturnKeyDone;
+        textField.returnKeyType = UIReturnKeyDefault;
     }
 }
 
@@ -236,7 +256,7 @@
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDuration:0.5];
         [UIView setAnimationBeginsFromCurrentState:YES];
-        self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y + 120), self.view.frame.size.width, self.view.frame.size.height);
+        self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y + 150), self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
     }
     if (textField == self.urlTextfield)
@@ -265,68 +285,95 @@
     
     if (textField == self.inviteeTextField)
     {
-        if ([string isEqualToString:@"@"])
+        NSString *searchText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+
+//        NSError *error;
+//        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"(@(\\w+))"
+//                                                                               options:0
+//                                                                                 error:&error];
+//
+//        NSArray * matches = [regex matchesInString:searchText options:0 range:NSMakeRange(0, [searchText length])];
+//        for (NSTextCheckingResult* match in matches ) {
+        
+//            NSRange wordRange = [match rangeAtIndex:1];
+//            NSString* usernameSearch = [searchText substringWithRange:wordRange];
+//            NSLog(@"%@", usernameSearch);
+        
+            //get usernames added from nsuserdefaults
+        
+//        }
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSMutableArray *savedFriendsArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_FRIENDS_ARRAY"]];
+        NSMutableArray *savedFriendsPhotoArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_PHOTO_ARRAY"]];
+        
+        NSLog(@"current text: %@", searchText);
+        
+        inviteesSearchArray = [NSMutableArray array];
+        inviteesImageSearchArray = [NSMutableArray array];
+        
+        for (NSString* item in savedFriendsArray)
         {
-//            NSString *stringCheck = textField.text;
-//            NSError *error;
-//            
-//            NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"(@(\\w+))"
-//                                                                                            options:NSRegularExpressionCaseInsensitive
-//                                                                                            error:&error];
-//            NSArray * matches = [regex matchesInString:stringCheck options:0 range:NSMakeRange(0, [stringCheck length])];
-//            for (NSTextCheckingResult* match in matches ) {
-//                
-//                NSRange wordRange = [match rangeAtIndex:1];
-//                NSString* word = [stringCheck substringWithRange:wordRange];
-//                NSLog(@"%@", word);
-//                
-//                [self.inviteeTextField setText:@""];
-//                
-//            }
-            
-            NSLog(@"eter");
-            
-            NSLog(@"created");
-            CGPoint origin = CGPointMake(10, self.inviteeTextField.frame.size.height + self.inviteeTextField.frame.origin.y);
-            UITableView *friendsChoicesTableView = [[UITableView alloc] initWithFrame:CGRectMake(10, origin.y + 5, 300, 130)];
-            //self.view.frame.size.height - origin.y - keyboardHeight
-            [friendsChoicesTableView setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.8f]];
-            [self.view addSubview:friendsChoicesTableView];  
-            
+            if ([item rangeOfString:searchText].location != NSNotFound)
+            {
+                [inviteesSearchArray addObject:item];
+                NSUInteger index = [savedFriendsArray indexOfObject:item];
+                [inviteesImageSearchArray addObject:[savedFriendsPhotoArray objectAtIndex:index]];
+//                NSLog(@"invitee images: %@", inviteesImageSearchArray);
+                [friendsChoicesTableView reloadData];
+            }
+            else
+            {
+                inviteesSearchArray = [NSMutableArray array];
+                inviteesImageSearchArray = [NSMutableArray array];
+                [friendsChoicesTableView reloadData];
+            }
         }
+
     }
     
     return YES;
 }
 
-- (void)keyboardWasShown:(NSNotification *)notification
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
-    
-    // Get the size of the keyboard.
-    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    //Given size may not account for screen rotation
-    keyboardHeight = MIN(keyboardSize.height,keyboardSize.width);
-//    int width = MAX(keyboardSize.height,keyboardSize.width);
-    
-    //your other code here..........
-    
-    NSLog(@"got it ");
+    return [inviteesSearchArray count];
 }
 
-- (BOOL) validateUsername:(NSString *)usernameString
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyz0123456789_."];
-    characterSet = [characterSet invertedSet];
+    static NSString *CellIdentifier = @"Cell";
     
-    NSRange range = [usernameString rangeOfCharacterFromSet:characterSet];
-    if (range.location != NSNotFound) {
-        return NO;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        // allocate the cell:
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        UILabel *cellTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 300, 20)];
+        [cellTextLabel setTextColor:[UIColor colorWithRed:44.0/255.0f green:44.0/255.0f blue:44.0/255.0f alpha:1.0f]];
+        [cellTextLabel setFont:[UIFont fontWithName:@"Helvetica-Medium" size:16.0f]];
+        [cellTextLabel setTag:1];
+        [cell.contentView addSubview:cellTextLabel];
+        
+//        UILabel *cellDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 25, 300, 20)];
+//        [cellDetailLabel setTextColor:[UIColor colorWithRed:44.0/255.0f green:44.0/255.0f blue:44.0/255.0f alpha:1.0f]];
+//        [cellDetailLabel setFont:[UIFont fontWithName:@"Helvetica-Light" size:12.0f]];
+//        [cellDetailLabel setTag:2];
+//        [cell.contentView addSubview:cellDetailLabel];
+        
+        AsyncImageView *asyncImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(15, 0, 32, 32)];
+        [asyncImage.layer setCornerRadius:asyncImage.frame.size.height/2.0f];
+        [asyncImage setTag:2];
+        [cell.contentView addSubview:asyncImage];
+        
     }
-    return YES;
+    
+    [(UILabel *) [cell.contentView viewWithTag:1] setText:[inviteesSearchArray objectAtIndex:indexPath.row]];
+//    [(UILabel *)[cell.contentView viewWithTag:2] setText:[NSString stringWithFormat:@"%@, %@, %@", [[searchLocationResultArray objectAtIndex:indexPath.row] objectForKey:@"address"], [[searchLocationResultArray objectAtIndex:indexPath.row] objectForKey:@"city"], [[searchLocationResultArray objectAtIndex:indexPath.row] objectForKey:@"country"]]];
+    NSURL *url = [NSURL URLWithString:[inviteesImageSearchArray objectAtIndex:indexPath.row]];
+    [(AsyncImageView *) [cell.contentView viewWithTag:2] loadImageWithTypeFromURL:url contentMode:UIViewContentModeScaleAspectFit imageNameBG:nil];
+    
+    return cell;
 }
-
-
-
 
 @end

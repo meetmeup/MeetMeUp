@@ -16,12 +16,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *startLabel;
 @property (strong, nonatomic) IBOutlet UILabel *endsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 
 - (IBAction)cancelButtonClicked:(id)sender;
 - (IBAction)locationSearchClicked:(id)sender;
 - (IBAction)startsButtonClicked:(id)sender;
 - (IBAction)endsButtonClicked:(id)sender;
+- (IBAction)DoneButtonClicked:(id)sender;
 
 @property (nonatomic, strong) NSString *LocationSelectedString;
 @property (nonatomic) CGFloat latitude;

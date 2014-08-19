@@ -17,9 +17,10 @@
     [wholePickerView setBackgroundColor:[UIColor clearColor]];
     
     UIView *datePickerView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 200)];
-    [datePickerView setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.9f]];
+    [datePickerView setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:1.0f]];
     [datePickerView.layer setCornerRadius:10.0f];
     [datePickerView.layer setMasksToBounds:YES];
+
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 300, 190)];
     [datePicker setBackgroundColor:[UIColor clearColor]];
     [datePicker.layer setCornerRadius:5.0f];
