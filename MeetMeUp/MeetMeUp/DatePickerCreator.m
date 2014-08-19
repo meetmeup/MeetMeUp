@@ -47,9 +47,11 @@
     
     [datePickerView addSubview:datePicker];
     
-    [UIView beginAnimations:@"animateDatePicker" context:nil];
-    [UIView setAnimationDuration:0.2];
-    [wholePickerView setFrame:CGRectMake(0, viewController.view.frame.size.height - 258, viewController.view.frame.size.width, 258)];
+    [UIView animateWithDuration:0.2 animations:^{
+        [wholePickerView setFrame:CGRectMake(0, viewController.view.frame.size.height - 258, viewController.view.frame.size.width, 258)];
+    } completion:^(BOOL finished) {
+        
+    }];
     
     return wholePickerView;
 }

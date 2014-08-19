@@ -219,7 +219,6 @@
 
 - (IBAction)signupClicked:(id)sender
 {
-
     //create AlertView
     AlertViewCreator *alertViewCreator = [[AlertViewCreator alloc] init];
     alertView = [[UIView alloc] init];
@@ -311,17 +310,25 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
     imageSelected = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
-    ////////////////// **CROP IMAGE TO DESIRED SIZE ** ///////////////////////
-    CGSize itemSize = CGSizeMake(340, 340); // give any size you want to give
-    UIGraphicsBeginImageContext(itemSize);
-    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
-    [imageSelected drawInRect:imageRect];
-    imageSelected = UIGraphicsGetImageFromCurrentImageContext();
+    [self imageWithImage:imageSelected scaledToWidth:340.0f];
+}
+
+- (void)imageWithImage: (UIImage*) sourceImage scaledToWidth: (float) i_width
+{
+    float oldWidth = sourceImage.size.width;
+    float scaleFactor = i_width / oldWidth;
+    
+    float newHeight = sourceImage.size.height * scaleFactor;
+    float newWidth = oldWidth * scaleFactor;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
+    [sourceImage drawInRect:CGRectMake(0, 0, newWidth, newHeight)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    //////////////////////////////////////////////////////////////////////////
     
-    [profileImageButton setImage:imageSelected forState:UIControlStateNormal];
-    
+    [[profileImageButton imageView] setContentMode: UIViewContentModeScaleAspectFit];
+    [profileImageButton setImage:newImage forState:UIControlStateNormal];
+
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

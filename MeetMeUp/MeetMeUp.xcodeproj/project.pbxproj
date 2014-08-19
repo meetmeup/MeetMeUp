@@ -43,6 +43,8 @@
 		2B28E537199E239C00450D68 /* AddEvent_TextField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28E536199E239C00450D68 /* AddEvent_TextField@2x.png */; };
 		2B28E540199E5A9C00450D68 /* AddEvent_SearchBarCancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28E53F199E5A9C00450D68 /* AddEvent_SearchBarCancel@2x.png */; };
 		2B51617C199FC711007C1AAF /* WholescreenActivityIndicatorCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B51617B199FC711007C1AAF /* WholescreenActivityIndicatorCreator.m */; };
+		2B60F2AA19A2089700ACAC82 /* AddFriends_AddFriendButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B60F2A919A2089700ACAC82 /* AddFriends_AddFriendButton@2x.png */; };
+		2B60F2AC19A20EFB00ACAC82 /* AddFriends_AvatarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B60F2AB19A20EFB00ACAC82 /* AddFriends_AvatarIcon@2x.png */; };
 		2B670F37199D0DD600A6B041 /* Main_DeleteEven@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B670F35199D0DD600A6B041 /* Main_DeleteEven@2x.png */; };
 		2B670F39199D101300A6B041 /* Main_AddEvent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B670F38199D101300A6B041 /* Main_AddEvent@2x.png */; };
 		2B78152F19A0C480007C43C3 /* LocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B78152E19A0C480007C43C3 /* LocationSearchViewController.m */; };
@@ -154,6 +156,8 @@
 		2B28E53F199E5A9C00450D68 /* AddEvent_SearchBarCancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddEvent_SearchBarCancel@2x.png"; sourceTree = "<group>"; };
 		2B51617A199FC711007C1AAF /* WholescreenActivityIndicatorCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholescreenActivityIndicatorCreator.h; sourceTree = "<group>"; };
 		2B51617B199FC711007C1AAF /* WholescreenActivityIndicatorCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholescreenActivityIndicatorCreator.m; sourceTree = "<group>"; };
+		2B60F2A919A2089700ACAC82 /* AddFriends_AddFriendButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddFriends_AddFriendButton@2x.png"; sourceTree = "<group>"; };
+		2B60F2AB19A20EFB00ACAC82 /* AddFriends_AvatarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddFriends_AvatarIcon@2x.png"; sourceTree = "<group>"; };
 		2B670F35199D0DD600A6B041 /* Main_DeleteEven@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_DeleteEven@2x.png"; sourceTree = "<group>"; };
 		2B670F38199D101300A6B041 /* Main_AddEvent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_AddEvent@2x.png"; sourceTree = "<group>"; };
 		2B78152D19A0C480007C43C3 /* LocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSearchViewController.h; sourceTree = "<group>"; };
@@ -323,6 +327,15 @@
 			name = AddEventView;
 			sourceTree = "<group>";
 		};
+		2B60F2A819A2088D00ACAC82 /* AddFriends */ = {
+			isa = PBXGroup;
+			children = (
+				2B60F2A919A2089700ACAC82 /* AddFriends_AddFriendButton@2x.png */,
+				2B60F2AB19A20EFB00ACAC82 /* AddFriends_AvatarIcon@2x.png */,
+			);
+			name = AddFriends;
+			sourceTree = "<group>";
+		};
 		2B670F14199D033F00A6B041 /* SWTableLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +500,7 @@
 		2BB7B53719915FDC0062467E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2B60F2A819A2088D00ACAC82 /* AddFriends */,
 				2B28E519199E120200450D68 /* AddEvent */,
 				2B059FED1998F61100144541 /* Main */,
 				2BB7B54D199171060062467E /* SignUp */,
@@ -625,6 +639,7 @@
 				2BB7B54F199171950062467E /* SignUp_EmailPass.png in Resources */,
 				2BB7B54119915FF80062467E /* Login_NewUser.png in Resources */,
 				2BB7B50F199159420062467E /* Images.xcassets in Resources */,
+				2B60F2AA19A2089700ACAC82 /* AddFriends_AddFriendButton@2x.png in Resources */,
 				2B28E533199E206600450D68 /* AddEvent_time@2x.png in Resources */,
 				2B05A015199A1B0A00144541 /* avatar4.jpg in Resources */,
 				2B28E52C199E1C2A00450D68 /* AddEvent_write@2x.png in Resources */,
@@ -638,6 +653,7 @@
 				2BB7B54319915FF80062467E /* Login_SignInButton.png in Resources */,
 				2BB7B52C199159540062467E /* Storyboard.storyboard in Resources */,
 				2B28E527199E1A5A00450D68 /* AddEvent_map@2x.png in Resources */,
+				2B60F2AC19A20EFB00ACAC82 /* AddFriends_AvatarIcon@2x.png in Resources */,
 				2BB7B54019915FF80062467E /* Login_ForgotPassword.png in Resources */,
 				2B670F39199D101300A6B041 /* Main_AddEvent@2x.png in Resources */,
 				2BB7B551199172880062467E /* SignUp_SignupButton.png in Resources */,
