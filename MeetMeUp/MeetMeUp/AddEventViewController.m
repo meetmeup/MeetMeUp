@@ -56,7 +56,6 @@
     self.inviteeTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Who's going?" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.notesTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Notes" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.urlTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"URL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-
     
     [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, SCROLLVIEW_HEIGHT)];
 }
@@ -283,55 +282,36 @@
 {
     NSLog(@"string: %@", string);
     
+    
+    inviteesSearchArray = [[NSMutableArray alloc] init];
+    inviteesImageSearchArray = [[NSMutableArray array] init];
+    
     if (textField == self.inviteeTextField)
     {
         NSString *searchText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-
-//        NSError *error;
-//        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"(@(\\w+))"
-//                                                                               options:0
-//                                                                                 error:&error];
-//
-//        NSArray * matches = [regex matchesInString:searchText options:0 range:NSMakeRange(0, [searchText length])];
-//        for (NSTextCheckingResult* match in matches ) {
-        
-//            NSRange wordRange = [match rangeAtIndex:1];
-//            NSString* usernameSearch = [searchText substringWithRange:wordRange];
-//            NSLog(@"%@", usernameSearch);
-        
-            //get usernames added from nsuserdefaults
-        
-//        }
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSMutableArray *savedFriendsArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_FRIENDS_ARRAY"]];
         NSMutableArray *savedFriendsPhotoArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_PHOTO_ARRAY"]];
         
         NSLog(@"current text: %@", searchText);
-        
-        inviteesSearchArray = [NSMutableArray array];
-        inviteesImageSearchArray = [NSMutableArray array];
-        
-        for (NSString* item in savedFriendsArray)
+
+        for (NSString *str in savedFriendsArray)
         {
-            if ([item rangeOfString:searchText].location != NSNotFound)
+            if (savedFriendsArray.count > 0)
             {
-                [inviteesSearchArray addObject:item];
-                NSUInteger index = [savedFriendsArray indexOfObject:item];
-                [inviteesImageSearchArray addObject:[savedFriendsPhotoArray objectAtIndex:index]];
-//                NSLog(@"invitee images: %@", inviteesImageSearchArray);
-                [friendsChoicesTableView reloadData];
-            }
-            else
-            {
-                inviteesSearchArray = [NSMutableArray array];
-                inviteesImageSearchArray = [NSMutableArray array];
-                [friendsChoicesTableView reloadData];
+                NSRange stringRange = [str rangeOfString:searchText options:NSCaseInsensitiveSearch];
+                if (stringRange.location != NSNotFound)
+                {
+                    [inviteesSearchArray addObject:str];
+                    NSLog(@"invitee array: %@", inviteesSearchArray);
+                    NSUInteger index = [savedFriendsArray indexOfObject:str];
+                    [inviteesImageSearchArray addObject:[savedFriendsPhotoArray objectAtIndex:index]];
+                }
             }
         }
-
     }
-    
+    [friendsChoicesTableView reloadData];
     return YES;
 }
 
@@ -349,7 +329,7 @@
         // allocate the cell:
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
-        UILabel *cellTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 300, 20)];
+        UILabel *cellTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 11, 300, 20)];
         [cellTextLabel setTextColor:[UIColor colorWithRed:44.0/255.0f green:44.0/255.0f blue:44.0/255.0f alpha:1.0f]];
         [cellTextLabel setFont:[UIFont fontWithName:@"Helvetica-Medium" size:16.0f]];
         [cellTextLabel setTag:1];
@@ -361,18 +341,32 @@
 //        [cellDetailLabel setTag:2];
 //        [cell.contentView addSubview:cellDetailLabel];
         
-        AsyncImageView *asyncImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(15, 0, 32, 32)];
+        AsyncImageView *asyncImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(25, 6, 32, 32)];
         [asyncImage.layer setCornerRadius:asyncImage.frame.size.height/2.0f];
         [asyncImage setTag:2];
         [cell.contentView addSubview:asyncImage];
+        
+//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 6, 32, 32)];
+//        [imageView.layer setCornerRadius:imageView.frame.size.height/2.0f];
+//        [imageView setTag:3];
+//        [cell.contentView addSubview:imageView];
         
     }
     
     [(UILabel *) [cell.contentView viewWithTag:1] setText:[inviteesSearchArray objectAtIndex:indexPath.row]];
 //    [(UILabel *)[cell.contentView viewWithTag:2] setText:[NSString stringWithFormat:@"%@, %@, %@", [[searchLocationResultArray objectAtIndex:indexPath.row] objectForKey:@"address"], [[searchLocationResultArray objectAtIndex:indexPath.row] objectForKey:@"city"], [[searchLocationResultArray objectAtIndex:indexPath.row] objectForKey:@"country"]]];
     NSURL *url = [NSURL URLWithString:[inviteesImageSearchArray objectAtIndex:indexPath.row]];
-    [(AsyncImageView *) [cell.contentView viewWithTag:2] loadImageWithTypeFromURL:url contentMode:UIViewContentModeScaleAspectFit imageNameBG:nil];
-    
+    NSData *data = [NSData dataWithContentsOfURL:url];
+//
+    if ([data length] == 0)
+    {
+        [(AsyncImageView *) [cell.contentView viewWithTag:2] setImage:[UIImage imageNamed:@"AddFriends_UserIconSmall.png"]];
+    }
+    else
+    {
+        [(AsyncImageView *) [cell.contentView viewWithTag:2] loadImageWithTypeFromURL:url contentMode:UIViewContentModeScaleAspectFit imageNameBG:nil];
+    }
+
     return cell;
 }
 

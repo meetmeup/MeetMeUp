@@ -30,24 +30,42 @@
                 //NSLog(@"RESPONSE: %@", searchLocationResultString);
                 
                 
-                NSDictionary* jsonRawResponse = [NSJSONSerialization
+                NSArray* jsonRawResponse = [NSJSONSerialization
                                                  JSONObjectWithData:data
                                                  options:kNilOptions
                                                  error:&error];
                 
-                NSArray *userDetailsArray = [jsonRawResponse objectForKey:@"meetmeup_user"];
-                retrievedUsernameString = [[userDetailsArray objectAtIndex:0] objectForKey:@"user_username"];
-                retrievedUserProfileURLString = [[userDetailsArray objectAtIndex:0] objectForKey:@"user_photo"];
+                NSLog(@"resultString: %@", jsonRawResponse);
                 
-    //download here
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        if ([self.delegate respondsToSelector:@selector(AddFriends:retrievedSearchUser:andUserProfile:)])
-        {
-            [self.delegate AddFriends:self retrievedSearchUser:retrievedUsernameString andUserProfile:retrievedUserProfileURLString];
-        }
-    });
+                if ([jsonRawResponse count] == 0)
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        if ([self.delegate respondsToSelector:@selector(AddFriends:retrievedSearchUser:andUserProfile:)])
+                        {
+                            [self.delegate AddFriends:self retrievedSearchUser:@"0" andUserProfile:@"0"];
+                        }
+                    });
+                }
+                else
+                {
+                    NSDictionary *dictionaryResponse = [NSJSONSerialization
+                                                JSONObjectWithData:data
+                                                options:kNilOptions
+                                                error:&error];
+                    
+                    NSArray *userDetailsArray = [dictionaryResponse objectForKey:@"meetmeup_user"];
+                    retrievedUsernameString = [[userDetailsArray objectAtIndex:0] objectForKey:@"user_username"];
+                    retrievedUserProfileURLString = [[userDetailsArray objectAtIndex:0] objectForKey:@"user_photo"];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        if ([self.delegate respondsToSelector:@selector(AddFriends:retrievedSearchUser:andUserProfile:)])
+                        {
+                            [self.delegate AddFriends:self retrievedSearchUser:retrievedUsernameString andUserProfile:retrievedUserProfileURLString];
+                        }
+                    });
+                }
                 
     }] resume];
 }

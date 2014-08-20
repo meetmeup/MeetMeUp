@@ -44,7 +44,7 @@
     
     if (!isLoggedIn)
     {
-        [_fbLoginView setReadPermissions:@[@"email", @"public_profile"]];
+        [_fbLoginView setReadPermissions:@[@"email", @"public_profile", @"user_friends"]];
         [_fbLoginView setDelegate:self];
         [[self view] addSubview:_fbLoginView];
         
@@ -98,7 +98,6 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user
 {
-
     SignUpViewController *signUpViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
     signUpViewController.profileIDs = user.id;
     signUpViewController.email = [user objectForKey:@"email"];

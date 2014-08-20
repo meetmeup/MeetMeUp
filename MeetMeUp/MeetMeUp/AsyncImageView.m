@@ -146,4 +146,9 @@
 	return [iv image];
 }
 
+- (void)setImage:(UIImage *)image
+{
+    imageView.image  = image;
+}
+
 @end

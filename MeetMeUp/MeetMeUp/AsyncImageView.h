@@ -28,6 +28,7 @@
 
 - (void)loadImageWithTypeFromURLV2:(NSURL *)url contentMode:(UIViewContentMode)_contentMode imageNameBG:(NSString *)_imageNameBG savedFileName:(NSString*) _savedFileName;
 - (void)loadImageWithTypeFromURL:(NSURL *)url contentMode:(UIViewContentMode)_contentMode imageNameBG:(NSString *)_imageNameBG;
+- (void)setImage:(UIImage *)image;
 - (UIImage *)image;
 
 @end

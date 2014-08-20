@@ -392,11 +392,9 @@
     {
         AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
         addFriendsViewController.addFriendsBy = @"username";
-        [self presentViewController:addFriendsViewController animated:YES completion:^{
-            
-        }];
+        [self presentViewController:addFriendsViewController animated:YES completion:nil];
     }
-    if (buttonIndex == 1)
+    else if (buttonIndex == 1)
     {
         AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
         addFriendsViewController.addFriendsBy = @"facebook";
@@ -404,7 +402,7 @@
             
         }];
     }
-    if (buttonIndex == 2)
+    else if (buttonIndex == 2)
     {
         AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
         addFriendsViewController.addFriendsBy = @"email";

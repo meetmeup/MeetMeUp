@@ -264,7 +264,7 @@
         [activityIndicator startAnimating];
         
         //make activity indicator run for 2 second.... HEHE
-        [self performSelector:@selector(SignUpProxy) withObject:nil afterDelay:1.0];
+        [self performSelector:@selector(SignUpProxy) withObject:nil afterDelay:0.0];
     }
 }
 
@@ -307,28 +307,47 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    NSLog(@"PICKING FINISHED");
+    
     [picker dismissViewControllerAnimated:YES completion:NULL];
     imageSelected = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    
-    [self imageWithImage:imageSelected scaledToWidth:340.0f];
+
+    if (imageSelected.size.width > imageSelected.size.height)
+    {
+        [self scaleImageWithMoreWidth:imageSelected scaledWithWidth:340.0f];
+    }
+    else if (imageSelected.size.width <= imageSelected.size.height)
+    {
+        [self scaleImageWithMoreHeight:imageSelected scaledWithHeight:340.f];
+    }
 }
 
-- (void)imageWithImage: (UIImage*) sourceImage scaledToWidth: (float) i_width
+- (void)scaleImageWithMoreWidth:(UIImage*)sourceImage scaledWithWidth:(float) width
 {
-    float oldWidth = sourceImage.size.width;
-    float scaleFactor = i_width / oldWidth;
+    float wantedHeight = (sourceImage.size.height*width)/sourceImage.size.width;
+    float wantedWidth = width;
     
-    float newHeight = sourceImage.size.height * scaleFactor;
-    float newWidth = oldWidth * scaleFactor;
-    
-    UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
-    [sourceImage drawInRect:CGRectMake(0, 0, newWidth, newHeight)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsBeginImageContext(CGSizeMake(wantedWidth, wantedHeight));
+    [sourceImage drawInRect:CGRectMake(0, 0, wantedWidth, wantedHeight)];
+    imageSelected = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    [[profileImageButton imageView] setContentMode: UIViewContentModeScaleAspectFit];
-    [profileImageButton setImage:newImage forState:UIControlStateNormal];
+    [[profileImageButton imageView] setContentMode:UIViewContentModeScaleAspectFill];
+    [profileImageButton setImage:imageSelected forState:UIControlStateNormal];
+}
 
+- (void)scaleImageWithMoreHeight:(UIImage*)sourceImage scaledWithHeight:(float) height
+{
+    float wantedHeight = height;
+    float wantedWidth = (sourceImage.size.width*height)/sourceImage.size.height;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(wantedWidth, wantedHeight));
+    [sourceImage drawInRect:CGRectMake(0, 0, wantedWidth, wantedHeight)];
+    imageSelected = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [[profileImageButton imageView] setContentMode:UIViewContentModeScaleAspectFill];
+    [profileImageButton setImage:imageSelected forState:UIControlStateNormal];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
