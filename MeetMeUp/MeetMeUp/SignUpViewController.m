@@ -16,7 +16,7 @@
 
 #define PROFILE_BUTTON_WIDTH self.profilePicture.bounds.size.width
 #define PROFILE_BUTTON_HEIGHT self.profilePicture.bounds.size.height
-#define TEXTFIELD_SCROLL_UP_HEIGHT 10
+#define TEXTFIELD_SCROLL_UP_HEIGHT (self.view.frame.size.height == 568.0f ? 10 : 50)
 #define ALERT_VIEW_HEIGHT 45
 #define ALERT_VIEW_HIDE_FRAME CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, 0)
 #define ALERT_VIEW_SHOW_FRAME CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, ALERT_VIEW_HEIGHT)
@@ -77,7 +77,7 @@
     {
         [self.profilePicture removeFromSuperview];
         profileImageButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 46, PROFILE_BUTTON_WIDTH, PROFILE_BUTTON_HEIGHT)];
-        [profileImageButton setImage:[UIImage imageNamed:@"SignUp_CameraIcon.png"] forState:UIControlStateNormal];
+        [profileImageButton setImage:[UIImage imageNamed:@"SignUp_UserIcon.png"] forState:UIControlStateNormal];
         [profileImageButton addTarget:self action:@selector(selectProfileImage) forControlEvents:UIControlEventTouchUpInside];
         profileImageButton.clipsToBounds = YES;
         profileImageButton.layer.cornerRadius = PROFILE_BUTTON_WIDTH/2.0f;
@@ -270,8 +270,20 @@
 
 - (void)SignUpProxy
 {
-    SignUpProxy *signUpProxy = [[SignUpProxy alloc] init];
-    [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected andViewController:self];
+    if (imageSelected == nil)
+    {
+        //set imageSelected Avatar
+        imageSelected = [UIImage imageNamed:@"SignUp_UserIcon.png"];
+        SignUpProxy *signUpProxy = [[SignUpProxy alloc] init];
+        NSString *tokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyAppSpecificGloballyUniqueString"];
+        [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected andViewController:self andDeviceToken:tokenString];
+    }
+    else
+    {
+        SignUpProxy *signUpProxy = [[SignUpProxy alloc] init];
+        NSString *tokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyAppSpecificGloballyUniqueString"];
+        [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected andViewController:self andDeviceToken:tokenString];
+    }
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

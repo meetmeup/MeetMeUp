@@ -13,7 +13,7 @@
 @implementation SignUpProxy
 
 //upload data user to server
-- (void) signUpUserWithEmail:(NSString *)email username:(NSString *)username password:(NSString *)password photo:(UIImage *)photo andViewController:(UIViewController *)viewController
+- (void) signUpUserWithEmail:(NSString *)email username:(NSString *)username password:(NSString *)password photo:(UIImage *)photo andViewController:(UIViewController *)viewController andDeviceToken:(NSString *)deviceToken
 {
     //set header string
     NSString *headerString = @"http://www.loadfree2u.net/meetmeup/";
@@ -26,9 +26,9 @@
     NSString *photoURLString = [NSString stringWithFormat:@"%@upload/%@.png", headerString, dateString];
     
     //set php object name for PHP post
-    NSArray *formfields = [NSArray arrayWithObjects:@"email", @"username", @"password", @"photourl", nil];
+    NSArray *formfields = [NSArray arrayWithObjects:@"email", @"username", @"password", @"photourl", @"devicetoken", nil];
     //set php object data for PHP post
-    NSArray *formvalues = [NSArray arrayWithObjects:email, username, password, photoURLString, nil];
+    NSArray *formvalues = [NSArray arrayWithObjects:email, username, password, photoURLString, deviceToken, nil];
     //making formfields and form value into nsdictionary
     NSDictionary *textParams = [NSDictionary dictionaryWithObjects:formvalues forKeys:formfields];
     
@@ -48,12 +48,19 @@
     [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     
     // add the image form fields
-    for (int i=0; i<[imageParams count]; i++) {
-        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: attachment; name=\"userfile\"; filename=\"%@\"\r\n", [imageParams objectAtIndex:i]] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[NSData dataWithData:UIImageJPEGRepresentation(photo, 90)]];
-        [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    if (photo == nil)
+    {
+        //do nothing
+    }
+    else
+    {
+        for (int i=0; i<[imageParams count]; i++) {
+            [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: attachment; name=\"userfile\"; filename=\"%@\"\r\n", [imageParams objectAtIndex:i]] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[NSData dataWithData:UIImageJPEGRepresentation(photo, 90)]];
+            [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        }
     }
     
     // add the text form fields

@@ -36,6 +36,8 @@
 {
     [super viewDidLoad];
     
+//    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
     //set textField delegate
     [self.username setDelegate:self];
     [self.password setDelegate:self];

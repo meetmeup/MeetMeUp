@@ -16,5 +16,11 @@
 - (IBAction)SignInClicked:(id)sender;
 - (IBAction)newUserClicked:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIImageView *HeaderImage;
+@property (strong, nonatomic) IBOutlet UIImageView *userPassImage;
+@property (strong, nonatomic) IBOutlet UIButton *signInImage;
+@property (strong, nonatomic) IBOutlet FBLoginView *facebookImage;
+@property (strong, nonatomic) IBOutlet UIButton *ForgotPasswordButton;
+@property (strong, nonatomic) IBOutlet UIButton *signUpButton;
 
 @end

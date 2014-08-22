@@ -12,6 +12,9 @@
 #import "SWTableViewCell.h"
 #import "AddEventViewController.h"
 #import "AddFriendsViewController.h"
+#import "ReachabilityCheckHelper.h"
+#import "AlertViewCreator.h"
+#import "AlertViewStillCreator.h"
 
 #define SIDE_BUTTON_HEIGHT 58
 #define SIDE_BUTTON_WIDTH 160
@@ -30,7 +33,7 @@
 #define   IsIphone5     ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
 
-@interface MainViewController ()<SWTableViewCellDelegate, UIActionSheetDelegate>
+@interface MainViewController ()<SWTableViewCellDelegate, UIActionSheetDelegate, UIAlertViewDelegate>
 {
     VRGCalendarView *calendar;
     NSDate *currentMonth;
@@ -54,6 +57,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Main_BG.jpg"]]];
@@ -134,6 +138,15 @@
                           atScrollPosition:UITableViewScrollPositionTop
                                   animated:YES];
     [eventTableView reloadData];
+    
+    ReachabilityCheckHelper *reachabilityChecker = [[ReachabilityCheckHelper alloc] init];
+    
+    if (![reachabilityChecker connected])
+    {
+        //alertview if no internet connection
+        AlertViewStillCreator *alertViewCreator = [[AlertViewStillCreator alloc] init];
+        [self.view addSubview:[alertViewCreator createAlertViewWithViewController:self andText:@"Please connect to the internet."]];
+    }
 }
 
 - (void)nextMonthButtonClicked
@@ -359,13 +372,23 @@
 #pragma mark - left utility event clicked
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
 {
-    //add event button clicked
-    if (index == 0)
+    ReachabilityCheckHelper *reachabilityChecker = [[ReachabilityCheckHelper alloc] init];
+    
+    
+    if (![reachabilityChecker connected])
     {
-        AddEventViewController *addEventViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addevent"];
-        [self presentViewController:addEventViewController animated:YES completion:^{
-            
-        }];
+        //do nothing..
+    }
+    else
+    {
+        //add event button clicked
+        if (index == 0)
+        {
+            AddEventViewController *addEventViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addevent"];
+            [self presentViewController:addEventViewController animated:YES completion:^{
+                
+            }];
+        }
     }
 }
 
@@ -388,27 +411,36 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0)
+    ReachabilityCheckHelper *reachability = [[ReachabilityCheckHelper alloc] init];
+    
+    if (![reachability connected])
     {
-        AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
-        addFriendsViewController.addFriendsBy = @"username";
-        [self presentViewController:addFriendsViewController animated:YES completion:nil];
+        //do nothing..
     }
-    else if (buttonIndex == 1)
+    else
     {
-        AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
-        addFriendsViewController.addFriendsBy = @"facebook";
-        [self presentViewController:addFriendsViewController animated:YES completion:^{
-            
-        }];
-    }
-    else if (buttonIndex == 2)
-    {
-        AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
-        addFriendsViewController.addFriendsBy = @"email";
-        [self presentViewController:addFriendsViewController animated:YES completion:^{
-            
-        }];
+        if (buttonIndex == 0)
+        {
+            AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
+            addFriendsViewController.addFriendsBy = @"username";
+            [self presentViewController:addFriendsViewController animated:YES completion:nil];
+        }
+        else if (buttonIndex == 1)
+        {
+            AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
+            addFriendsViewController.addFriendsBy = @"facebook";
+            [self presentViewController:addFriendsViewController animated:YES completion:^{
+                
+            }];
+        }
+        else if (buttonIndex == 2)
+        {
+            AddFriendsViewController *addFriendsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addfriends"];
+            addFriendsViewController.addFriendsBy = @"email";
+            [self presentViewController:addFriendsViewController animated:YES completion:^{
+                
+            }];
+        }
     }
 }
 

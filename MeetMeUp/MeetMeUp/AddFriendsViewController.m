@@ -11,6 +11,8 @@
 #import "WholescreenActivityIndicatorCreator.h"
 #import "AsyncImageView.h"
 
+#define MASKVIEW_Y (self.view.frame.size.height == 568.0f ? 0 : 35)
+
 
 @interface AddFriendsViewController ()<UISearchBarDelegate, AddFriendsProxyDelegate>
 {
@@ -144,9 +146,13 @@
     MaskView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.size.height + 1, self.view.frame.size.width, self.view.frame.size.height)];
     [MaskView setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.9f]];
     
+    UIImageView *userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 50, self.view.frame.origin.y + 64 - MASKVIEW_Y, 220, 220)];
+    [userImageView setImage:[UIImage imageNamed:@"SignUp_UserIcon.png"]];
+    [MaskView addSubview:userImageView];
+    
     if ([username isEqualToString:@"0"])
     {
-        UILabel *userUsernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 0, self.view.frame.origin.y + 310, 320, 21)];
+        UILabel *userUsernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 0, self.view.frame.origin.y + 310 + MASKVIEW_Y, 320, 21)];
         [userUsernameLabel setText:@"User not found."];
         [userUsernameLabel setTextColor:[UIColor colorWithRed:44.0f/255.0f green:44.0f/255.0f blue:44.0f/255.0f alpha:1.0f]];
         [userUsernameLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0f]];
@@ -155,28 +161,15 @@
     }
     else
     {
-        NSURL *imageURL = [NSURL URLWithString:profileURL];
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        AsyncImageView *userProfileImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 50, self.view.frame.origin.y + 64 - MASKVIEW_Y, 220, 220)];
+        [userProfileImage loadImageWithTypeFromURL:[NSURL URLWithString:friendPhotoURL] contentMode:UIViewContentModeScaleAspectFill imageNameBG:nil];
+        [userProfileImage setContentMode:UIViewContentModeScaleAspectFill];
+        [userProfileImage.layer setCornerRadius:userProfileImage.frame.size.height/2.0f];
+        [userProfileImage.layer setMasksToBounds:YES];
+        [MaskView addSubview:userProfileImage];
         
-        if ([imageData length] == 0)
-        {
-            UIImage *image = [UIImage imageNamed:@"AddFriends_UserIcon.png"];
-            UIImageView *userProfileImage = [[UIImageView alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 50, self.view.frame.origin.y + 64, 220, 220)];
-            [userProfileImage setImage:image];
-            [userProfileImage setContentMode:UIViewContentModeScaleAspectFit];
-            [MaskView addSubview:userProfileImage];
-        }
-        else
-        {
-            AsyncImageView *userProfileImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 50, self.view.frame.origin.y + 64, 220, 220)];
-            [userProfileImage loadImageWithTypeFromURL:imageURL contentMode:UIViewContentModeScaleAspectFill imageNameBG:nil];
-            [userProfileImage setContentMode:UIViewContentModeScaleAspectFill];
-            [userProfileImage.layer setCornerRadius:userProfileImage.frame.size.height/2.0f];
-            [userProfileImage.layer setMasksToBounds:YES];
-            [MaskView addSubview:userProfileImage];
-        }
         
-        UILabel *userUsernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 0, self.view.frame.origin.y + 310, 320, 21)];
+        UILabel *userUsernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 0, self.view.frame.origin.y + 310 - MASKVIEW_Y, 320, 21)];
         [userUsernameLabel setText:username];
         [userUsernameLabel setTextColor:[UIColor colorWithRed:44.0f/255.0f green:44.0f/255.0f blue:44.0f/255.0f alpha:1.0f]];
         [userUsernameLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0f]];
@@ -193,7 +186,7 @@
         if (alreadyAdded)
         {
             //is already you friend
-            UILabel *isAlreadyFriendLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.origin.y + 335, 320, 40)];
+            UILabel *isAlreadyFriendLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.origin.y + 335 - MASKVIEW_Y, 320, 40)];
             [isAlreadyFriendLabel setText:@"is already your friend."];
             [isAlreadyFriendLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0f]];
             [isAlreadyFriendLabel setTextAlignment:NSTextAlignmentCenter];
@@ -202,7 +195,7 @@
         }
         else if (!alreadyAdded)
         {
-            addFriendButton = [[UIButton alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 80, self.view.frame.origin.y + 349, 160, 40)];
+            addFriendButton = [[UIButton alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 80, self.view.frame.origin.y + 349 - MASKVIEW_Y, 160, 40)];
             [addFriendButton setUserInteractionEnabled:YES];
             [addFriendButton setTitle:@"" forState:UIControlStateNormal];
             [addFriendButton setImage:[UIImage imageNamed:@"AddFriends_AddFriendButton.png"] forState:UIControlStateNormal];
@@ -211,13 +204,6 @@
             [MaskView addSubview:addFriendButton];
         }
     }
-    
-//    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(MaskView.frame.origin.x + 80, self.view.frame.origin.y + 397, 160, 40)];
-//    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
-//    [cancelButton.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
-//    [cancelButton setTitleColor:[UIColor colorWithRed:44.0f/255.0f green:44.0f/255.0f blue:44.0f/255.0f alpha:0.7f] forState:UIControlStateNormal];
-//    [cancelButton addTarget:self action:@selector(cancelAddFriendButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-//    [MaskView addSubview:cancelButton];
     
     [UIView animateWithDuration:0.2 animations:^{
         [MaskView setFrame:CGRectMake(0, 90, self.view.frame.size.width, self.view.frame.size.height)];
@@ -234,9 +220,6 @@
     NSMutableArray *savedFriendsArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_FRIENDS_ARRAY"]];
     NSMutableArray *savedFriendPhotoArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_PHOTO_ARRAY"]];
     
-//    NSURL *url = [NSURL URLWithString:friendPhotoURL];
-//    NSData *data = [NSData dataWithContentsOfURL:url];
-    
     [savedFriendsArray addObject:friendUsername];
     [savedFriendPhotoArray addObject:friendPhotoURL];
         
@@ -245,29 +228,13 @@
     [userDefaults synchronize];
 
     NSLog(@"user photos: %@", savedFriendPhotoArray);
+
     
-//    [UIView animateWithDuration:0.2 animations:^{
-//        [MaskView setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.size.height + 1, self.view.frame.size.width, self.view.frame.size.height)];
-//    } completion:^(BOOL finished) {
-//        [MaskView removeFromSuperview];
-//    }];
-    
-//    [MaskView removeFromSuperview];
-    
-    [addFriendButton setImage:[UIImage imageNamed:@"AddEvent_GrayTextField.png"] forState:UIControlStateNormal];
-    [addFriendButton setTitle:@"ADDED" forState:UIControlStateNormal];
+    [addFriendButton setImage:[UIImage imageNamed:@"AddFriends_AddFriendButtonClicked.png"] forState:UIControlStateNormal];
     [addFriendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [addFriendButton setUserInteractionEnabled:NO];
 }
 
-//- (void) cancelAddFriendButtonClicked
-//{
-//    [UIView animateWithDuration:0.2 animations:^{
-//        [MaskView setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.size.height + 1, self.view.frame.size.width, self.view.frame.size.height)];
-//    } completion:^(BOOL finished) {
-//        [MaskView removeFromSuperview];
-//    }];
-//}
 
 
 @end

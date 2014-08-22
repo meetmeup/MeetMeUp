@@ -27,23 +27,30 @@
     [datePicker addTarget:viewController action:@selector(dateSelected:) forControlEvents:UIControlEventValueChanged];
     [wholePickerView addSubview:datePickerView];
     
-    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(5, datePickerView.frame.origin.y + datePickerView.frame.size.height + 3, 152.5, 40)];
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(15, datePickerView.frame.origin.y + datePickerView.frame.size.height + 3, 152.5 - 10, 40)];
     [cancelButton setTag:tag];
     [cancelButton.layer setCornerRadius:10.0f];
     [cancelButton.layer setMasksToBounds:YES];
     [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
-    [cancelButton setTitleColor:[UIColor colorWithRed:249.0f/255.0f green:103.0f/255.0f blue:30.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    [cancelButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Medium" size:7.0f]];
+    [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cancelButton setBackgroundColor:[UIColor colorWithRed:249.0f/255.0f green:103.0f/255.0f blue:30.0f/255.0f alpha:0.7f]];
     [cancelButton addTarget:viewController action:@selector(dismissDatePicker) forControlEvents:UIControlEventTouchUpInside];
-    [cancelButton setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.9f]];
+    [cancelButton setSelected:YES];
+    [cancelButton setShowsTouchWhenHighlighted:YES];
     [wholePickerView addSubview:cancelButton];
     
-    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(161.5, datePickerView.frame.origin.y + datePickerView.frame.size.height + 3, 152.5, 40)];
+    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(161.5, datePickerView.frame.origin.y + datePickerView.frame.size.height + 3, 152.5 - 10, 40)];
     [doneButton setTag:tag];
     [doneButton.layer setCornerRadius:10.0f];
     [doneButton.layer setMasksToBounds:YES];
     [doneButton addTarget:viewController action:@selector(doneDatePicker:) forControlEvents:UIControlEventTouchUpInside];
     [doneButton setTitle:@"Done" forState:UIControlStateNormal];
-    [doneButton setTitleColor:[UIColor colorWithRed:249.0f/255.0f green:103.0f/255.0f blue:30.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];    [doneButton setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.9f]];
+    [doneButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Medium" size:7.0f]];
+    [doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [doneButton setBackgroundColor:[UIColor colorWithRed:249.0f/255.0f green:103.0f/255.0f blue:30.0f/255.0f alpha:0.7f]];
+    [doneButton setSelected:YES];
+    [doneButton setShowsTouchWhenHighlighted:YES];
     [wholePickerView addSubview:doneButton];
     
     [datePickerView addSubview:datePicker];
