@@ -21,6 +21,6 @@
 @protocol AddFriendsProxyDelegate <NSObject>
 
 @optional
-- (void) AddFriends:(AddFriendsProxy *)searchProxy retrievedSearchUser:(NSString *)username andUserProfile:(NSString *)profileURL;
+- (void) AddFriends:(AddFriendsProxy *)searchProxy retrievedSearchUser:(NSString *)username andUserProfile:(NSString *)profileURL andUserDeviceToken:(NSString *)deviceToken;
 
 @end

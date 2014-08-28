@@ -83,7 +83,8 @@
 - (IBAction)SignInClicked:(id)sender
 {
     LoginProxy *loginProxy = [[LoginProxy alloc] init];
-    [loginProxy loginWithUsername:self.username.text andPassword:self.password.text andViewController:self];
+    NSString *tokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"];
+    [loginProxy loginWithUsername:self.username.text andPassword:self.password.text andViewController:self andDeviceToken:tokenString];
 }
 
 #pragma mark - new user clicked

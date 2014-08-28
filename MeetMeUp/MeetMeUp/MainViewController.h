@@ -13,6 +13,8 @@
 
 @interface MainViewController : UIViewController<VRGCalendarViewDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
+@property (strong, nonatomic) NSString *uniqueEventID;
+
 @property (strong, nonatomic) UIViewController *signUpViewController;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *SettingsBarButtonItem;

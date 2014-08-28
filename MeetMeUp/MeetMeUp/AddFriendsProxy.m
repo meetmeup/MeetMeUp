@@ -14,6 +14,8 @@
 {
     __block NSString *retrievedUsernameString;
     __block NSString *retrievedUserProfileURLString;
+    __block NSString *retrievedUserDeviceTokenString;
+
     
     NSString *requestURL;
     
@@ -41,9 +43,9 @@
                 {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
-                        if ([self.delegate respondsToSelector:@selector(AddFriends:retrievedSearchUser:andUserProfile:)])
+                        if ([self.delegate respondsToSelector:@selector(AddFriends:retrievedSearchUser:andUserProfile:andUserDeviceToken:)])
                         {
-                            [self.delegate AddFriends:self retrievedSearchUser:@"0" andUserProfile:@"0"];
+                            [self.delegate AddFriends:self retrievedSearchUser:@"0" andUserProfile:@"0" andUserDeviceToken:@"0"];
                         }
                     });
                 }
@@ -57,12 +59,13 @@
                     NSArray *userDetailsArray = [dictionaryResponse objectForKey:@"meetmeup_user"];
                     retrievedUsernameString = [[userDetailsArray objectAtIndex:0] objectForKey:@"user_username"];
                     retrievedUserProfileURLString = [[userDetailsArray objectAtIndex:0] objectForKey:@"user_photo"];
+                    retrievedUserDeviceTokenString = [[userDetailsArray objectAtIndex:0] objectForKey:@"user_devicetoken"];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
-                        if ([self.delegate respondsToSelector:@selector(AddFriends:retrievedSearchUser:andUserProfile:)])
+                        if ([self.delegate respondsToSelector:@selector(AddFriends:retrievedSearchUser:andUserProfile:andUserDeviceToken:)])
                         {
-                            [self.delegate AddFriends:self retrievedSearchUser:retrievedUsernameString andUserProfile:retrievedUserProfileURLString];
+                            [self.delegate AddFriends:self retrievedSearchUser:retrievedUsernameString andUserProfile:retrievedUserProfileURLString andUserDeviceToken:retrievedUserDeviceTokenString];
                         }
                     });
                 }

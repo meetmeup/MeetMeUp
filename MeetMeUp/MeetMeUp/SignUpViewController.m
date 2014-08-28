@@ -275,13 +275,13 @@
         //set imageSelected Avatar
         imageSelected = [UIImage imageNamed:@"SignUp_UserIcon.png"];
         SignUpProxy *signUpProxy = [[SignUpProxy alloc] init];
-        NSString *tokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyAppSpecificGloballyUniqueString"];
+        NSString *tokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"];
         [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected andViewController:self andDeviceToken:tokenString];
     }
     else
     {
         SignUpProxy *signUpProxy = [[SignUpProxy alloc] init];
-        NSString *tokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyAppSpecificGloballyUniqueString"];
+        NSString *tokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"];
         [signUpProxy signUpUserWithEmail:self.emailTextField.text username:self.usernameTextfield.text password:self.passwordTextfield.text photo:imageSelected andViewController:self andDeviceToken:tokenString];
     }
 }

@@ -10,6 +10,8 @@
 #import "AddFriendsProxy.h"
 #import "WholescreenActivityIndicatorCreator.h"
 #import "AsyncImageView.h"
+#import "AlertViewCreator.h"
+#import "KeychainItemWrapper.h"
 
 #define MASKVIEW_Y (self.view.frame.size.height == 568.0f ? 0 : 35)
 
@@ -20,7 +22,9 @@
     UIView *MaskView;
     NSString *friendUsername;
     NSString *friendPhotoURL;
+    NSString *friendDevicetoken;
     UIButton *addFriendButton;
+    
 }
 
 @end
@@ -72,35 +76,46 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [UIView animateWithDuration:0.2 animations:^{
-        [MaskView setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.size.height + 1, self.view.frame.size.width, self.view.frame.size.height)];
-    } completion:^(BOOL finished) {
-        [MaskView removeFromSuperview];
-    }];
-
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"loginData" accessGroup:nil];
+    NSString *usernameString = [keychain objectForKey:(__bridge id)kSecAttrAccount];
     
-    [self.searchBar resignFirstResponder];
-    WholescreenActivityIndicatorCreator *activityIndicatorCreator = [[WholescreenActivityIndicatorCreator alloc] init];
-    activityindicatorView = [[UIActivityIndicatorView alloc] init];
-    activityindicatorView = [activityIndicatorCreator createActivityindicator];
-    [self.view addSubview:activityindicatorView];
-    [activityindicatorView startAnimating];
-    
-    if ([self.addFriendsBy isEqualToString:@"username"])
+    if (![self.searchBar.text isEqualToString:usernameString])
     {
-        AddFriendsProxy *addFriendsProxy = [[AddFriendsProxy alloc] init];
-        [addFriendsProxy setDelegate:self];
-        [addFriendsProxy retrievedUserByUsingUsernameOrEmail:self.addFriendsBy withUserOrEmail:self.searchBar.text];
-    }
-    else if ([self.addFriendsBy  isEqualToString:@"facebook"])
-    {
+        [UIView animateWithDuration:0.2 animations:^{
+            [MaskView setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.size.height + 1, self.view.frame.size.width, self.view.frame.size.height)];
+        } completion:^(BOOL finished) {
+            [MaskView removeFromSuperview];
+        }];
         
+        
+        [self.searchBar resignFirstResponder];
+        WholescreenActivityIndicatorCreator *activityIndicatorCreator = [[WholescreenActivityIndicatorCreator alloc] init];
+        activityindicatorView = [[UIActivityIndicatorView alloc] init];
+        activityindicatorView = [activityIndicatorCreator createActivityindicator];
+        [self.view addSubview:activityindicatorView];
+        [activityindicatorView startAnimating];
+        
+        if ([self.addFriendsBy isEqualToString:@"username"])
+        {
+            AddFriendsProxy *addFriendsProxy = [[AddFriendsProxy alloc] init];
+            [addFriendsProxy setDelegate:self];
+            [addFriendsProxy retrievedUserByUsingUsernameOrEmail:self.addFriendsBy withUserOrEmail:self.searchBar.text];
+        }
+        else if ([self.addFriendsBy  isEqualToString:@"facebook"])
+        {
+            
+        }
+        else if ([self.addFriendsBy isEqualToString:@"email"])
+        {
+            AddFriendsProxy *addFriendsProxy = [[AddFriendsProxy alloc] init];
+            [addFriendsProxy setDelegate:self];
+            [addFriendsProxy retrievedUserByUsingUsernameOrEmail:self.addFriendsBy withUserOrEmail:self.searchBar.text];
+        }
     }
-    else if ([self.addFriendsBy isEqualToString:@"email"])
+    else
     {
-        AddFriendsProxy *addFriendsProxy = [[AddFriendsProxy alloc] init];
-        [addFriendsProxy setDelegate:self];
-        [addFriendsProxy retrievedUserByUsingUsernameOrEmail:self.addFriendsBy withUserOrEmail:self.searchBar.text];
+        AlertViewCreator *alertViewCreator = [[AlertViewCreator alloc] init];
+        [self.view addSubview:[alertViewCreator createAlertViewWithViewController:self andText:@"You can't add yourself as a friend"]];
     }
 }
 
@@ -133,7 +148,7 @@
     }];
 }
 
--(void)AddFriends:(AddFriendsProxy *)searchProxy retrievedSearchUser:(NSString *)username andUserProfile:(NSString *)profileURL
+-(void)AddFriends:(AddFriendsProxy *)searchProxy retrievedSearchUser:(NSString *)username andUserProfile:(NSString *)profileURL andUserDeviceToken:(NSString *)deviceToken
 {
     [activityindicatorView stopAnimating];
     
@@ -142,6 +157,7 @@
     
     friendPhotoURL = profileURL;
     friendUsername = username;
+    friendDevicetoken = deviceToken;
     
     MaskView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.size.height + 1, self.view.frame.size.width, self.view.frame.size.height)];
     [MaskView setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.9f]];
@@ -219,16 +235,17 @@
     
     NSMutableArray *savedFriendsArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_FRIENDS_ARRAY"]];
     NSMutableArray *savedFriendPhotoArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_PHOTO_ARRAY"]];
+    NSMutableArray *savedDeviceTokenArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_DEVICE_TOKEN_ARRAY"]];
+
     
     [savedFriendsArray addObject:friendUsername];
     [savedFriendPhotoArray addObject:friendPhotoURL];
-        
+    [savedDeviceTokenArray addObject:friendDevicetoken];
+    
     [[NSUserDefaults standardUserDefaults] setObject:savedFriendsArray forKey:@"USER_FRIENDS_ARRAY"];
     [[NSUserDefaults standardUserDefaults] setObject:savedFriendPhotoArray forKey:@"USER_PHOTO_ARRAY"];
+    [[NSUserDefaults standardUserDefaults] setObject:savedDeviceTokenArray forKey:@"USER_DEVICE_TOKEN_ARRAY"];
     [userDefaults synchronize];
-
-    NSLog(@"user photos: %@", savedFriendPhotoArray);
-
     
     [addFriendButton setImage:[UIImage imageNamed:@"AddFriends_AddFriendButtonClicked.png"] forState:UIControlStateNormal];
     [addFriendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

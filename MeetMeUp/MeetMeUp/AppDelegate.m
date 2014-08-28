@@ -10,6 +10,8 @@
 #import <CoreData/CoreData.h>
 
 #import "AppDelegate.h"
+#import "MainViewController.h"
+#import "AcceptAlertViewCreator.h"
 
 @implementation AppDelegate
 
@@ -19,6 +21,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //push notifications
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+    
     //facebook SDK
     [FBLoginView class];
     [FBProfilePictureView class];
@@ -96,9 +101,15 @@
     tokenString = [tokenString stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     tokenString = [tokenString stringByReplacingOccurrencesOfString:@" " withString:@""];
     
+    NSLog(@"Token String: %@", tokenString);
+    
     [[NSUserDefaults standardUserDefaults] setObject:tokenString forKey:@"DeviceToken"];
 }
 
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"error: %@", error.description);
+}
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
@@ -111,6 +122,22 @@
     // You can add your app-specific url handling code here if needed
     
     return wasHandled;
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"id: %@", [[userInfo objectForKey:@"aps"] objectForKey:@"id"]);
+
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive)
+    {
+        AcceptAlertViewCreator *acceptAlertViewCreator = [[AcceptAlertViewCreator alloc] init];
+        [self.window.rootViewController.view addSubview:[acceptAlertViewCreator createAlertViewWithViewController:self.window.rootViewController andText:[NSString stringWithFormat:@"%@", [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]]]];
+    }
+    else
+    {
+        //other things
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

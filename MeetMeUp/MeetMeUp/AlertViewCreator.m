@@ -38,25 +38,22 @@
     [alertView addSubview:alertViewLabel];
 
     CGPoint originalCenter = alertView.center;
-    [UIView animateWithDuration:0.5
+
+    [UIView animateWithDuration:0.3
                      animations:^{
                          CGPoint center = alertView.center;
                          center.y += ALERT_VIEW_HEIGHT;
                          alertView.center = center;
                      }
                      completion:^(BOOL finished){
-                         
-                         [UIView animateWithDuration:3.0
-                                          animations:^{
-                                              alertView.center = originalCenter;
-                                          }
-                                          completion:^(BOOL finished){
-                                              ;
-                                          }];
-                         
+                         [UIView animateWithDuration:0.3 delay:1.5 options:UIViewAnimationOptionTransitionNone animations:^{
+                             alertView.center = originalCenter;
+                         } completion:nil];
+
                      }];
     
     return alertView;
 }
+
 
 @end

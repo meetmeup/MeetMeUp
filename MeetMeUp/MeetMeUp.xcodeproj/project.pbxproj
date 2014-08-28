@@ -71,7 +71,6 @@
 		2B913F1019A63847008BDE64 /* ReachabilityCheckHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B913F0F19A63847008BDE64 /* ReachabilityCheckHelper.m */; };
 		2B913F1219A63945008BDE64 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B913F1119A63945008BDE64 /* SystemConfiguration.framework */; };
 		2B913F1519A63C7D008BDE64 /* AlertViewStillCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B913F1419A63C7D008BDE64 /* AlertViewStillCreator.m */; };
-		2B913F1819A654F1008BDE64 /* AlertViewMiddleCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B913F1719A654F1008BDE64 /* AlertViewMiddleCreator.m */; };
 		2B913F1B19A65941008BDE64 /* Notification_AcceptButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B913F1A19A65941008BDE64 /* Notification_AcceptButton@2x.png */; };
 		2B913F1D19A65A45008BDE64 /* Notification_AcceptButtonClicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B913F1C19A65A45008BDE64 /* Notification_AcceptButtonClicked@2x.png */; };
 		2B913F1F19A65B0A008BDE64 /* Notification_NotAcceptButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B913F1E19A65B0A008BDE64 /* Notification_NotAcceptButton@2x.png */; };
@@ -79,6 +78,11 @@
 		2B913F2419A730BE008BDE64 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B913F2219A730BE008BDE64 /* Model.xcdatamodeld */; };
 		2B913F2619A731FD008BDE64 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B913F2519A731FD008BDE64 /* CoreData.framework */; };
 		2BB444A81993C86F00AFEC46 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB444A71993C86F00AFEC46 /* MainViewController.m */; };
+		2BB51B6919AE092500B5B040 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB51B6819AE092500B5B040 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2BB51B6B19AE0C8100B5B040 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB51B6A19AE0C8100B5B040 /* Security.framework */; };
+		2BB51B7019AE2DBD00B5B040 /* AcceptAlertViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB51B6F19AE2DBD00B5B040 /* AcceptAlertViewCreator.m */; };
+		2BB51B7719AE390200B5B040 /* AcceptAlert_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BB51B7619AE390200B5B040 /* AcceptAlert_BG@2x.png */; };
+		2BB5FE2119ACE8A0000048E1 /* SendNotificationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5FE2019ACE8A0000048E1 /* SendNotificationProxy.m */; };
 		2BB6C5DF1994C69900E6D6D4 /* AlertViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C5DE1994C69900E6D6D4 /* AlertViewCreator.m */; };
 		2BB6C5E2199509AF00E6D6D4 /* ViewToImageConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C5E1199509AF00E6D6D4 /* ViewToImageConverter.m */; };
 		2BB6C5E51995277B00E6D6D4 /* GetFacebookImageURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C5E41995277B00E6D6D4 /* GetFacebookImageURL.m */; };
@@ -216,8 +220,6 @@
 		2B913F1119A63945008BDE64 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2B913F1319A63C7D008BDE64 /* AlertViewStillCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewStillCreator.h; sourceTree = "<group>"; };
 		2B913F1419A63C7D008BDE64 /* AlertViewStillCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewStillCreator.m; sourceTree = "<group>"; };
-		2B913F1619A654F1008BDE64 /* AlertViewMiddleCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewMiddleCreator.h; sourceTree = "<group>"; };
-		2B913F1719A654F1008BDE64 /* AlertViewMiddleCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewMiddleCreator.m; sourceTree = "<group>"; };
 		2B913F1A19A65941008BDE64 /* Notification_AcceptButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notification_AcceptButton@2x.png"; sourceTree = "<group>"; };
 		2B913F1C19A65A45008BDE64 /* Notification_AcceptButtonClicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notification_AcceptButtonClicked@2x.png"; sourceTree = "<group>"; };
 		2B913F1E19A65B0A008BDE64 /* Notification_NotAcceptButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notification_NotAcceptButton@2x.png"; sourceTree = "<group>"; };
@@ -226,6 +228,14 @@
 		2B913F2519A731FD008BDE64 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2BB444A61993C86F00AFEC46 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		2BB444A71993C86F00AFEC46 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		2BB51B6719AE092500B5B040 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		2BB51B6819AE092500B5B040 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		2BB51B6A19AE0C8100B5B040 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2BB51B6E19AE2DBD00B5B040 /* AcceptAlertViewCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptAlertViewCreator.h; sourceTree = "<group>"; };
+		2BB51B6F19AE2DBD00B5B040 /* AcceptAlertViewCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptAlertViewCreator.m; sourceTree = "<group>"; };
+		2BB51B7619AE390200B5B040 /* AcceptAlert_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AcceptAlert_BG@2x.png"; sourceTree = "<group>"; };
+		2BB5FE1F19ACE8A0000048E1 /* SendNotificationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendNotificationProxy.h; sourceTree = "<group>"; };
+		2BB5FE2019ACE8A0000048E1 /* SendNotificationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendNotificationProxy.m; sourceTree = "<group>"; };
 		2BB6C5DD1994C69900E6D6D4 /* AlertViewCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewCreator.h; sourceTree = "<group>"; };
 		2BB6C5DE1994C69900E6D6D4 /* AlertViewCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewCreator.m; sourceTree = "<group>"; };
 		2BB6C5E0199509AF00E6D6D4 /* ViewToImageConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewToImageConverter.h; sourceTree = "<group>"; };
@@ -279,6 +289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BB51B6B19AE0C8100B5B040 /* Security.framework in Frameworks */,
 				2B913F2619A731FD008BDE64 /* CoreData.framework in Frameworks */,
 				2B913F1219A63945008BDE64 /* SystemConfiguration.framework in Frameworks */,
 				2B1B6CEA199FC0C9004A6614 /* CoreLocation.framework in Frameworks */,
@@ -382,6 +393,8 @@
 				2B1B6CE7199FBAEA004A6614 /* LocationSearchProxy.m */,
 				2B78154219A12CF8007C43C3 /* UserSearchViewController.h */,
 				2B78154319A12CF8007C43C3 /* UserSearchViewController.m */,
+				2BB5FE1F19ACE8A0000048E1 /* SendNotificationProxy.h */,
+				2BB5FE2019ACE8A0000048E1 /* SendNotificationProxy.m */,
 			);
 			name = AddEventView;
 			sourceTree = "<group>";
@@ -476,9 +489,34 @@
 			name = MainView;
 			sourceTree = "<group>";
 		};
+		2BB51B6619AE08FC00B5B040 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				2BB51B6719AE092500B5B040 /* KeychainItemWrapper.h */,
+				2BB51B6819AE092500B5B040 /* KeychainItemWrapper.m */,
+			);
+			name = Keychain;
+			sourceTree = "<group>";
+		};
+		2BB51B6D19AE2A3400B5B040 /* AcceptEventView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AcceptEventView;
+			sourceTree = "<group>";
+		};
+		2BB51B7819AE390900B5B040 /* AcceptView */ = {
+			isa = PBXGroup;
+			children = (
+				2BB51B7619AE390200B5B040 /* AcceptAlert_BG@2x.png */,
+			);
+			name = AcceptView;
+			sourceTree = "<group>";
+		};
 		2BB6C5DC1994C65F00E6D6D4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				2BB51B6619AE08FC00B5B040 /* Keychain */,
 				2B913F0A19A637FF008BDE64 /* Reachability */,
 				2B60F3A219A3AD3300ACAC82 /* AsyncImageHelper */,
 				2B670F14199D033F00A6B041 /* SWTableLib */,
@@ -487,8 +525,8 @@
 				2BB6C5DE1994C69900E6D6D4 /* AlertViewCreator.m */,
 				2B913F1319A63C7D008BDE64 /* AlertViewStillCreator.h */,
 				2B913F1419A63C7D008BDE64 /* AlertViewStillCreator.m */,
-				2B913F1619A654F1008BDE64 /* AlertViewMiddleCreator.h */,
-				2B913F1719A654F1008BDE64 /* AlertViewMiddleCreator.m */,
+				2BB51B6E19AE2DBD00B5B040 /* AcceptAlertViewCreator.h */,
+				2BB51B6F19AE2DBD00B5B040 /* AcceptAlertViewCreator.m */,
 				2B059FD81998CD1C00144541 /* SmallActivityIndicatorCreator.h */,
 				2B059FD91998CD1C00144541 /* SmallActivityIndicatorCreator.m */,
 				2B51617A199FC711007C1AAF /* WholescreenActivityIndicatorCreator.h */,
@@ -525,6 +563,7 @@
 		2BB7B4FB199159420062467E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BB51B6A19AE0C8100B5B040 /* Security.framework */,
 				2B913F2519A731FD008BDE64 /* CoreData.framework */,
 				2B913F1119A63945008BDE64 /* SystemConfiguration.framework */,
 				2B1B6CE9199FC0C9004A6614 /* CoreLocation.framework */,
@@ -550,6 +589,7 @@
 				2B78154B19A1392B007C43C3 /* AddFriendsView */,
 				2B059FEE1998F9AF00144541 /* SettingsView */,
 				2B28E51F199E12A400450D68 /* AddEventView */,
+				2BB51B6D19AE2A3400B5B040 /* AcceptEventView */,
 				2BB7B50E199159420062467E /* Images.xcassets */,
 				2BB7B503199159420062467E /* Supporting Files */,
 			);
@@ -603,6 +643,7 @@
 		2BB7B53719915FDC0062467E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2BB51B7819AE390900B5B040 /* AcceptView */,
 				2B913F1919A6592E008BDE64 /* Notifications */,
 				2B60F2A819A2088D00ACAC82 /* AddFriends */,
 				2B28E519199E120200450D68 /* AddEvent */,
@@ -774,6 +815,7 @@
 				2B28E527199E1A5A00450D68 /* AddEvent_map@2x.png in Resources */,
 				2B60F2AC19A20EFB00ACAC82 /* AddFriends_AvatarIcon@2x.png in Resources */,
 				2BB7B54019915FF80062467E /* Login_ForgotPassword.png in Resources */,
+				2BB51B7719AE390200B5B040 /* AcceptAlert_BG@2x.png in Resources */,
 				2B670F39199D101300A6B041 /* Main_AddEvent@2x.png in Resources */,
 				2BB7B551199172880062467E /* SignUp_SignupButton.png in Resources */,
 				2B913F1B19A65941008BDE64 /* Notification_AcceptButton@2x.png in Resources */,
@@ -830,11 +872,14 @@
 				2B1B6CE0199E8FCC004A6614 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				2B913F1519A63C7D008BDE64 /* AlertViewStillCreator.m in Sources */,
 				2BB6C5E51995277B00E6D6D4 /* GetFacebookImageURL.m in Sources */,
+				2BB51B6919AE092500B5B040 /* KeychainItemWrapper.m in Sources */,
 				2B059FF41998FA1B00144541 /* SettingsTableViewController.m in Sources */,
 				2B60F3A519A3AD4900ACAC82 /* AsyncImageView.m in Sources */,
 				2B913F0D19A63811008BDE64 /* Reachability.m in Sources */,
 				2B059FE91998D35700144541 /* VRGCalendarView.m in Sources */,
 				2BB7B536199159B90062467E /* LoginProxy.m in Sources */,
+				2BB51B7019AE2DBD00B5B040 /* AcceptAlertViewCreator.m in Sources */,
+				2BB5FE2119ACE8A0000048E1 /* SendNotificationProxy.m in Sources */,
 				2B059FE51998D35700144541 /* NSDate+convenience.m in Sources */,
 				2B1B6CE5199E8FCC004A6614 /* SWUtilityButtonView.m in Sources */,
 				2B1B6CE3199E8FCC004A6614 /* SWTableViewCell.m in Sources */,
@@ -842,7 +887,6 @@
 				2B1B6CE8199FBAEA004A6614 /* LocationSearchProxy.m in Sources */,
 				2B51617C199FC711007C1AAF /* WholescreenActivityIndicatorCreator.m in Sources */,
 				2B059FDA1998CD1C00144541 /* SmallActivityIndicatorCreator.m in Sources */,
-				2B913F1819A654F1008BDE64 /* AlertViewMiddleCreator.m in Sources */,
 				2B1B6CE2199E8FCC004A6614 /* SWLongPressGestureRecognizer.m in Sources */,
 				2B913F1019A63847008BDE64 /* ReachabilityCheckHelper.m in Sources */,
 			);
@@ -961,7 +1005,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tanya Lertwichaiworawit (7MR4RU24WQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tanya Lertwichaiworawit (7MR4RU24WQ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -969,7 +1014,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetMeUp/MeetMeUp-Prefix.pch";
 				INFOPLIST_FILE = "MeetMeUp/MeetMeUp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a2e01a76-f2ca-48c6-8e81-161407208915";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -979,7 +1026,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tanya Lertwichaiworawit (7MR4RU24WQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tanya Lertwichaiworawit (7MR4RU24WQ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -987,7 +1035,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetMeUp/MeetMeUp-Prefix.pch";
 				INFOPLIST_FILE = "MeetMeUp/MeetMeUp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a2e01a76-f2ca-48c6-8e81-161407208915";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

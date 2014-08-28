@@ -1,16 +1,15 @@
 //
-//  AlertViewMiddleCreator.h
+//  AcceptAlertViewCreator.h
 //  MeetMeUp
 //
-//  Created by Tanya on 8/21/14.
+//  Created by Tanya on 8/27/14.
 //  Copyright (c) 2014 ustwo.com.ty. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface AlertViewMiddleCreator : NSObject
+@interface AcceptAlertViewCreator : NSObject
 
 - (UIView *) createAlertViewWithViewController:(UIViewController *)viewController andText:(NSString *)alertText;
-
 
 @end

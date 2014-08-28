@@ -13,6 +13,9 @@
 #import "AsyncImageView.h"
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
+#import "SendNotificationProxy.h"
+#import "AlertViewCreator.h"
+#import "KeychainItemWrapper.h"
 
 #define TEXTFIELD_SCROLL_UP_HEIGHT (self.view.frame.size.height == 568.0f ? 70 : 70)
 #define SCROLLVIEW_CONTENT_HEIGHT (self.view.frame.size.height == 568.0f ? 568 : 568)
@@ -178,36 +181,89 @@
 #pragma mark - Done button clicked
 - (IBAction)DoneButtonClicked:(id)sender
 {
-    //save
-    
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    // Create a new managed object
-    NSManagedObject *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Events" inManagedObjectContext:context];
-    [newEvent setValue:self.titleTextField.text forKey:@"title"];
-    [newEvent setValue:[NSNumber numberWithFloat:self.latitude] forKey:@"lat"];
-    [newEvent setValue:[NSNumber numberWithFloat:self.longtitude] forKey:@"long"];
-    [newEvent setValue:self.startLabel.text forKey:@"startDate"];
-    [newEvent setValue:self.endsLabel.text forKey:@"endDate"];
-    [newEvent setValue:[NSKeyedArchiver archivedDataWithRootObject:inviteesArrayForCoreData] forKey:@"invitees"];
-    [newEvent setValue:self.urlTextfield.text forKey:@"url"];
-    [newEvent setValue:self.notesTextField.text forKey:@"notes"];
-    [newEvent setValue:self.locationLabel.text forKey:@"location"];
-    
-    NSError *error = nil;
-    // Save the object to persistent store
-    if (![context save:&error]) {
-        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    if ([self.titleTextField.text isEqualToString:@""])
+    {
+        AlertViewCreator *alertViewCreator = [[AlertViewCreator alloc] init];
+        [self.view addSubview:[alertViewCreator createAlertViewWithViewController:self andText:@"What's the meetup called?"]];
     }
-    
-    // Fetch the events from persistent data store
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Events"];
-    titleArray = [[NSMutableArray alloc] init];
-    NSString *string;
-    string = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-    
-    NSLog(@"String title: %@", string);
+    else if ([self.locationLabel.text isEqualToString:@"Where?"] && self.latitude == 0 && self.longtitude == 0)
+    {
+        AlertViewCreator *alertViewCreator = [[AlertViewCreator alloc] init];
+        [self.view addSubview:[alertViewCreator createAlertViewWithViewController:self andText:@"Where's the meetup?"]];
+    }
+    else if ([self.startLabel.text isEqualToString:@"Starts"])
+    {
+        AlertViewCreator *alertViewCreator = [[AlertViewCreator alloc] init];
+        [self.view addSubview:[alertViewCreator createAlertViewWithViewController:self andText:@"When does the meetup start?"]];
+    }
+    else if ([self.endsLabel.text isEqualToString:@"Ends"])
+    {
+        AlertViewCreator *alertViewCreator = [[AlertViewCreator alloc] init];
+        [self.view addSubview:[alertViewCreator createAlertViewWithViewController:self andText:@"When does the meetup end?"]];
+    }
+    else if ([self.inviteeTextField.text isEqualToString:@""])
+    {
+        AlertViewCreator *alertViewCreator = [[AlertViewCreator alloc] init];
+        [self.view addSubview:[alertViewCreator createAlertViewWithViewController:self andText:@"Wait, who's going?"]];
+    }
+    else
+    {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSMutableArray *savedDeviceTokenArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_DEVICE_TOKEN_ARRAY"]];
+        
+        NSManagedObjectContext *context = [self managedObjectContext];
+        
+        // Create a new managed object
+        NSManagedObject *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Events" inManagedObjectContext:context];
+        [newEvent setValue:self.titleTextField.text forKey:@"title"];
+        [newEvent setValue:[NSNumber numberWithFloat:self.latitude] forKey:@"lat"];
+        [newEvent setValue:[NSNumber numberWithFloat:self.longtitude] forKey:@"long"];
+        [newEvent setValue:self.startLabel.text forKey:@"startDate"];
+        [newEvent setValue:self.endsLabel.text forKey:@"endDate"];
+        [newEvent setValue:[NSKeyedArchiver archivedDataWithRootObject:inviteesArrayForCoreData] forKey:@"invitees"];
+        //    [newEvent setValue:[NSKeyedArchiver archivedDataWithRootObject:savedDeviceTokenArray] forKey:@"devicetoken"];
+        [newEvent setValue:self.urlTextfield.text forKey:@"url"];
+        [newEvent setValue:self.notesTextField.text forKey:@"notes"];
+        [newEvent setValue:self.locationLabel.text forKey:@"location"];
+        
+        NSError *error = nil;
+        // Save the object to persistent store
+        if (![context save:&error]) {
+            NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+        }
+        
+        // Fetch the events from persistent data store
+        //    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+        //    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Events"];
+        //    titleArray = [[NSMutableArray alloc] init];
+        //    NSString *string;
+        //    string = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+        
+        KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"loginData" accessGroup:nil];
+        NSString *usernameString = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+        
+        //sending push to other invitees
+        if ([self.urlTextfield.text isEqualToString:@""] && ![self.notesTextField.text isEqualToString:@""])
+        {
+            SendNotificationProxy *sendNotificationProxy = [[SendNotificationProxy alloc] init];
+            [sendNotificationProxy sendNotificationWithTitle:self.titleTextField.text andLocation:self.locationLabel.text andLatitude:self.latitude andLatitude:self.longtitude andStartDate:self.startLabel.text andEndDate:self.endsLabel.text andURL:@"None" andNotes:self.notesTextField.text andInvitees:inviteesArrayForCoreData andInviter:usernameString];
+        }
+        else if (![self.urlTextfield.text isEqualToString:@""] && [self.notesTextField.text isEqualToString:@""])
+        {
+            SendNotificationProxy *sendNotificationProxy = [[SendNotificationProxy alloc] init];
+            [sendNotificationProxy sendNotificationWithTitle:self.titleTextField.text andLocation:self.locationLabel.text andLatitude:self.latitude andLatitude:self.longtitude andStartDate:self.startLabel.text andEndDate:self.endsLabel.text andURL:self.urlTextfield.text andNotes:@"None" andInvitees:inviteesArrayForCoreData andInviter:usernameString];
+        }
+        else if ([self.urlTextfield.text isEqualToString:@""] && [self.notesTextField.text isEqualToString:@""])
+        {
+            SendNotificationProxy *sendNotificationProxy = [[SendNotificationProxy alloc] init];
+            [sendNotificationProxy sendNotificationWithTitle:self.titleTextField.text andLocation:self.locationLabel.text andLatitude:self.latitude andLatitude:self.longtitude andStartDate:self.startLabel.text andEndDate:self.endsLabel.text andURL:@"None" andNotes:@"None" andInvitees:inviteesArrayForCoreData andInviter:usernameString];
+        }
+        else
+        {
+            SendNotificationProxy *sendNotificationProxy = [[SendNotificationProxy alloc] init];
+            [sendNotificationProxy sendNotificationWithTitle:self.titleTextField.text andLocation:self.locationLabel.text andLatitude:self.latitude andLatitude:self.longtitude andStartDate:self.startLabel.text andEndDate:self.endsLabel.text andURL:self.urlTextfield.text andNotes:self.notesTextField.text andInvitees:inviteesArrayForCoreData andInviter:usernameString];
+        }
+    }
 }
 
 - (void) dateSelected:(id)sender
@@ -491,7 +547,7 @@
     
     [(UILabel *) [cell.contentView viewWithTag:1] setText:[inviteesSearchArray objectAtIndex:indexPath.row]];
     NSURL *url = [NSURL URLWithString:[inviteesImageSearchArray objectAtIndex:indexPath.row]];
-    [(AsyncImageView *) [cell.contentView viewWithTag:2] loadImageWithTypeFromURL:url contentMode:UIViewContentModeScaleAspectFit imageNameBG:nil];
+    [(AsyncImageView *) [cell.contentView viewWithTag:2] loadImageWithTypeFromURL:url contentMode:UIViewContentModeScaleAspectFill imageNameBG:nil];
 
     return cell;
 }

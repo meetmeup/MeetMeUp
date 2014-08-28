@@ -9,12 +9,15 @@
 #import "SignUpProxy.h"
 #import "AlertViewCreator.h"
 #import "MainViewController.h"
+#import "KeychainItemWrapper.h"
 
 @implementation SignUpProxy
 
 //upload data user to server
 - (void) signUpUserWithEmail:(NSString *)email username:(NSString *)username password:(NSString *)password photo:(UIImage *)photo andViewController:(UIViewController *)viewController andDeviceToken:(NSString *)deviceToken
 {
+    NSLog(@"token: %@", deviceToken);
+    
     //set header string
     NSString *headerString = @"http://www.loadfree2u.net/meetmeup/";
  
@@ -91,8 +94,11 @@
         MainViewController *mainViewController = [viewController.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
         mainViewController.signUpViewController = viewController;
         
-        [viewController presentViewController:mainViewController animated:YES completion:^{            
-        }];
+        [viewController presentViewController:mainViewController animated:YES completion:nil];
+        
+        KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"loginData" accessGroup:nil];
+        [keychain setObject:username forKey:(__bridge id)kSecAttrAccount];
+        [keychain setObject:password forKey:(__bridge id)kSecValueData];
     }
     else if ([uploadResponseString intValue] == 2)
     {

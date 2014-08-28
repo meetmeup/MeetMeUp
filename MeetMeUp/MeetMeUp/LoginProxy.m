@@ -9,12 +9,13 @@
 #import "LoginProxy.h"
 #import "AlertViewCreator.h"
 #import "MainViewController.h"
+#import "KeychainItemWrapper.h"
 
 @implementation LoginProxy
 
-- (void) loginWithUsername:(NSString *)username andPassword:(NSString *)password andViewController:(UIViewController *)viewController
+- (void) loginWithUsername:(NSString *)username andPassword:(NSString *)password andViewController:(UIViewController *)viewController andDeviceToken:(NSString *)deviceToken
 {
-    NSString *strURL = [NSString stringWithFormat:@"http://www.loadfree2u.net/meetmeup/meetmeup_userLogin.php?username=%@&password=%@",username, password];
+    NSString *strURL = [NSString stringWithFormat:@"http://www.loadfree2u.net/meetmeup/meetmeup_userLogin.php?username=%@&password=%@&devicetoken=%@",username, password, deviceToken];
     NSData *dataURL = [NSData dataWithContentsOfURL:[NSURL URLWithString:strURL]];
     NSString *responseString = [[NSString alloc] initWithData:dataURL encoding:NSUTF8StringEncoding];
     NSLog(@"string result: %@", responseString);
@@ -22,9 +23,12 @@
     if ([responseString intValue] == 1)
     {
         MainViewController *mainViewController = [viewController.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+        [viewController presentViewController:mainViewController animated:YES completion:nil];
         
-        [viewController presentViewController:mainViewController animated:YES completion:^{
-        }];
+        KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"loginData" accessGroup:nil];
+        [keychain setObject:username forKey:(__bridge id)kSecAttrAccount];
+        [keychain setObject:password forKey:(__bridge id)kSecValueData];
+        
     }
     else if ([responseString intValue] == 0)
     {
