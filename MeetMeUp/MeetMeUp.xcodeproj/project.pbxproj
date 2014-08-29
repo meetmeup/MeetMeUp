@@ -81,7 +81,6 @@
 		2BB51B6919AE092500B5B040 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB51B6819AE092500B5B040 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2BB51B6B19AE0C8100B5B040 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB51B6A19AE0C8100B5B040 /* Security.framework */; };
 		2BB51B7019AE2DBD00B5B040 /* AcceptAlertViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB51B6F19AE2DBD00B5B040 /* AcceptAlertViewCreator.m */; };
-		2BB51B7719AE390200B5B040 /* AcceptAlert_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BB51B7619AE390200B5B040 /* AcceptAlert_BG@2x.png */; };
 		2BB5FE2119ACE8A0000048E1 /* SendNotificationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5FE2019ACE8A0000048E1 /* SendNotificationProxy.m */; };
 		2BB6C5DF1994C69900E6D6D4 /* AlertViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C5DE1994C69900E6D6D4 /* AlertViewCreator.m */; };
 		2BB6C5E2199509AF00E6D6D4 /* ViewToImageConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C5E1199509AF00E6D6D4 /* ViewToImageConverter.m */; };
@@ -115,6 +114,7 @@
 		2BB7B55B199221040062467E /* Login_UserIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BB7B558199221040062467E /* Login_UserIcon.png */; };
 		2BB7B563199230890062467E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB7B562199230890062467E /* FacebookSDK.framework */; };
 		2BB7B565199290960062467E /* SignUp_CameraIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BB7B564199290960062467E /* SignUp_CameraIcon@2x.png */; };
+		2BC06F5E19B092F80060C4B8 /* AcceptAlert_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC06F5D19B092F80060C4B8 /* AcceptAlert_BG@2x.png */; };
 		2BF5794D199409A100FC1D8E /* SignUpProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5794C199409A100FC1D8E /* SignUpProxy.m */; };
 		2BF57953199417EE00FC1D8E /* ImagePickHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF57952199417EE00FC1D8E /* ImagePickHelper.m */; };
 /* End PBXBuildFile section */
@@ -233,7 +233,6 @@
 		2BB51B6A19AE0C8100B5B040 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2BB51B6E19AE2DBD00B5B040 /* AcceptAlertViewCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptAlertViewCreator.h; sourceTree = "<group>"; };
 		2BB51B6F19AE2DBD00B5B040 /* AcceptAlertViewCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptAlertViewCreator.m; sourceTree = "<group>"; };
-		2BB51B7619AE390200B5B040 /* AcceptAlert_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AcceptAlert_BG@2x.png"; sourceTree = "<group>"; };
 		2BB5FE1F19ACE8A0000048E1 /* SendNotificationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendNotificationProxy.h; sourceTree = "<group>"; };
 		2BB5FE2019ACE8A0000048E1 /* SendNotificationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendNotificationProxy.m; sourceTree = "<group>"; };
 		2BB6C5DD1994C69900E6D6D4 /* AlertViewCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewCreator.h; sourceTree = "<group>"; };
@@ -278,6 +277,7 @@
 		2BB7B558199221040062467E /* Login_UserIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_UserIcon.png; sourceTree = "<group>"; };
 		2BB7B562199230890062467E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2BB7B564199290960062467E /* SignUp_CameraIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SignUp_CameraIcon@2x.png"; sourceTree = "<group>"; };
+		2BC06F5D19B092F80060C4B8 /* AcceptAlert_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AcceptAlert_BG@2x.png"; sourceTree = "<group>"; };
 		2BF5794B199409A100FC1D8E /* SignUpProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpProxy.h; sourceTree = "<group>"; };
 		2BF5794C199409A100FC1D8E /* SignUpProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpProxy.m; sourceTree = "<group>"; };
 		2BF57951199417EE00FC1D8E /* ImagePickHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickHelper.h; sourceTree = "<group>"; };
@@ -390,9 +390,9 @@
 				2B78152D19A0C480007C43C3 /* LocationSearchViewController.h */,
 				2B78152E19A0C480007C43C3 /* LocationSearchViewController.m */,
 				2B1B6CE6199FBAEA004A6614 /* LocationSearchProxy.h */,
+				2B78154319A12CF8007C43C3 /* UserSearchViewController.m */,
 				2B1B6CE7199FBAEA004A6614 /* LocationSearchProxy.m */,
 				2B78154219A12CF8007C43C3 /* UserSearchViewController.h */,
-				2B78154319A12CF8007C43C3 /* UserSearchViewController.m */,
 				2BB5FE1F19ACE8A0000048E1 /* SendNotificationProxy.h */,
 				2BB5FE2019ACE8A0000048E1 /* SendNotificationProxy.m */,
 			);
@@ -508,7 +508,7 @@
 		2BB51B7819AE390900B5B040 /* AcceptView */ = {
 			isa = PBXGroup;
 			children = (
-				2BB51B7619AE390200B5B040 /* AcceptAlert_BG@2x.png */,
+				2BC06F5D19B092F80060C4B8 /* AcceptAlert_BG@2x.png */,
 			);
 			name = AcceptView;
 			sourceTree = "<group>";
@@ -776,6 +776,7 @@
 			files = (
 				2B28E52B199E1C2A00450D68 /* AddEvent_group@2x.png in Resources */,
 				2B913EFF19A49F5A008BDE64 /* AddFriend_UserIcon@2x.png in Resources */,
+				2BC06F5E19B092F80060C4B8 /* AcceptAlert_BG@2x.png in Resources */,
 				2BB7B507199159420062467E /* InfoPlist.strings in Resources */,
 				2BB7B54219915FF80062467E /* Login_PhotoBG.png in Resources */,
 				2B28E531199E206600450D68 /* AddEvent_link@2x.png in Resources */,
@@ -815,7 +816,6 @@
 				2B28E527199E1A5A00450D68 /* AddEvent_map@2x.png in Resources */,
 				2B60F2AC19A20EFB00ACAC82 /* AddFriends_AvatarIcon@2x.png in Resources */,
 				2BB7B54019915FF80062467E /* Login_ForgotPassword.png in Resources */,
-				2BB51B7719AE390200B5B040 /* AcceptAlert_BG@2x.png in Resources */,
 				2B670F39199D101300A6B041 /* Main_AddEvent@2x.png in Resources */,
 				2BB7B551199172880062467E /* SignUp_SignupButton.png in Resources */,
 				2B913F1B19A65941008BDE64 /* Notification_AcceptButton@2x.png in Resources */,
