@@ -18,6 +18,8 @@
 @property (strong, nonatomic) UIViewController *signUpViewController;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *SettingsBarButtonItem;
+@property (strong, nonatomic) IBOutlet UIButton *notificationsButton;
+
 
 @property (nonatomic, retain, getter = selectedDate) NSDate *selectedDate;
 

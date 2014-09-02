@@ -77,6 +77,9 @@
 		2B913F2119A65B57008BDE64 /* Notification_NotAcceptButtonClicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B913F2019A65B57008BDE64 /* Notification_NotAcceptButtonClicked@2x.png */; };
 		2B913F2419A730BE008BDE64 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B913F2219A730BE008BDE64 /* Model.xcdatamodeld */; };
 		2B913F2619A731FD008BDE64 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B913F2519A731FD008BDE64 /* CoreData.framework */; };
+		2BA41A0519B5F9180054425B /* Main_NotificationDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA41A0419B5F9180054425B /* Main_NotificationDot@2x.png */; };
+		2BA41A0719B5F9AD0054425B /* Main_NotificationsWithDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA41A0619B5F9AD0054425B /* Main_NotificationsWithDot@2x.png */; };
+		2BA41A0A19B6075E0054425B /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA41A0919B6075E0054425B /* NotificationsViewController.m */; };
 		2BB444A81993C86F00AFEC46 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB444A71993C86F00AFEC46 /* MainViewController.m */; };
 		2BB51B6919AE092500B5B040 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB51B6819AE092500B5B040 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2BB51B6B19AE0C8100B5B040 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB51B6A19AE0C8100B5B040 /* Security.framework */; };
@@ -114,6 +117,7 @@
 		2BB7B55B199221040062467E /* Login_UserIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BB7B558199221040062467E /* Login_UserIcon.png */; };
 		2BB7B563199230890062467E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB7B562199230890062467E /* FacebookSDK.framework */; };
 		2BB7B565199290960062467E /* SignUp_CameraIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BB7B564199290960062467E /* SignUp_CameraIcon@2x.png */; };
+		2BBB487719B47DEB00586248 /* Main_Notifications@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB487619B47DEB00586248 /* Main_Notifications@2x.png */; };
 		2BC06F5E19B092F80060C4B8 /* AcceptAlert_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC06F5D19B092F80060C4B8 /* AcceptAlert_BG@2x.png */; };
 		2BF5794D199409A100FC1D8E /* SignUpProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5794C199409A100FC1D8E /* SignUpProxy.m */; };
 		2BF57953199417EE00FC1D8E /* ImagePickHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF57952199417EE00FC1D8E /* ImagePickHelper.m */; };
@@ -226,6 +230,10 @@
 		2B913F2019A65B57008BDE64 /* Notification_NotAcceptButtonClicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notification_NotAcceptButtonClicked@2x.png"; sourceTree = "<group>"; };
 		2B913F2319A730BE008BDE64 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		2B913F2519A731FD008BDE64 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2BA41A0419B5F9180054425B /* Main_NotificationDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_NotificationDot@2x.png"; sourceTree = "<group>"; };
+		2BA41A0619B5F9AD0054425B /* Main_NotificationsWithDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_NotificationsWithDot@2x.png"; sourceTree = "<group>"; };
+		2BA41A0819B6075E0054425B /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		2BA41A0919B6075E0054425B /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
 		2BB444A61993C86F00AFEC46 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		2BB444A71993C86F00AFEC46 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		2BB51B6719AE092500B5B040 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
@@ -277,6 +285,7 @@
 		2BB7B558199221040062467E /* Login_UserIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_UserIcon.png; sourceTree = "<group>"; };
 		2BB7B562199230890062467E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2BB7B564199290960062467E /* SignUp_CameraIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SignUp_CameraIcon@2x.png"; sourceTree = "<group>"; };
+		2BBB487619B47DEB00586248 /* Main_Notifications@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_Notifications@2x.png"; sourceTree = "<group>"; };
 		2BC06F5D19B092F80060C4B8 /* AcceptAlert_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AcceptAlert_BG@2x.png"; sourceTree = "<group>"; };
 		2BF5794B199409A100FC1D8E /* SignUpProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpProxy.h; sourceTree = "<group>"; };
 		2BF5794C199409A100FC1D8E /* SignUpProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpProxy.m; sourceTree = "<group>"; };
@@ -333,6 +342,9 @@
 		2B059FED1998F61100144541 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2BA41A0619B5F9AD0054425B /* Main_NotificationsWithDot@2x.png */,
+				2BA41A0419B5F9180054425B /* Main_NotificationDot@2x.png */,
+				2BBB487619B47DEB00586248 /* Main_Notifications@2x.png */,
 				2B78154919A137D1007C43C3 /* Main_Settings@2x.png */,
 				2B78154719A136CA007C43C3 /* Main_AddFriends@2x.png */,
 				2B670F38199D101300A6B041 /* Main_AddEvent@2x.png */,
@@ -498,13 +510,6 @@
 			name = Keychain;
 			sourceTree = "<group>";
 		};
-		2BB51B6D19AE2A3400B5B040 /* AcceptEventView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = AcceptEventView;
-			sourceTree = "<group>";
-		};
 		2BB51B7819AE390900B5B040 /* AcceptView */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,7 +594,7 @@
 				2B78154B19A1392B007C43C3 /* AddFriendsView */,
 				2B059FEE1998F9AF00144541 /* SettingsView */,
 				2B28E51F199E12A400450D68 /* AddEventView */,
-				2BB51B6D19AE2A3400B5B040 /* AcceptEventView */,
+				2BBB487B19B47E6D00586248 /* NotificationsView */,
 				2BB7B50E199159420062467E /* Images.xcassets */,
 				2BB7B503199159420062467E /* Supporting Files */,
 			);
@@ -696,6 +701,15 @@
 			name = SignUp;
 			sourceTree = "<group>";
 		};
+		2BBB487B19B47E6D00586248 /* NotificationsView */ = {
+			isa = PBXGroup;
+			children = (
+				2BA41A0819B6075E0054425B /* NotificationsViewController.h */,
+				2BA41A0919B6075E0054425B /* NotificationsViewController.m */,
+			);
+			name = NotificationsView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -783,6 +797,7 @@
 				2B913F0919A632CD008BDE64 /* AddFriends_AddFriendButtonClicked@2x.png in Resources */,
 				2B60F33919A3601F00ACAC82 /* AddEvent_Cross@2x.png in Resources */,
 				2B78153719A0D10A007C43C3 /* AddEvent_Navigate@2x.png in Resources */,
+				2BBB487719B47DEB00586248 /* Main_Notifications@2x.png in Resources */,
 				2B913F0519A4EF78008BDE64 /* AddFriends_UserIconSmall@2x.png in Resources */,
 				2B60F34019A376D500ACAC82 /* AddEvent_GrayTextField@2x.png in Resources */,
 				2B05A013199A1B0A00144541 /* avatar1.jpg in Resources */,
@@ -802,6 +817,7 @@
 				2B913EFC19A49CD5008BDE64 /* AddEvent_CheckOrange@2x.png in Resources */,
 				2B28E533199E206600450D68 /* AddEvent_time@2x.png in Resources */,
 				2B913F2119A65B57008BDE64 /* Notification_NotAcceptButtonClicked@2x.png in Resources */,
+				2BA41A0719B5F9AD0054425B /* Main_NotificationsWithDot@2x.png in Resources */,
 				2B05A015199A1B0A00144541 /* avatar4.jpg in Resources */,
 				2B28E52C199E1C2A00450D68 /* AddEvent_write@2x.png in Resources */,
 				2B059FFA1999099000144541 /* Main_BG@2x.jpg in Resources */,
@@ -819,6 +835,7 @@
 				2B670F39199D101300A6B041 /* Main_AddEvent@2x.png in Resources */,
 				2BB7B551199172880062467E /* SignUp_SignupButton.png in Resources */,
 				2B913F1B19A65941008BDE64 /* Notification_AcceptButton@2x.png in Resources */,
+				2BA41A0519B5F9180054425B /* Main_NotificationDot@2x.png in Resources */,
 				2BB7B55B199221040062467E /* Login_UserIcon.png in Resources */,
 				2B28E537199E239C00450D68 /* AddEvent_TextField@2x.png in Resources */,
 				2BB7B55519921FB00062467E /* Login_UserPass.png in Resources */,
@@ -874,6 +891,7 @@
 				2BB6C5E51995277B00E6D6D4 /* GetFacebookImageURL.m in Sources */,
 				2BB51B6919AE092500B5B040 /* KeychainItemWrapper.m in Sources */,
 				2B059FF41998FA1B00144541 /* SettingsTableViewController.m in Sources */,
+				2BA41A0A19B6075E0054425B /* NotificationsViewController.m in Sources */,
 				2B60F3A519A3AD4900ACAC82 /* AsyncImageView.m in Sources */,
 				2B913F0D19A63811008BDE64 /* Reachability.m in Sources */,
 				2B059FE91998D35700144541 /* VRGCalendarView.m in Sources */,

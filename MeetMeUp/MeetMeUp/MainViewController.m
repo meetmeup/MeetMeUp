@@ -15,6 +15,7 @@
 #import "ReachabilityCheckHelper.h"
 #import "AlertViewCreator.h"
 #import "AlertViewStillCreator.h"
+#import "NotificationsViewController.h"
 
 #define SIDE_BUTTON_HEIGHT 58
 #define SIDE_BUTTON_WIDTH 160
@@ -45,6 +46,8 @@
 
 @implementation MainViewController
 
+@synthesize notificationsButton;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -54,6 +57,14 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSInteger notification = [[NSUserDefaults standardUserDefaults] integerForKey:@"notification"];
+    if (notification == 0)
+    {
+        [notificationsButton setImage:[UIImage imageNamed:@"Main_Notifications.png"] forState:UIControlStateNormal];
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -106,6 +117,22 @@
     [addFriendsButton setShowsTouchWhenHighlighted:YES];
     [addFriendsButton addTarget:self action:@selector(addfriendsButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addFriendsButton];
+    
+    notificationsButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 35, 24, 24)];
+    NSInteger notification = [[NSUserDefaults standardUserDefaults] integerForKey:@"notification"];
+    
+    if (notification > 0)
+    {
+        [notificationsButton setImage:[UIImage imageNamed:@"Main_NotificationsWithDot.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [notificationsButton setImage:[UIImage imageNamed:@"Main_Notifications.png"] forState:UIControlStateNormal];
+    }
+    
+    [notificationsButton setShowsTouchWhenHighlighted:YES];
+    [notificationsButton addTarget:self action:@selector(notificationsButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:notificationsButton];
     
     UIButton *previousMonthButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CURRENT_MONTH_LABEL_Y, SIDE_BUTTON_WIDTH, SIDE_BUTTON_HEIGHT)];
     [previousMonthButton setTitle:@"" forState:UIControlStateNormal];
@@ -399,6 +426,13 @@
     [actionSheet showInView:self.view];
 }
 
+- (void) notificationsButtonClicked
+{
+    NotificationsViewController *notificationView = [self.storyboard instantiateViewControllerWithIdentifier:@"notifications"];
+    notificationView.prevViewController = self;
+    [self presentViewController:notificationView animated:YES completion:nil];
+}
+
 -(void)willPresentActionSheet:(UIActionSheet *)actionSheet
 {
     for (UIView *subview in actionSheet.subviews) {
@@ -442,6 +476,35 @@
             }];
         }
     }
+}
+
+- (void) invitationCancelButtonClicked
+{
+    UIView *topView = [[self.view subviews] lastObject];
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [topView setAlpha:0.0];
+    } completion:^(BOOL finished) {
+        [topView removeFromSuperview];
+    }];
+    
+    NSInteger notification = [[NSUserDefaults standardUserDefaults] integerForKey:@"notification"];
+    notification += 1;
+    [[NSUserDefaults standardUserDefaults] setInteger:notification forKey:@"notification"];
+    
+    if (notification > 0)
+    {
+        [notificationsButton setImage:[UIImage imageNamed:@"Main_NotificationsWithDot.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (void) invitationAcceptButtonClicked
+{
+    UIView *topView = [[self.view subviews] lastObject];
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [topView setAlpha:0.0];
+    } completion:^(BOOL finished) {
+        [topView removeFromSuperview];
+    }];
 }
 
 

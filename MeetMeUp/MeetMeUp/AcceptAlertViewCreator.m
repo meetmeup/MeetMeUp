@@ -26,13 +26,9 @@
 
 - (UIView *) createAlertViewWithViewController:(UIViewController *)viewController andText:(NSString *)alertText
 {
-    for (UIView *view in viewController.view.subviews)
-    {
-        [view setUserInteractionEnabled:NO];
-    }
-    
+
     UIView *shadowView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [shadowView setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.70f]];
+    [shadowView setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.0f]];
     
     UIImageView *alertBGImageView = [[UIImageView alloc] init];
     UIImage *alertViewBGImage = [UIImage imageNamed:@"AcceptAlert_BG.png"];
@@ -43,20 +39,22 @@
     [alertView setFrame:alertBGImageView.frame];
     [alertView setBackgroundColor:[UIColor colorWithPatternImage:alertBGImageView.image]];
     
-    UITextView *alertViewLabel = [[UITextView alloc] init];
-    [alertViewLabel setTextAlignment:NSTextAlignmentCenter];
-    [alertViewLabel setText:alertText];
-    [alertViewLabel sizeToFit];
-    [alertViewLabel setFrame:CGRectMake(viewController.view.bounds.origin.x + 25, 17, 70, 50)];
-    [alertViewLabel setTextColor:[UIColor colorWithRed:44.0f/255.0f green:44.0f/255.0f blue:44.0f/255.0f alpha:1.0f]];
-    [alertViewLabel setBackgroundColor:[UIColor redColor]];
-    [alertViewLabel setFont:[UIFont systemFontOfSize:13.0f]];
-    [alertView addSubview:alertViewLabel];
+    CGRect alertLabelFrame = CGRectMake(alertBGImageView.frame.origin.x + 10, 17, alertBGImageView.frame.size.width - 36, 150);
+    UILabel *alertLabel = [[UILabel alloc] initWithFrame:alertLabelFrame];
+    [alertLabel setBackgroundColor:[UIColor clearColor]];
+    [alertLabel setText:alertText];
+    [alertLabel setTextColor:[UIColor colorWithRed:44.0f/255.0f green:44.0f/255.0f blue:44.0f/255.0f alpha:1.0f]];
+    [alertLabel setFont:[UIFont fontWithName:@"Helvetica-Regular" size:10.0f]];
+    [alertLabel setTextAlignment:NSTextAlignmentCenter];
+    [alertLabel setNumberOfLines:0];
+    [alertLabel sizeToFit];
+    [alertView addSubview:alertLabel];
     
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(alertBGImageView.frame.origin.x + 7, alertBGImageView.frame.origin.y + 122, 123, 48)];
     [cancelButton setBackgroundColor:[UIColor clearColor]];
     [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
     [cancelButton setShowsTouchWhenHighlighted:YES];
+    [cancelButton addTarget:viewController action:@selector(invitationCancelButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [cancelButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:19]];
     [cancelButton setTitleColor:[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     [alertView addSubview:cancelButton];
@@ -64,6 +62,7 @@
     UIButton *acceptButton = [[UIButton alloc] initWithFrame:CGRectMake(alertBGImageView.frame.origin.x + 140, alertBGImageView.frame.origin.y + 122, 123, 48)];
     [acceptButton setBackgroundColor:[UIColor clearColor]];
     [acceptButton setShowsTouchWhenHighlighted:YES];
+    [acceptButton addTarget:viewController action:@selector(invitationAcceptButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
     [acceptButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:19]];
     [acceptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -76,9 +75,13 @@
     [UIView animateWithDuration:0.3
                      animations:^{
                          [alertView setFrame:CGRectMake(alertView.frame.origin.x, alertView.frame.origin.y + heightIncrement, alertView.frame.size.width, alertView.frame.size.height)];
+                         [shadowView setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.70f]];
                          [cancelButton setFrame:CGRectMake(cancelButton.frame.origin.x, cancelButton.frame.origin.y + 210, cancelButton.frame.size.width, cancelButton.frame.size.height)];
                          [acceptButton setFrame:CGRectMake(acceptButton.frame.origin.x, acceptButton.frame.origin.y + 210, acceptButton.frame.size.width, acceptButton.frame.size.height)];
-                         [alertViewLabel setFrame:CGRectMake(viewController.view.bounds.origin.x + 15, 17 + 70, 276 - (15*2), 25)];
+//                         [alertTextView setFrame:CGRectMake(alertBGImageView.frame.origin.x + 10, 17 + 70, alertBGImageView.frame.size.width - 50, 200)];
+                         CGRect alertLabelNewFrame = alertLabel.frame;
+                         alertLabelNewFrame.origin.y = 17 + 59;
+                         [alertLabel setFrame:alertLabelNewFrame];
                      }
                      completion:^(BOOL finished){
                          
@@ -90,6 +93,7 @@
     return shadowView;
     
 }
+
 
 
 

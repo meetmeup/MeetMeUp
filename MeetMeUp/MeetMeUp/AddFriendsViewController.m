@@ -24,7 +24,6 @@
     NSString *friendPhotoURL;
     NSString *friendDevicetoken;
     UIButton *addFriendButton;
-    
 }
 
 @end
@@ -46,6 +45,7 @@
     [self.searchBar becomeFirstResponder];
 }
 
+#define IS_IOS7 (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
 
 - (void)viewDidLoad
 {
@@ -60,13 +60,7 @@
     [[[self navigationController] navigationBar] setTintColor:[UIColor colorWithRed:249.0f/255.0f green:103.0f/255.0f blue:30.0f/255.0f alpha:1.0f]];
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:249.0f/255.0f green:103.0f/255.0f blue:30.0f/255.0f alpha:1.0f]}];
-    
-    
-    UIImage *image = [UIImage imageNamed:@"AddEvent_SearchBarCancel.png"];
-    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setImage:image];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitle:@"        "];
-    
+
     [self prefersStatusBarHidden];
     [self.searchBar setDelegate:self];
     [self.searchBar setPlaceholder:[NSString stringWithFormat:@"Search friends %@", self.addFriendsBy]];
@@ -134,6 +128,19 @@
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     [self.searchBar setShowsCancelButton:YES animated:YES];
+    
+    UIImage *image = [UIImage imageNamed:@"AddEvent_SearchBarCancel.png"];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+    UIView* view = self.searchBar.subviews[0];
+    for (UIView *subView in view.subviews) {
+        if ([subView isKindOfClass:[UIButton class]]) {
+            UIButton *cancelButton = (UIButton*)subView;
+            [cancelButton setTitle:@"        " forState:UIControlStateNormal];
+            [cancelButton setImage:image forState:UIControlStateNormal];
+        }
+    }
+    
     return YES;
 }
 
