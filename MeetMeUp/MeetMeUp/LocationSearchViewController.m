@@ -90,6 +90,9 @@
     [locationManager setDelegate:self];
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
     [locationManager startUpdatingLocation];
     NSLog(@"%@", [NSString stringWithFormat:@"latitude: %f longitude: %f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude]);
     

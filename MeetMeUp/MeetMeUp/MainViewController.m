@@ -16,6 +16,8 @@
 #import "AlertViewCreator.h"
 #import "AlertViewStillCreator.h"
 #import "NotificationsViewController.h"
+#import "AsyncImageView.h"
+#import "EventListViewController.h"
 
 #define SIDE_BUTTON_HEIGHT 58
 #define SIDE_BUTTON_WIDTH 160
@@ -273,33 +275,6 @@
 #pragma mark - cell for row at index
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
-//
-//    if (cell == nil) {
-//        
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
-//        
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        
-//    }
-//
-//    [cell setBackgroundColor:[UIColor colorWithRed:44.0f/255.0f green:44.0f/255.0f blue:44.0f/255.0f alpha:1.0f]];
-//
-//    UILabel *userDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 10, SELF_WIDTH-65, 25)];
-//    [userDetailLabel setText:@"username commented \"i will e going there too lkwjelkjerlkjwelrkj \""];
-//    [userDetailLabel setTextColor:[UIColor whiteColor]];
-//    [userDetailLabel setFont:[UIFont fontWithName:@"Helvetica-Light" size:10.0f]];
-//    [cell.contentView addSubview:userDetailLabel];
-//    
-//    NSArray *avatarArray = [NSArray arrayWithObjects:@"avatar1.jpg", @"avatar2.jpg", @"avatar3.jpg", @"avatar4.jpg", nil];
-//    ImageResizer *imageResizer = [[ImageResizer alloc] init];
-//    UIImage *avatarImage = [imageResizer imageWithImage:[UIImage imageNamed:[avatarArray objectAtIndex:indexPath.row]] scaledToSize:CGSizeMake(50, 50)];
-//    UIImageView *avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 25, 25)];
-//    [avatarImageView setImage:avatarImage];
-//    [avatarImageView.layer setCornerRadius:avatarImageView.frame.size.height/2];
-//    avatarImageView.clipsToBounds = YES;
-//    [cell.contentView addSubview:avatarImageView];
-    
     //Create swipe
     
     static NSString *cellIdentifier = @"Cell";
@@ -321,36 +296,41 @@
     [sectionSliderImageView setImage:slider];
     [sectionView addSubview:sectionSliderImageView];
     
-    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 100, 40)];
+    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 17, 100, 40)];
     [dateLabel setTextAlignment:NSTextAlignmentCenter];
     [dateLabel setText:[NSString stringWithFormat:@"%@", [datesInMonthArray objectAtIndex:indexPath.row]]];
     [dateLabel setTextColor:[UIColor colorWithRed:44.0f/255.0f green:44.0f/255.0f blue:44.0f/255.0f alpha:1.0f]];
-    [dateLabel setFont:[UIFont fontWithName:@"Helvetica-Light" size:45.0f]];
+    [dateLabel setFont:[UIFont fontWithName:@"Helvetica-Light" size:43.0f]];
     [sectionView addSubview:dateLabel];
     
-    UILabel *eventTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(109, 13.5, SELF_WIDTH - 120, 30)];
-    [eventTitleLabel setText:@"Meeting with mink nat mookklvklvlkvlkjdflkvjdlkfjvlkdfjv"];
+    UILabel *eventTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 13.5, SELF_WIDTH - 150, 30)];
+    [eventTitleLabel setText:@"There are 3 events"];
     [eventTitleLabel setTextColor:[UIColor colorWithRed:44.0f/255.0f green:44.0f/255.0f blue:44.0f/255.0f alpha:1.0f]];
     [eventTitleLabel setFont:[UIFont fontWithName:@"Helvetica-Light" size:17.0f]];
     [sectionView addSubview:eventTitleLabel];
     
-    UILabel *dateDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(109, 33, SELF_WIDTH-120, 25)];
-    [dateDetailLabel setText:@"Friday, 2:00 PM"];
+    UILabel *dateDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 33, SELF_WIDTH - 150, 25)];
+    [dateDetailLabel setText:@"Friday, 22nd October 2014"];
     [dateDetailLabel setTextColor:[UIColor colorWithRed:44.0f/255.0f green:44.0f/255.0f blue:44.0f/255.0f alpha:1.0f]];
     [dateDetailLabel setFont:[UIFont fontWithName:@"Helvetica-Light" size:12.0f]];
     [sectionView addSubview:dateDetailLabel];
     
-    NSArray *avatarArray = [NSArray arrayWithObjects:@"avatar1.jpg", @"avatar2.jpg", @"avatar3.jpg", @"avatar4.jpg", @"Main_InviteIcon.png", nil];
+    UIButton *moreInfoButton = [[UIButton alloc] initWithFrame:CGRectMake(eventTitleLabel.frame.origin.x + eventTitleLabel.frame.size.width + 9, eventTitleLabel.frame.origin.y + 10, 24, 24)];
+    [moreInfoButton setTag:indexPath.row];
+    [moreInfoButton setImage:[UIImage imageNamed:@"Main_InfoButton.png"] forState:UIControlStateNormal];
+    [moreInfoButton setSelected:YES];
+    [moreInfoButton addTarget:self action:@selector(moreInfoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSArray *avatarArray = [NSArray arrayWithObjects:@"http://media.gizmodo.co.uk/wp-content/uploads/2013/09/bill-gates-mistake.jpg", @"http://i2.cdn.turner.com/cnn/dam/assets/121003065321-steve-jobs-smiling-story-top.jpg", @"https://pbs.twimg.com/profile_images/2463814324/s388hotz4y325sky2mev_400x400.jpeg", @"http://i.dailymail.co.uk/i/pix/2014/05/25/article-2638617-1E338DB700000578-671_634x844.jpg", @"Main_MoreInvitees.png", nil];
     
     for (int i = 0; i < [avatarArray count]; i++)
     {
-        ImageResizer *imageResizer = [[ImageResizer alloc] init];
-        UIImage *avatarImage = [imageResizer imageWithImage:[UIImage imageNamed:[avatarArray objectAtIndex:i]] scaledToSize:CGSizeMake(70, 70)];
-        UIImageView *avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(50*(i+1), 65, 30, 30)];
-        [avatarImageView setImage:avatarImage];
-        [avatarImageView.layer setCornerRadius:avatarImageView.frame.size.height/2];
-        avatarImageView.clipsToBounds = YES;
-        [sectionView addSubview:avatarImageView];
+        AsyncImageView *userProfileImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(50*(i+1), 65, 30, 30)];
+        [userProfileImage loadImageWithTypeFromURL:[NSURL URLWithString:[avatarArray objectAtIndex:i]] contentMode:UIViewContentModeScaleAspectFill imageNameBG:nil];
+        [userProfileImage setContentMode:UIViewContentModeScaleAspectFill];
+        [userProfileImage.layer setCornerRadius:userProfileImage.frame.size.height/2.0f];
+        [userProfileImage.layer setMasksToBounds:YES];
+        [sectionView addSubview:userProfileImage];
     }
     
     UIButton *sectionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, sectionView.frame.size.width, sectionView.frame.size.height)];
@@ -360,8 +340,18 @@
     [sectionView addSubview:sectionButton];
     
     [cell.contentView addSubview:sectionView];
+    [cell.contentView addSubview:moreInfoButton];
     
     return cell;
+}
+
+#pragma mark - more info clicked
+- (void) moreInfoButtonClicked:(UIButton *)sender
+{
+    EventListViewController * eventViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"eventlist"];
+//    [self presentViewController:eventViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:eventViewController animated:YES];
+
 }
 
 #pragma mark - number of sections
@@ -374,7 +364,6 @@
 {
     return 110;
 }
-
 
 #pragma mark - section clicked
 - (void) sectionClicked:(id)sender

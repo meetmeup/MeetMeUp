@@ -16,14 +16,25 @@
 #import "SendNotificationProxy.h"
 #import "AlertViewCreator.h"
 #import "KeychainItemWrapper.h"
+#import "InviteeViewController.h"
 
-#define TEXTFIELD_SCROLL_UP_HEIGHT (self.view.frame.size.height == 568.0f ? 70 : 70)
-#define SCROLLVIEW_CONTENT_HEIGHT (self.view.frame.size.height == 568.0f ? 568 : 568)
+#define TEXTFIELD_SCROLL_UP_HEIGHT (self.view.frame.size.height > 480.0f ? 20 : 20)
+//#if (self.view.frame.size.height == 480.0f)
+//#define TEXTFIELD_SCROLL_UP_HEIGHT 20
+//#elif
+//#define TEXTFIELD_SCROLL_UP_HEIGHT 40
+//#else
+//#define TEXTFIELD_SCROLL_UP_HEIGHT 60
+//#endif
+
+//#elif
+
+#define SCROLLVIEW_CONTENT_HEIGHT /*(self.view.frame.size.height == 568.0f ? 568 : 568)*/ 0
 #define SCROLLVIEW_HEIGHT (self.view.frame.size.height == 568.0f ? 568 : 480)
 
 
 
-@interface AddEventViewController ()<UITextFieldDelegate, LocationSearchDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface AddEventViewController ()<inviteeDelegate, UITextFieldDelegate, LocationSearchDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UIDatePicker *datePicker;
     UIView *datePickerView;
@@ -37,6 +48,9 @@
     NSMutableArray *inviteesArrayForCoreData;
     BOOL nameTypeAllowed;
     NSString *mainString;
+    NSArray *invitedFriendsArray;
+    NSArray *invitedFriendsTokenArray;
+    CGRect keyboardRect;
 }
 
 @end
@@ -52,6 +66,19 @@
     return self;
 }
 
+- (CGFloat) textfieldScrollUpHeight
+{
+    if (self.view.frame.size.height == 480.f)
+    {
+        return 90;
+    }
+    else if (self.view.frame.size.height == 568.0f)
+    {
+        return 40;
+    }
+    return 60;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,22 +90,28 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"AddEvent_WhiteBG.png"]]];
     
     [self.titleTextField setDelegate:self];
-    [self.inviteeTextField setDelegate:self];
     [self.urlTextfield setDelegate:self];
     [self.notesTextField setDelegate:self];
     self.titleTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Title" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.inviteeTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Who's going?" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.notesTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Notes" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.urlTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"URL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    //get keyboard size
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
+
 }
 
+- (void)keyboardWillChange:(NSNotification *)notification {
+    keyboardRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
+}
 
 - (void)viewDidLayoutSubviews
 {
     [self.scrollView setUserInteractionEnabled:YES];
     [self.scrollView setScrollEnabled:YES];
     [self.scrollView setBounces:YES];
-    [self.scrollView setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.height, SCROLLVIEW_HEIGHT)];
+    [self.scrollView setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, SCROLLVIEW_CONTENT_HEIGHT)];
 }
 
@@ -112,7 +145,6 @@
 {
     //reisgn textFields
     [self.titleTextField resignFirstResponder];
-    [self.inviteeTextField resignFirstResponder];
     [self.urlTextfield resignFirstResponder];
     [self.notesTextField resignFirstResponder];
     
@@ -138,7 +170,6 @@
 {
     //reisgn textFields
     [self.titleTextField resignFirstResponder];
-    [self.inviteeTextField resignFirstResponder];
     [self.urlTextfield resignFirstResponder];
     [self.notesTextField resignFirstResponder];
     
@@ -201,16 +232,8 @@
         AlertViewCreator *alertViewCreator = [[AlertViewCreator alloc] init];
         [self.view addSubview:[alertViewCreator createAlertViewWithViewController:self andText:@"When does the meetup end?"]];
     }
-    else if ([self.inviteeTextField.text isEqualToString:@""])
-    {
-        AlertViewCreator *alertViewCreator = [[AlertViewCreator alloc] init];
-        [self.view addSubview:[alertViewCreator createAlertViewWithViewController:self andText:@"Wait, who's going?"]];
-    }
     else
     {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSMutableArray *savedDeviceTokenArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_DEVICE_TOKEN_ARRAY"]];
-        
         NSManagedObjectContext *context = [self managedObjectContext];
         
         // Create a new managed object
@@ -220,8 +243,8 @@
         [newEvent setValue:[NSNumber numberWithFloat:self.longtitude] forKey:@"long"];
         [newEvent setValue:self.startLabel.text forKey:@"startDate"];
         [newEvent setValue:self.endsLabel.text forKey:@"endDate"];
-        [newEvent setValue:[NSKeyedArchiver archivedDataWithRootObject:inviteesArrayForCoreData] forKey:@"invitees"];
-        //    [newEvent setValue:[NSKeyedArchiver archivedDataWithRootObject:savedDeviceTokenArray] forKey:@"devicetoken"];
+        [newEvent setValue:[NSKeyedArchiver archivedDataWithRootObject:invitedFriendsArray] forKey:@"invitees"];
+        [newEvent setValue:[NSKeyedArchiver archivedDataWithRootObject:invitedFriendsTokenArray] forKey:@"devicetoken"];
         [newEvent setValue:self.urlTextfield.text forKey:@"url"];
         [newEvent setValue:self.notesTextField.text forKey:@"notes"];
         [newEvent setValue:self.locationLabel.text forKey:@"location"];
@@ -265,6 +288,30 @@
         }
     }
 }
+
+- (IBAction)inviteeButtonClicked:(id)sender
+{
+    InviteeViewController *inviteeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"inviteeview"];
+    inviteeViewController.myDelegate = self;
+    [self presentViewController:inviteeViewController animated:YES completion:nil];
+}
+
+- (void)inviteeViewControllerDismissed:(NSArray *)inviteesArray andToken:(NSArray *)tokenArray
+{
+//    NSLog(@"inviteesArray: %@", inviteesArray);
+//    NSLog(@"token: %@", tokenArray);
+    invitedFriendsArray = [NSArray arrayWithArray:inviteesArray];
+    invitedFriendsTokenArray = [NSArray arrayWithArray:tokenArray];
+    NSString *inviteesString = @"";
+    
+    for (int i = 0; i < [inviteesArray count]; i++)
+    {
+        inviteesString = [inviteesString stringByAppendingString:[NSString stringWithFormat:@"%@, ", [inviteesArray objectAtIndex:i]]];
+    }
+    [self.inviteeLabel setText:[NSString stringWithFormat:@"%@", inviteesString]];
+    [self.inviteeLabel setTextColor:[UIColor blackColor]];
+}
+
 
 - (void) dateSelected:(id)sender
 {
@@ -324,7 +371,6 @@
 #warning save in nsuserdefaults??
 #warning update in main view controller
     [self.titleTextField resignFirstResponder];
-    [self.inviteeTextField resignFirstResponder];
     [self.urlTextfield resignFirstResponder];
     [self.notesTextField resignFirstResponder];
     return YES;
@@ -334,242 +380,56 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self dismissDatePicker];
-    
-    if (textField == self.inviteeTextField)
-    {
-        //invitee textfield accessory view
-        friendsChoicesTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.inviteeTextField.frame.size.height + self.inviteeTextField.frame.origin.y + 5, 320, 100)];
-        [friendsChoicesTableView setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:1.0f]];
-        [friendsChoicesTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-        [friendsChoicesTableView setDelegate:self];
-        [friendsChoicesTableView setDataSource:self];
-        [textField setInputAccessoryView:friendsChoicesTableView];
-        
-        if (self.view.frame.size.height != 568.0f)
-        {
-            [self.scrollView setContentOffset:CGPointMake(0, 100)];
-            [UIView beginAnimations:nil context:NULL];
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDuration:0.5];
-            [UIView setAnimationBeginsFromCurrentState:YES];
-            self.view.frame = CGRectMake(self.scrollView.frame.origin.x , (self.scrollView.frame.origin.y - 150), self.view.frame.size.width, self.view.frame.size.height);
-            [UIView commitAnimations];
-            textField.returnKeyType = UIReturnKeyDefault;
-        }
-        else
-        {
-            [UIView beginAnimations:nil context:NULL];
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDuration:0.5];
-            [UIView setAnimationBeginsFromCurrentState:YES];
-            self.view.frame = CGRectMake(self.scrollView.frame.origin.x , (self.scrollView.frame.origin.y - 150), self.view.frame.size.width, self.view.frame.size.height);
-            [UIView commitAnimations];
-            textField.returnKeyType = UIReturnKeyDefault;
-        }
-    }
     if (textField == self.urlTextfield)
     {
-        if (self.view.frame.size.height != 568.0f)
-        {
-            [self.scrollView setContentOffset:CGPointMake(0, 70)];
-            [UIView beginAnimations:nil context:NULL];
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDuration:0.5];
-            [UIView setAnimationBeginsFromCurrentState:YES];
-            self.view.frame = CGRectMake(self.scrollView.frame.origin.x , (self.scrollView.frame.origin.y - TEXTFIELD_SCROLL_UP_HEIGHT*2), self.view.frame.size.width, self.view.frame.size.height);
-            [UIView commitAnimations];
-            textField.returnKeyType = UIReturnKeyDefault;
-        }
-        else
-        {
-            [UIView beginAnimations:nil context:NULL];
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDuration:0.5];
-            [UIView setAnimationBeginsFromCurrentState:YES];
-            self.view.frame = CGRectMake(self.scrollView.frame.origin.x , (self.scrollView.frame.origin.y - TEXTFIELD_SCROLL_UP_HEIGHT*2), self.view.frame.size.width, self.view.frame.size.height);
-            [UIView commitAnimations];
-            textField.returnKeyType = UIReturnKeyDefault;
-        }
+        [self.scrollView setContentOffset:CGPointMake(0, 70)];
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+//        self.view.frame = CGRectMake(self.scrollView.frame.origin.x , (self.scrollView.frame.origin.y - keyboardHeight - [self textfieldScrollUpHeight]), self.view.frame.size.width, self.view.frame.size.height);
+        self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y - [self textfieldScrollUpHeight]), self.view.frame.size.width, self.view.frame.size.height);
+        [UIView commitAnimations];
+        textField.returnKeyType = UIReturnKeyDefault;
     }
     if (textField == self.notesTextField)
     {
-        if (self.view.frame.size.height != 568.0f)
-        {
-            [self.scrollView setContentOffset:CGPointMake(0, 70)];
-            [UIView beginAnimations:nil context:NULL];
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDuration:0.5];
-            [UIView setAnimationBeginsFromCurrentState:YES];
-            self.view.frame = CGRectMake(self.scrollView.frame.origin.x , (self.scrollView.frame.origin.y - TEXTFIELD_SCROLL_UP_HEIGHT*3), self.view.frame.size.width, self.view.frame.size.height);
-            [UIView commitAnimations];
-            textField.returnKeyType = UIReturnKeyDefault;
-        }
-        else
-        {
-            [UIView beginAnimations:nil context:NULL];
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDuration:0.5];
-            [UIView setAnimationBeginsFromCurrentState:YES];
-            self.view.frame = CGRectMake(self.scrollView.frame.origin.x , (self.scrollView.frame.origin.y - TEXTFIELD_SCROLL_UP_HEIGHT*3), self.view.frame.size.width, self.view.frame.size.height);
-            [UIView commitAnimations];
-            textField.returnKeyType = UIReturnKeyDefault;
-        }
+        [self.scrollView setContentOffset:CGPointMake(0, 70)];
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y - [self textfieldScrollUpHeight] - 20), self.view.frame.size.width, self.view.frame.size.height);
+        [UIView commitAnimations];
+        textField.returnKeyType = UIReturnKeyDefault;
     }
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (textField == self.inviteeTextField)
-    {
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDuration:0.5];
-        [UIView setAnimationBeginsFromCurrentState:YES];
-        self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y + 150), self.view.frame.size.width, self.view.frame.size.height);
-        [UIView commitAnimations];
-
-    }
     if (textField == self.urlTextfield)
     {
+        [self.scrollView setContentOffset:CGPointMake(0, 70)];
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDuration:0.5];
         [UIView setAnimationBeginsFromCurrentState:YES];
-        self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y + TEXTFIELD_SCROLL_UP_HEIGHT*2), self.view.frame.size.width, self.view.frame.size.height);
+        self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y + [self textfieldScrollUpHeight]), self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
+        textField.returnKeyType = UIReturnKeyDefault;
     }
     if (textField == self.notesTextField)
     {
+        [self.scrollView setContentOffset:CGPointMake(0, 70)];
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDuration:0.5];
         [UIView setAnimationBeginsFromCurrentState:YES];
-        self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y + TEXTFIELD_SCROLL_UP_HEIGHT*3), self.view.frame.size.width, self.view.frame.size.height);
+        self.view.frame = CGRectMake(self.view.frame.origin.x , (self.view.frame.origin.y + [self textfieldScrollUpHeight] + 20), self.view.frame.size.width, self.view.frame.size.height);
+        //(self.scrollView.frame.origin.y + keyboardHeight + [self textfieldScrollUpHeight] + 20)
         [UIView commitAnimations];
+        textField.returnKeyType = UIReturnKeyDefault;
     }
-}
-
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    inviteesSearchArray = [[NSMutableArray alloc] init];
-    inviteesImageSearchArray = [[NSMutableArray array] init];
-    
-    if (textField == self.inviteeTextField)
-    {
-        [self.inviteeTextField setInputAccessoryView:friendsChoicesTableView];
-        NSString *searchText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        
-        int seperatorFound = [[searchText componentsSeparatedByString:@","] count]-1;
-        
-        if (seperatorFound == 0)
-        {
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            NSMutableArray *savedFriendsArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_FRIENDS_ARRAY"]];
-            NSMutableArray *savedFriendsPhotoArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_PHOTO_ARRAY"]];
-            
-            for (NSString *str in savedFriendsArray)
-            {
-                if (savedFriendsArray.count > 0)
-                {
-                    NSRange stringRange = [str rangeOfString:searchText options:NSCaseInsensitiveSearch];
-                    if (stringRange.location != NSNotFound)
-                    {
-                        [inviteesSearchArray addObject:str];
-                        NSUInteger index = [savedFriendsArray indexOfObject:str];
-                        [inviteesImageSearchArray addObject:[savedFriendsPhotoArray objectAtIndex:index]];
-                    }
-                }
-            }
-        }
-        else if (seperatorFound != 0)
-        {
-            NSArray *array = [searchText componentsSeparatedByString:@","];
-            NSLog(@"array: %@", array);
-            
-            NSString *lastObject = [array objectAtIndex:[array count]-1];
-            NSLog(@"last object: %@", lastObject);
-            
-            NSString *check = [lastObject substringToIndex:1];
-            if ([check isEqualToString:@" "])
-            {
-                lastObject = [lastObject substringWithRange:NSMakeRange(1, [lastObject length]-1)];
-            }
-
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            NSMutableArray *savedFriendsArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_FRIENDS_ARRAY"]];
-            NSMutableArray *savedFriendsPhotoArray = [[NSMutableArray alloc] initWithArray:[userDefaults objectForKey:@"USER_PHOTO_ARRAY"]];
-            
-            for (NSString *str in savedFriendsArray)
-            {
-                if (savedFriendsArray.count > 0)
-                {
-                    NSRange stringRange = [str rangeOfString:lastObject options:NSCaseInsensitiveSearch];
-                    if (stringRange.location != NSNotFound)
-                    {
-                        [inviteesSearchArray addObject:str];
-                        NSUInteger index = [savedFriendsArray indexOfObject:str];
-                        [inviteesImageSearchArray addObject:[savedFriendsPhotoArray objectAtIndex:index]];
-                    }
-                }
-            }
-        }
-    }
-    [friendsChoicesTableView reloadData];
-    return YES;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-{
-    return [inviteesSearchArray count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-        UILabel *cellTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 11, 300, 20)];
-        [cellTextLabel setTextColor:[UIColor colorWithRed:44.0/255.0f green:44.0/255.0f blue:44.0/255.0f alpha:1.0f]];
-        [cellTextLabel setFont:[UIFont fontWithName:@"Helvetica-Medium" size:16.0f]];
-        [cellTextLabel setTag:1];
-        [cell.contentView addSubview:cellTextLabel];
-        
-        AsyncImageView *asyncImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(25, 6, 32, 32)];
-        [asyncImage.layer setCornerRadius:asyncImage.frame.size.height/2.0f];
-        [asyncImage setTag:2];
-        [cell.contentView addSubview:asyncImage];
-        
-    }
-    
-    [(UILabel *) [cell.contentView viewWithTag:1] setText:[inviteesSearchArray objectAtIndex:indexPath.row]];
-    NSURL *url = [NSURL URLWithString:[inviteesImageSearchArray objectAtIndex:indexPath.row]];
-    [(AsyncImageView *) [cell.contentView viewWithTag:2] loadImageWithTypeFromURL:url contentMode:UIViewContentModeScaleAspectFill imageNameBG:nil];
-
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [inviteesArrayForCoreData addObject:[inviteesSearchArray objectAtIndex:indexPath.row]];
-    
-    NSString *entryString = [inviteesSearchArray objectAtIndex:indexPath.row];
-    entryString = [entryString stringByAppendingString:@", "];
-    entryString = [@"@" stringByAppendingString:entryString];
-    
-    //use mainString when update textField
-    mainString = [mainString stringByAppendingString:entryString];
-    
-    
-    [self.inviteeTextField setText:mainString];
-    [self.inviteeTextField setTextColor:[UIColor colorWithRed:249.0f/255.0f green:103.0f/255.0f blue:30.0f/255.0f alpha:1.0f]];
-    
-    [friendsChoicesTableView reloadData];
-
-    
 }
 
 @end

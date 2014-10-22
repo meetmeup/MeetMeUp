@@ -22,7 +22,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //push notifications
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+#ifdef __IPHONE_8_0
+    //Right, that is the point
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge
+                                                                                         |UIRemoteNotificationTypeSound
+                                                                                         |UIRemoteNotificationTypeAlert) categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+#else
+    //register to receive notifications
+    UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+#endif
     
     //facebook SDK
     [FBLoginView class];
@@ -33,6 +43,9 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
     [locationManager startUpdatingLocation];
     
     //check if app run first time (Login purposes)
@@ -81,13 +94,26 @@
             //user logged in before
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
             UIViewController *MainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-            [self.window setRootViewController:MainViewController];
-            
-            self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-            self.window.rootViewController = MainViewController;
+//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:MainViewController];
+//            [self.window setRootViewController:navigationController];
+
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:MainViewController];
+            self.window.rootViewController =nil;
+            self.window.rootViewController = navigationController;
+            navigationController.navigationBarHidden = YES;
             [self.window makeKeyAndVisible];
+
+            
+//            self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//            [self.window makeKeyAndVisible];
         }
     }
+    
+    //create navigationcontroller and setting rootviewcontroller
+//    UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:yourfirstviewController];
+//    [self.window setRootViewController:navigationController];
+//    navigationController.delegate = self;
+//    navigationController.navigationBarHidden = YES;
     
     return YES;
 }
@@ -103,6 +129,23 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:tokenString forKey:@"DeviceToken"];
 }
+
+#ifdef __IPHONE_8_0
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    //register to receive notifications
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
+{
+    //handle the actions
+    if ([identifier isEqualToString:@"declineAction"]){
+    }
+    else if ([identifier isEqualToString:@"answerAction"]){
+    }
+}
+#endif
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {

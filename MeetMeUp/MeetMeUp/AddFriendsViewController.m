@@ -53,9 +53,7 @@
     
     //set delegates
     [self.searchBar setDelegate:self];
-    
-    NSLog(@"by what: %@", self.addFriendsBy);
-    
+        
     //set navigation bar accessories
     [[[self navigationController] navigationBar] setTintColor:[UIColor colorWithRed:249.0f/255.0f green:103.0f/255.0f blue:30.0f/255.0f alpha:1.0f]];
     

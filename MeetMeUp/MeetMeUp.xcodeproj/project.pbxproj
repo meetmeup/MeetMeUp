@@ -32,6 +32,9 @@
 		2B1B6CE5199E8FCC004A6614 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B6CDF199E8FCC004A6614 /* SWUtilityButtonView.m */; };
 		2B1B6CE8199FBAEA004A6614 /* LocationSearchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B6CE7199FBAEA004A6614 /* LocationSearchProxy.m */; };
 		2B1B6CEA199FC0C9004A6614 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1B6CE9199FC0C9004A6614 /* CoreLocation.framework */; };
+		2B27493619B74245001D2B28 /* Notifications_Unaccept@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B27493519B74245001D2B28 /* Notifications_Unaccept@2x.png */; };
+		2B27493819B742DD001D2B28 /* Notifications_accepted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B27493719B742DD001D2B28 /* Notifications_accepted@2x.png */; };
+		2B27493A19B7450F001D2B28 /* Notifications_uncancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B27493919B7450F001D2B28 /* Notifications_uncancel@2x.png */; };
 		2B28E51E199E12A000450D68 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B28E51D199E12A000450D68 /* AddEventViewController.m */; };
 		2B28E527199E1A5A00450D68 /* AddEvent_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28E526199E1A5A00450D68 /* AddEvent_map@2x.png */; };
 		2B28E52B199E1C2A00450D68 /* AddEvent_group@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28E528199E1C2A00450D68 /* AddEvent_group@2x.png */; };
@@ -42,6 +45,10 @@
 		2B28E535199E224F00450D68 /* AddEvent_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28E534199E224F00450D68 /* AddEvent_BG@2x.png */; };
 		2B28E537199E239C00450D68 /* AddEvent_TextField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28E536199E239C00450D68 /* AddEvent_TextField@2x.png */; };
 		2B28E540199E5A9C00450D68 /* AddEvent_SearchBarCancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28E53F199E5A9C00450D68 /* AddEvent_SearchBarCancel@2x.png */; };
+		2B4DEB2B19F1587D004DF59F /* InviteeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4DEB2A19F1587D004DF59F /* InviteeViewController.m */; };
+		2B4DEB2E19F15897004DF59F /* InviteeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4DEB2D19F15897004DF59F /* InviteeTableView.m */; };
+		2B4DEB3219F16614004DF59F /* checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4DEB3019F16614004DF59F /* checked@2x.png */; };
+		2B4DEB3319F16614004DF59F /* unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4DEB3119F16614004DF59F /* unchecked@2x.png */; };
 		2B51617C199FC711007C1AAF /* WholescreenActivityIndicatorCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B51617B199FC711007C1AAF /* WholescreenActivityIndicatorCreator.m */; };
 		2B60F2AA19A2089700ACAC82 /* AddFriends_AddFriendButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B60F2A919A2089700ACAC82 /* AddFriends_AddFriendButton@2x.png */; };
 		2B60F2AC19A20EFB00ACAC82 /* AddFriends_AvatarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B60F2AB19A20EFB00ACAC82 /* AddFriends_AvatarIcon@2x.png */; };
@@ -50,6 +57,7 @@
 		2B60F34019A376D500ACAC82 /* AddEvent_GrayTextField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B60F33F19A376D500ACAC82 /* AddEvent_GrayTextField@2x.png */; };
 		2B60F34219A3772400ACAC82 /* AddEvent_WhiteBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B60F34119A3772400ACAC82 /* AddEvent_WhiteBG@2x.png */; };
 		2B60F3A519A3AD4900ACAC82 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B60F3A419A3AD4900ACAC82 /* AsyncImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2B61A11319B7817D005C23C2 /* Notifications_canceled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B61A11219B7817D005C23C2 /* Notifications_canceled@2x.png */; };
 		2B670F37199D0DD600A6B041 /* Main_DeleteEven@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B670F35199D0DD600A6B041 /* Main_DeleteEven@2x.png */; };
 		2B670F39199D101300A6B041 /* Main_AddEvent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B670F38199D101300A6B041 /* Main_AddEvent@2x.png */; };
 		2B78152F19A0C480007C43C3 /* LocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B78152E19A0C480007C43C3 /* LocationSearchViewController.m */; };
@@ -119,6 +127,15 @@
 		2BB7B565199290960062467E /* SignUp_CameraIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BB7B564199290960062467E /* SignUp_CameraIcon@2x.png */; };
 		2BBB487719B47DEB00586248 /* Main_Notifications@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB487619B47DEB00586248 /* Main_Notifications@2x.png */; };
 		2BC06F5E19B092F80060C4B8 /* AcceptAlert_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC06F5D19B092F80060C4B8 /* AcceptAlert_BG@2x.png */; };
+		2BDFF1B919F7A4490002E710 /* Main_MoreInvitees@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BDFF1B819F7A4490002E710 /* Main_MoreInvitees@2x.png */; };
+		2BDFF1BD19F7AA4B0002E710 /* Main_InfoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BDFF1BC19F7AA4B0002E710 /* Main_InfoButton@2x.png */; };
+		2BDFF1C419F7AB810002E710 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFF1C319F7AB810002E710 /* EventListViewController.m */; };
+		2BDFF1C719F7ABA40002E710 /* EventListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFF1C619F7ABA40002E710 /* EventListTableView.m */; };
+		2BDFF1CE19F7E55A0002E710 /* EventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFF1CD19F7E55A0002E710 /* EventDetailsViewController.m */; };
+		2BDFF1D419F7E69F0002E710 /* EventDetailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFF1D319F7E69F0002E710 /* EventDetailsTableView.m */; };
+		2BDFF1DB19F808500002E710 /* EventDetailsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFF1DA19F808500002E710 /* EventDetailsMapViewController.m */; };
+		2BDFF1E019F80A860002E710 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDFF1DF19F80A860002E710 /* MapKit.framework */; };
+		2BE0155719B70DB600C24812 /* NotificationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0155619B70DB600C24812 /* NotificationProxy.m */; };
 		2BF5794D199409A100FC1D8E /* SignUpProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5794C199409A100FC1D8E /* SignUpProxy.m */; };
 		2BF57953199417EE00FC1D8E /* ImagePickHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF57952199417EE00FC1D8E /* ImagePickHelper.m */; };
 /* End PBXBuildFile section */
@@ -174,6 +191,9 @@
 		2B1B6CE6199FBAEA004A6614 /* LocationSearchProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSearchProxy.h; sourceTree = "<group>"; };
 		2B1B6CE7199FBAEA004A6614 /* LocationSearchProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSearchProxy.m; sourceTree = "<group>"; };
 		2B1B6CE9199FC0C9004A6614 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2B27493519B74245001D2B28 /* Notifications_Unaccept@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notifications_Unaccept@2x.png"; sourceTree = "<group>"; };
+		2B27493719B742DD001D2B28 /* Notifications_accepted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notifications_accepted@2x.png"; sourceTree = "<group>"; };
+		2B27493919B7450F001D2B28 /* Notifications_uncancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notifications_uncancel@2x.png"; sourceTree = "<group>"; };
 		2B28E51C199E12A000450D68 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		2B28E51D199E12A000450D68 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		2B28E526199E1A5A00450D68 /* AddEvent_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddEvent_map@2x.png"; sourceTree = "<group>"; };
@@ -185,6 +205,12 @@
 		2B28E534199E224F00450D68 /* AddEvent_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddEvent_BG@2x.png"; sourceTree = "<group>"; };
 		2B28E536199E239C00450D68 /* AddEvent_TextField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddEvent_TextField@2x.png"; sourceTree = "<group>"; };
 		2B28E53F199E5A9C00450D68 /* AddEvent_SearchBarCancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddEvent_SearchBarCancel@2x.png"; sourceTree = "<group>"; };
+		2B4DEB2919F1587D004DF59F /* InviteeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteeViewController.h; sourceTree = "<group>"; };
+		2B4DEB2A19F1587D004DF59F /* InviteeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteeViewController.m; sourceTree = "<group>"; };
+		2B4DEB2C19F15897004DF59F /* InviteeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteeTableView.h; sourceTree = "<group>"; };
+		2B4DEB2D19F15897004DF59F /* InviteeTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteeTableView.m; sourceTree = "<group>"; };
+		2B4DEB3019F16614004DF59F /* checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@2x.png"; sourceTree = "<group>"; };
+		2B4DEB3119F16614004DF59F /* unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unchecked@2x.png"; sourceTree = "<group>"; };
 		2B51617A199FC711007C1AAF /* WholescreenActivityIndicatorCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholescreenActivityIndicatorCreator.h; sourceTree = "<group>"; };
 		2B51617B199FC711007C1AAF /* WholescreenActivityIndicatorCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholescreenActivityIndicatorCreator.m; sourceTree = "<group>"; };
 		2B60F2A919A2089700ACAC82 /* AddFriends_AddFriendButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddFriends_AddFriendButton@2x.png"; sourceTree = "<group>"; };
@@ -195,6 +221,7 @@
 		2B60F34119A3772400ACAC82 /* AddEvent_WhiteBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddEvent_WhiteBG@2x.png"; sourceTree = "<group>"; };
 		2B60F3A319A3AD4900ACAC82 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		2B60F3A419A3AD4900ACAC82 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		2B61A11219B7817D005C23C2 /* Notifications_canceled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notifications_canceled@2x.png"; sourceTree = "<group>"; };
 		2B670F35199D0DD600A6B041 /* Main_DeleteEven@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_DeleteEven@2x.png"; sourceTree = "<group>"; };
 		2B670F38199D101300A6B041 /* Main_AddEvent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_AddEvent@2x.png"; sourceTree = "<group>"; };
 		2B78152D19A0C480007C43C3 /* LocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSearchViewController.h; sourceTree = "<group>"; };
@@ -287,6 +314,21 @@
 		2BB7B564199290960062467E /* SignUp_CameraIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SignUp_CameraIcon@2x.png"; sourceTree = "<group>"; };
 		2BBB487619B47DEB00586248 /* Main_Notifications@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_Notifications@2x.png"; sourceTree = "<group>"; };
 		2BC06F5D19B092F80060C4B8 /* AcceptAlert_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AcceptAlert_BG@2x.png"; sourceTree = "<group>"; };
+		2BDFF1B819F7A4490002E710 /* Main_MoreInvitees@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_MoreInvitees@2x.png"; sourceTree = "<group>"; };
+		2BDFF1BC19F7AA4B0002E710 /* Main_InfoButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_InfoButton@2x.png"; sourceTree = "<group>"; };
+		2BDFF1C219F7AB810002E710 /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListViewController.h; sourceTree = "<group>"; };
+		2BDFF1C319F7AB810002E710 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListViewController.m; sourceTree = "<group>"; };
+		2BDFF1C519F7ABA40002E710 /* EventListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListTableView.h; sourceTree = "<group>"; };
+		2BDFF1C619F7ABA40002E710 /* EventListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListTableView.m; sourceTree = "<group>"; };
+		2BDFF1CC19F7E55A0002E710 /* EventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsViewController.h; sourceTree = "<group>"; };
+		2BDFF1CD19F7E55A0002E710 /* EventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsViewController.m; sourceTree = "<group>"; };
+		2BDFF1D219F7E69F0002E710 /* EventDetailsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsTableView.h; sourceTree = "<group>"; };
+		2BDFF1D319F7E69F0002E710 /* EventDetailsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsTableView.m; sourceTree = "<group>"; };
+		2BDFF1D919F808500002E710 /* EventDetailsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsMapViewController.h; sourceTree = "<group>"; };
+		2BDFF1DA19F808500002E710 /* EventDetailsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsMapViewController.m; sourceTree = "<group>"; };
+		2BDFF1DF19F80A860002E710 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2BE0155519B70DB600C24812 /* NotificationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationProxy.h; sourceTree = "<group>"; };
+		2BE0155619B70DB600C24812 /* NotificationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationProxy.m; sourceTree = "<group>"; };
 		2BF5794B199409A100FC1D8E /* SignUpProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpProxy.h; sourceTree = "<group>"; };
 		2BF5794C199409A100FC1D8E /* SignUpProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpProxy.m; sourceTree = "<group>"; };
 		2BF57951199417EE00FC1D8E /* ImagePickHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickHelper.h; sourceTree = "<group>"; };
@@ -298,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BDFF1E019F80A860002E710 /* MapKit.framework in Frameworks */,
 				2BB51B6B19AE0C8100B5B040 /* Security.framework in Frameworks */,
 				2B913F2619A731FD008BDE64 /* CoreData.framework in Frameworks */,
 				2B913F1219A63945008BDE64 /* SystemConfiguration.framework in Frameworks */,
@@ -358,6 +401,8 @@
 				2B05A010199A1B0A00144541 /* avatar2.jpg */,
 				2B05A011199A1B0A00144541 /* avatar4.jpg */,
 				2B05A018199A1FF300144541 /* Main_InviteIcon@2x.png */,
+				2BDFF1B819F7A4490002E710 /* Main_MoreInvitees@2x.png */,
+				2BDFF1BC19F7AA4B0002E710 /* Main_InfoButton@2x.png */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -369,6 +414,17 @@
 				2B059FF31998FA1B00144541 /* SettingsTableViewController.m */,
 			);
 			name = SettingsView;
+			sourceTree = "<group>";
+		};
+		2B27493219B7412F001D2B28 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				2B27493519B74245001D2B28 /* Notifications_Unaccept@2x.png */,
+				2B27493719B742DD001D2B28 /* Notifications_accepted@2x.png */,
+				2B27493919B7450F001D2B28 /* Notifications_uncancel@2x.png */,
+				2B61A11219B7817D005C23C2 /* Notifications_canceled@2x.png */,
+			);
+			name = Notification;
 			sourceTree = "<group>";
 		};
 		2B28E519199E120200450D68 /* AddEvent */ = {
@@ -402,13 +458,57 @@
 				2B78152D19A0C480007C43C3 /* LocationSearchViewController.h */,
 				2B78152E19A0C480007C43C3 /* LocationSearchViewController.m */,
 				2B1B6CE6199FBAEA004A6614 /* LocationSearchProxy.h */,
-				2B78154319A12CF8007C43C3 /* UserSearchViewController.m */,
 				2B1B6CE7199FBAEA004A6614 /* LocationSearchProxy.m */,
+				2B78154319A12CF8007C43C3 /* UserSearchViewController.m */,
 				2B78154219A12CF8007C43C3 /* UserSearchViewController.h */,
 				2BB5FE1F19ACE8A0000048E1 /* SendNotificationProxy.h */,
 				2BB5FE2019ACE8A0000048E1 /* SendNotificationProxy.m */,
 			);
 			name = AddEventView;
+			sourceTree = "<group>";
+		};
+		2B4DEB2519F157CD004DF59F /* InviteeView */ = {
+			isa = PBXGroup;
+			children = (
+				2B4DEB2819F157FA004DF59F /* Controller */,
+				2B4DEB2719F157F6004DF59F /* View */,
+				2B4DEB2619F157F0004DF59F /* Model */,
+			);
+			name = InviteeView;
+			sourceTree = "<group>";
+		};
+		2B4DEB2619F157F0004DF59F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2B4DEB2719F157F6004DF59F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2B4DEB2C19F15897004DF59F /* InviteeTableView.h */,
+				2B4DEB2D19F15897004DF59F /* InviteeTableView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2B4DEB2819F157FA004DF59F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2B4DEB2919F1587D004DF59F /* InviteeViewController.h */,
+				2B4DEB2A19F1587D004DF59F /* InviteeViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		2B4DEB2F19F165F8004DF59F /* InviteeView */ = {
+			isa = PBXGroup;
+			children = (
+				2B4DEB3019F16614004DF59F /* checked@2x.png */,
+				2B4DEB3119F16614004DF59F /* unchecked@2x.png */,
+			);
+			name = InviteeView;
 			sourceTree = "<group>";
 		};
 		2B60F2A819A2088D00ACAC82 /* AddFriends */ = {
@@ -568,6 +668,7 @@
 		2BB7B4FB199159420062467E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BDFF1DF19F80A860002E710 /* MapKit.framework */,
 				2BB51B6A19AE0C8100B5B040 /* Security.framework */,
 				2B913F2519A731FD008BDE64 /* CoreData.framework */,
 				2B913F1119A63945008BDE64 /* SystemConfiguration.framework */,
@@ -595,6 +696,10 @@
 				2B059FEE1998F9AF00144541 /* SettingsView */,
 				2B28E51F199E12A400450D68 /* AddEventView */,
 				2BBB487B19B47E6D00586248 /* NotificationsView */,
+				2B4DEB2519F157CD004DF59F /* InviteeView */,
+				2BDFF1BE19F7AAB10002E710 /* EventListView */,
+				2BDFF1C819F7E5180002E710 /* EventDetailsView */,
+				2BDFF1D519F807DF0002E710 /* EventDetailsMapView */,
 				2BB7B50E199159420062467E /* Images.xcassets */,
 				2BB7B503199159420062467E /* Supporting Files */,
 			);
@@ -648,9 +753,11 @@
 		2BB7B53719915FDC0062467E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2B27493219B7412F001D2B28 /* Notification */,
 				2BB51B7819AE390900B5B040 /* AcceptView */,
 				2B913F1919A6592E008BDE64 /* Notifications */,
 				2B60F2A819A2088D00ACAC82 /* AddFriends */,
+				2B4DEB2F19F165F8004DF59F /* InviteeView */,
 				2B28E519199E120200450D68 /* AddEvent */,
 				2B059FED1998F61100144541 /* Main */,
 				2BB7B54D199171060062467E /* SignUp */,
@@ -706,8 +813,113 @@
 			children = (
 				2BA41A0819B6075E0054425B /* NotificationsViewController.h */,
 				2BA41A0919B6075E0054425B /* NotificationsViewController.m */,
+				2BE0155519B70DB600C24812 /* NotificationProxy.h */,
+				2BE0155619B70DB600C24812 /* NotificationProxy.m */,
 			);
 			name = NotificationsView;
+			sourceTree = "<group>";
+		};
+		2BDFF1BE19F7AAB10002E710 /* EventListView */ = {
+			isa = PBXGroup;
+			children = (
+				2BDFF1C119F7AAE40002E710 /* Controller */,
+				2BDFF1C019F7AAE00002E710 /* View */,
+				2BDFF1BF19F7AAD60002E710 /* Model */,
+			);
+			name = EventListView;
+			sourceTree = "<group>";
+		};
+		2BDFF1BF19F7AAD60002E710 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2BDFF1C019F7AAE00002E710 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2BDFF1C519F7ABA40002E710 /* EventListTableView.h */,
+				2BDFF1C619F7ABA40002E710 /* EventListTableView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2BDFF1C119F7AAE40002E710 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2BDFF1C219F7AB810002E710 /* EventListViewController.h */,
+				2BDFF1C319F7AB810002E710 /* EventListViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		2BDFF1C819F7E5180002E710 /* EventDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				2BDFF1CB19F7E53B0002E710 /* View */,
+				2BDFF1CA19F7E5330002E710 /* Model */,
+				2BDFF1C919F7E52B0002E710 /* Controller */,
+			);
+			name = EventDetailsView;
+			sourceTree = "<group>";
+		};
+		2BDFF1C919F7E52B0002E710 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2BDFF1CC19F7E55A0002E710 /* EventDetailsViewController.h */,
+				2BDFF1CD19F7E55A0002E710 /* EventDetailsViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		2BDFF1CA19F7E5330002E710 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2BDFF1CB19F7E53B0002E710 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2BDFF1D219F7E69F0002E710 /* EventDetailsTableView.h */,
+				2BDFF1D319F7E69F0002E710 /* EventDetailsTableView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2BDFF1D519F807DF0002E710 /* EventDetailsMapView */ = {
+			isa = PBXGroup;
+			children = (
+				2BDFF1D819F807FD0002E710 /* Controller */,
+				2BDFF1D719F807F80002E710 /* View */,
+				2BDFF1D619F807F30002E710 /* Model */,
+			);
+			name = EventDetailsMapView;
+			sourceTree = "<group>";
+		};
+		2BDFF1D619F807F30002E710 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2BDFF1D719F807F80002E710 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2BDFF1D819F807FD0002E710 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2BDFF1D919F808500002E710 /* EventDetailsMapViewController.h */,
+				2BDFF1DA19F808500002E710 /* EventDetailsMapViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -790,6 +1002,7 @@
 			files = (
 				2B28E52B199E1C2A00450D68 /* AddEvent_group@2x.png in Resources */,
 				2B913EFF19A49F5A008BDE64 /* AddFriend_UserIcon@2x.png in Resources */,
+				2B61A11319B7817D005C23C2 /* Notifications_canceled@2x.png in Resources */,
 				2BC06F5E19B092F80060C4B8 /* AcceptAlert_BG@2x.png in Resources */,
 				2BB7B507199159420062467E /* InfoPlist.strings in Resources */,
 				2BB7B54219915FF80062467E /* Login_PhotoBG.png in Resources */,
@@ -802,6 +1015,7 @@
 				2B60F34019A376D500ACAC82 /* AddEvent_GrayTextField@2x.png in Resources */,
 				2B05A013199A1B0A00144541 /* avatar1.jpg in Resources */,
 				2B670F37199D0DD600A6B041 /* Main_DeleteEven@2x.png in Resources */,
+				2B27493619B74245001D2B28 /* Notifications_Unaccept@2x.png in Resources */,
 				2B28E535199E224F00450D68 /* AddEvent_BG@2x.png in Resources */,
 				2B60F34219A3772400ACAC82 /* AddEvent_WhiteBG@2x.png in Resources */,
 				2B78154819A136CA007C43C3 /* Main_AddFriends@2x.png in Resources */,
@@ -812,6 +1026,7 @@
 				2BB7B50F199159420062467E /* Images.xcassets in Resources */,
 				2B913F0319A4A42D008BDE64 /* AddFriends_UserIcon@2x.png in Resources */,
 				2B60F2AA19A2089700ACAC82 /* AddFriends_AddFriendButton@2x.png in Resources */,
+				2BDFF1B919F7A4490002E710 /* Main_MoreInvitees@2x.png in Resources */,
 				2B913EFD19A49CD5008BDE64 /* AddEvent_CrossOrange@2x.png in Resources */,
 				2B913F0719A6045F008BDE64 /* SignUp_UserIcon@2x.png in Resources */,
 				2B913EFC19A49CD5008BDE64 /* AddEvent_CheckOrange@2x.png in Resources */,
@@ -823,10 +1038,12 @@
 				2B059FFA1999099000144541 /* Main_BG@2x.jpg in Resources */,
 				2B059FEC1998F60C00144541 /* Main_SettingsIcon@2x.png in Resources */,
 				2BB7B54419915FF80062467E /* Login_SignInFacebook@2x.png in Resources */,
+				2B27493A19B7450F001D2B28 /* Notifications_uncancel@2x.png in Resources */,
 				2B78154A19A137D1007C43C3 /* Main_Settings@2x.png in Resources */,
 				2B05A012199A1B0A00144541 /* avatar3.jpg in Resources */,
 				2B05A00A199A146F00144541 /* Main_SlideIcon@2x.png in Resources */,
 				2B28E540199E5A9C00450D68 /* AddEvent_SearchBarCancel@2x.png in Resources */,
+				2B4DEB3319F16614004DF59F /* unchecked@2x.png in Resources */,
 				2BB7B54319915FF80062467E /* Login_SignInButton.png in Resources */,
 				2BB7B52C199159540062467E /* Storyboard.storyboard in Resources */,
 				2B28E527199E1A5A00450D68 /* AddEvent_map@2x.png in Resources */,
@@ -835,14 +1052,17 @@
 				2B670F39199D101300A6B041 /* Main_AddEvent@2x.png in Resources */,
 				2BB7B551199172880062467E /* SignUp_SignupButton.png in Resources */,
 				2B913F1B19A65941008BDE64 /* Notification_AcceptButton@2x.png in Resources */,
+				2B4DEB3219F16614004DF59F /* checked@2x.png in Resources */,
 				2BA41A0519B5F9180054425B /* Main_NotificationDot@2x.png in Resources */,
 				2BB7B55B199221040062467E /* Login_UserIcon.png in Resources */,
 				2B28E537199E239C00450D68 /* AddEvent_TextField@2x.png in Resources */,
 				2BB7B55519921FB00062467E /* Login_UserPass.png in Resources */,
 				2BB7B559199221040062467E /* Login_EmailIcon.png in Resources */,
 				2B913F1F19A65B0A008BDE64 /* Notification_NotAcceptButton@2x.png in Resources */,
+				2B27493819B742DD001D2B28 /* Notifications_accepted@2x.png in Resources */,
 				2B28E532199E206600450D68 /* AddEvent_note@2x.png in Resources */,
 				2B05A014199A1B0A00144541 /* avatar2.jpg in Resources */,
+				2BDFF1BD19F7AA4B0002E710 /* Main_InfoButton@2x.png in Resources */,
 				2B913F1D19A65A45008BDE64 /* Notification_AcceptButtonClicked@2x.png in Resources */,
 				2BB7B565199290960062467E /* SignUp_CameraIcon@2x.png in Resources */,
 				2B60F33A19A3601F00ACAC82 /* AddEvent_Check@2x.png in Resources */,
@@ -866,17 +1086,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B059FE81998D35700144541 /* UIView+convenience.m in Sources */,
+				2BDFF1C719F7ABA40002E710 /* EventListTableView.m in Sources */,
 				2BB7B50D199159420062467E /* AppDelegate.m in Sources */,
 				2B059FE61998D35700144541 /* NSMutableArray+convenience.m in Sources */,
 				2B78152F19A0C480007C43C3 /* LocationSearchViewController.m in Sources */,
+				2BDFF1DB19F808500002E710 /* EventDetailsMapViewController.m in Sources */,
 				2BB444A81993C86F00AFEC46 /* MainViewController.m in Sources */,
 				2B78154419A12CF8007C43C3 /* UserSearchViewController.m in Sources */,
 				2BB6C5E2199509AF00E6D6D4 /* ViewToImageConverter.m in Sources */,
 				2BB7B54C199163CD0062467E /* SignUpViewController.m in Sources */,
 				2B78154E19A13958007C43C3 /* AddFriendsViewController.m in Sources */,
+				2BDFF1D419F7E69F0002E710 /* EventDetailsTableView.m in Sources */,
+				2BDFF1C419F7AB810002E710 /* EventListViewController.m in Sources */,
 				2B78155119A14A44007C43C3 /* AddFriendsProxy.m in Sources */,
 				2B1B6CE4199E8FCC004A6614 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				2B913F2419A730BE008BDE64 /* Model.xcdatamodeld in Sources */,
+				2B4DEB2E19F15897004DF59F /* InviteeTableView.m in Sources */,
 				2B28E51E199E12A000450D68 /* AddEventViewController.m in Sources */,
 				2B059FE71998D35700144541 /* UIColor+expanded.m in Sources */,
 				2B05A00D199A1A3B00144541 /* ImageResizer.m in Sources */,
@@ -892,15 +1117,18 @@
 				2BB51B6919AE092500B5B040 /* KeychainItemWrapper.m in Sources */,
 				2B059FF41998FA1B00144541 /* SettingsTableViewController.m in Sources */,
 				2BA41A0A19B6075E0054425B /* NotificationsViewController.m in Sources */,
+				2BDFF1CE19F7E55A0002E710 /* EventDetailsViewController.m in Sources */,
 				2B60F3A519A3AD4900ACAC82 /* AsyncImageView.m in Sources */,
 				2B913F0D19A63811008BDE64 /* Reachability.m in Sources */,
 				2B059FE91998D35700144541 /* VRGCalendarView.m in Sources */,
 				2BB7B536199159B90062467E /* LoginProxy.m in Sources */,
 				2BB51B7019AE2DBD00B5B040 /* AcceptAlertViewCreator.m in Sources */,
 				2BB5FE2119ACE8A0000048E1 /* SendNotificationProxy.m in Sources */,
+				2B4DEB2B19F1587D004DF59F /* InviteeViewController.m in Sources */,
 				2B059FE51998D35700144541 /* NSDate+convenience.m in Sources */,
 				2B1B6CE5199E8FCC004A6614 /* SWUtilityButtonView.m in Sources */,
 				2B1B6CE3199E8FCC004A6614 /* SWTableViewCell.m in Sources */,
+				2BE0155719B70DB600C24812 /* NotificationProxy.m in Sources */,
 				2BB7B52F199159790062467E /* LoginViewController.m in Sources */,
 				2B1B6CE8199FBAEA004A6614 /* LocationSearchProxy.m in Sources */,
 				2B51617C199FC711007C1AAF /* WholescreenActivityIndicatorCreator.m in Sources */,
@@ -1034,7 +1262,7 @@
 				INFOPLIST_FILE = "MeetMeUp/MeetMeUp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a2e01a76-f2ca-48c6-8e81-161407208915";
+				PROVISIONING_PROFILE = "defcb97b-4e09-45b7-bd44-ac763983c10c";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1055,7 +1283,7 @@
 				INFOPLIST_FILE = "MeetMeUp/MeetMeUp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a2e01a76-f2ca-48c6-8e81-161407208915";
+				PROVISIONING_PROFILE = "defcb97b-4e09-45b7-bd44-ac763983c10c";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

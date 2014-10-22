@@ -12,6 +12,7 @@
 
 - (IBAction)cancelButtonClicked:(id)sender;
 @property (nonatomic, strong) UIViewController *prevViewController;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 
 @end
