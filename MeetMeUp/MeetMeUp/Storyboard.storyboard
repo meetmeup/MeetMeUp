@@ -260,6 +260,53 @@
             </objects>
             <point key="canvasLocation" x="2891" y="1437"/>
         </scene>
+        <!--Location Feed View Controller-->
+        <scene sceneID="jED-xm-A1E">
+            <objects>
+                <viewController storyboardIdentifier="locationfeed" id="M8s-wm-OBG" customClass="LocationFeedViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LKD-94-rFU"/>
+                        <viewControllerLayoutGuide type="bottom" id="zff-2H-hl4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lfc-mS-goI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9S-d2-NyK" customClass="EmptyContentView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LocationFeed_Time.png" translatesAutoresizingMaskIntoConstraints="NO" id="VWz-kF-pH8">
+                                        <rect key="frame" x="85" y="209" width="150" height="150"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Scheduled Events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Haw-Rg-74U">
+                                        <rect key="frame" x="8" y="376" width="304" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap + to add a time-based event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orM-dc-vYL">
+                                        <rect key="frame" x="8" y="396" width="304" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z9S-d2-NyK" firstAttribute="top" secondItem="lfc-mS-goI" secondAttribute="topMargin" id="I1Q-J8-vfB"/>
+                            <constraint firstItem="zff-2H-hl4" firstAttribute="top" secondItem="z9S-d2-NyK" secondAttribute="bottom" id="XGI-Ei-Qjd"/>
+                            <constraint firstItem="z9S-d2-NyK" firstAttribute="leading" secondItem="lfc-mS-goI" secondAttribute="leadingMargin" constant="-16" id="lAl-aY-HD1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z9S-d2-NyK" secondAttribute="trailing" constant="-16" id="zKF-im-gbM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K9z-Fh-4vJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3294" y="1437"/>
+        </scene>
         <!--Add Friends View Controller-->
         <scene sceneID="kcx-ZL-Clq">
             <objects>
@@ -595,7 +642,6 @@
         <!--Event List View Controller-->
         <scene sceneID="yre-v2-r30">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pdd-AC-vo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="eventlist" id="LpS-Ck-Sol" customClass="EventListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sP3-8R-1io"/>
@@ -625,6 +671,7 @@
                         <outlet property="eventListTableView" destination="mi2-2F-GYt" id="cGI-V5-bAs"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pdd-AC-vo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1028" y="724"/>
         </scene>
@@ -809,6 +856,7 @@
         <image name="AddEvent_time.png" width="32" height="32"/>
         <image name="AddEvent_write.png" width="32" height="32"/>
         <image name="AddFriends_AddFriendButton.png" width="160" height="40"/>
+        <image name="LocationFeed_Time.png" width="150" height="150"/>
         <image name="Login_EmailIcon.png" width="42" height="32"/>
         <image name="Login_ForgotPassword.png" width="215" height="41"/>
         <image name="Login_LockIcon.png" width="36" height="42"/>

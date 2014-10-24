@@ -28,7 +28,6 @@
     titleArray = [NSArray arrayWithObjects:@"Meeting with ustwo", @"Lunch with friends", @"Clubbing!", nil];
     timeArray = [NSArray arrayWithObjects:@"10:00AM", @"12:00PM", @"10:00PM", nil];
     
-    self.navigationController.navigationBarHidden = NO;
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:255.0f/255.0f green:153.0/255.0f blue:51.0f/255.0f alpha:1.0f];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                              forBarMetrics:UIBarMetricsDefault];
@@ -36,6 +35,11 @@
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     [self prefersStatusBarHidden];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (BOOL) prefersStatusBarHidden

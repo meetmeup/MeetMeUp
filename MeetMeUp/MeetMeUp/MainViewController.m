@@ -18,6 +18,7 @@
 #import "NotificationsViewController.h"
 #import "AsyncImageView.h"
 #import "EventListViewController.h"
+#import "LocationFeedViewController.h"
 
 #define SIDE_BUTTON_HEIGHT 58
 #define SIDE_BUTTON_WIDTH 160
@@ -82,14 +83,14 @@
     CGFloat height;
     if (IsIphone5)
     {
-        height = 210;
+        height = 229;
     }
     else
     {
         height = 143;
     }
 
-    eventTableView = [[UITableView alloc] initWithFrame:CGRectMake(SELF_X, 360, SELF_WIDTH, height)];
+    eventTableView = [[UITableView alloc] initWithFrame:CGRectMake(SELF_X, 339.5, SELF_WIDTH, height)];
     [eventTableView setUserInteractionEnabled:YES];
     [eventTableView setSectionHeaderHeight:150.0f];
     [eventTableView setDelegate:self];
@@ -370,6 +371,8 @@
 {
     UIButton *sectionClickedButton = (UIButton *)sender;
     NSLog(@"clicked %lu", (long)sectionClickedButton.tag);
+    LocationFeedViewController *locationFeedController = [self.storyboard instantiateViewControllerWithIdentifier:@"locationfeed"];
+    [self.navigationController pushViewController:locationFeedController animated:YES];
 }
 
 #pragma mark - left utility

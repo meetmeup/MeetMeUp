@@ -138,6 +138,10 @@
 		2BE0155719B70DB600C24812 /* NotificationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0155619B70DB600C24812 /* NotificationProxy.m */; };
 		2BF5794D199409A100FC1D8E /* SignUpProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5794C199409A100FC1D8E /* SignUpProxy.m */; };
 		2BF57953199417EE00FC1D8E /* ImagePickHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF57952199417EE00FC1D8E /* ImagePickHelper.m */; };
+		2BF7709219FA640000A3897A /* EmptyContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF7709119FA640000A3897A /* EmptyContentView.m */; };
+		2BF7709519FA641400A3897A /* LocationFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF7709419FA641400A3897A /* LocationFeedViewController.m */; };
+		2BF7709C19FA666100A3897A /* LocationFeed_Time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF7709B19FA666100A3897A /* LocationFeed_Time@2x.png */; };
+		2BF7709E19FA86AE00A3897A /* LocationFeed_AddEvent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF7709D19FA86AE00A3897A /* LocationFeed_AddEvent@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -333,6 +337,12 @@
 		2BF5794C199409A100FC1D8E /* SignUpProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpProxy.m; sourceTree = "<group>"; };
 		2BF57951199417EE00FC1D8E /* ImagePickHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickHelper.h; sourceTree = "<group>"; };
 		2BF57952199417EE00FC1D8E /* ImagePickHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickHelper.m; sourceTree = "<group>"; };
+		2BF7709019FA640000A3897A /* EmptyContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyContentView.h; sourceTree = "<group>"; };
+		2BF7709119FA640000A3897A /* EmptyContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyContentView.m; sourceTree = "<group>"; };
+		2BF7709319FA641400A3897A /* LocationFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationFeedViewController.h; sourceTree = "<group>"; };
+		2BF7709419FA641400A3897A /* LocationFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationFeedViewController.m; sourceTree = "<group>"; };
+		2BF7709B19FA666100A3897A /* LocationFeed_Time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LocationFeed_Time@2x.png"; sourceTree = "<group>"; };
+		2BF7709D19FA86AE00A3897A /* LocationFeed_AddEvent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LocationFeed_AddEvent@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,10 +574,8 @@
 		2B78154B19A1392B007C43C3 /* AddFriendsView */ = {
 			isa = PBXGroup;
 			children = (
-				2B78154C19A13958007C43C3 /* AddFriendsViewController.h */,
-				2B78154D19A13958007C43C3 /* AddFriendsViewController.m */,
-				2B78154F19A14A44007C43C3 /* AddFriendsProxy.h */,
-				2B78155019A14A44007C43C3 /* AddFriendsProxy.m */,
+				2BF770A019FA87DD00A3897A /* Model */,
+				2BF7709F19FA87D300A3897A /* Controller */,
 			);
 			name = AddFriendsView;
 			sourceTree = "<group>";
@@ -700,6 +708,7 @@
 				2BDFF1BE19F7AAB10002E710 /* EventListView */,
 				2BDFF1C819F7E5180002E710 /* EventDetailsView */,
 				2BDFF1D519F807DF0002E710 /* EventDetailsMapView */,
+				2BF7708C19FA632600A3897A /* LocationFeedView */,
 				2BB7B50E199159420062467E /* Images.xcassets */,
 				2BB7B503199159420062467E /* Supporting Files */,
 			);
@@ -753,6 +762,7 @@
 		2BB7B53719915FDC0062467E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2BF7709619FA658100A3897A /* LocationFeed */,
 				2B27493219B7412F001D2B28 /* Notification */,
 				2BB51B7819AE390900B5B040 /* AcceptView */,
 				2B913F1919A6592E008BDE64 /* Notifications */,
@@ -922,6 +932,68 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		2BF7708C19FA632600A3897A /* LocationFeedView */ = {
+			isa = PBXGroup;
+			children = (
+				2BF7708F19FA636900A3897A /* Model */,
+				2BF7708E19FA636500A3897A /* View */,
+				2BF7708D19FA636100A3897A /* Controller */,
+			);
+			name = LocationFeedView;
+			sourceTree = "<group>";
+		};
+		2BF7708D19FA636100A3897A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2BF7709319FA641400A3897A /* LocationFeedViewController.h */,
+				2BF7709419FA641400A3897A /* LocationFeedViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		2BF7708E19FA636500A3897A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2BF7709019FA640000A3897A /* EmptyContentView.h */,
+				2BF7709119FA640000A3897A /* EmptyContentView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2BF7708F19FA636900A3897A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2BF7709619FA658100A3897A /* LocationFeed */ = {
+			isa = PBXGroup;
+			children = (
+				2BF7709B19FA666100A3897A /* LocationFeed_Time@2x.png */,
+				2BF7709D19FA86AE00A3897A /* LocationFeed_AddEvent@2x.png */,
+			);
+			name = LocationFeed;
+			sourceTree = "<group>";
+		};
+		2BF7709F19FA87D300A3897A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2B78154C19A13958007C43C3 /* AddFriendsViewController.h */,
+				2B78154D19A13958007C43C3 /* AddFriendsViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		2BF770A019FA87DD00A3897A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2B78154F19A14A44007C43C3 /* AddFriendsProxy.h */,
+				2B78155019A14A44007C43C3 /* AddFriendsProxy.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1013,6 +1085,7 @@
 				2BBB487719B47DEB00586248 /* Main_Notifications@2x.png in Resources */,
 				2B913F0519A4EF78008BDE64 /* AddFriends_UserIconSmall@2x.png in Resources */,
 				2B60F34019A376D500ACAC82 /* AddEvent_GrayTextField@2x.png in Resources */,
+				2BF7709E19FA86AE00A3897A /* LocationFeed_AddEvent@2x.png in Resources */,
 				2B05A013199A1B0A00144541 /* avatar1.jpg in Resources */,
 				2B670F37199D0DD600A6B041 /* Main_DeleteEven@2x.png in Resources */,
 				2B27493619B74245001D2B28 /* Notifications_Unaccept@2x.png in Resources */,
@@ -1024,6 +1097,7 @@
 				2BB7B54F199171950062467E /* SignUp_EmailPass.png in Resources */,
 				2BB7B54119915FF80062467E /* Login_NewUser.png in Resources */,
 				2BB7B50F199159420062467E /* Images.xcassets in Resources */,
+				2BF7709C19FA666100A3897A /* LocationFeed_Time@2x.png in Resources */,
 				2B913F0319A4A42D008BDE64 /* AddFriends_UserIcon@2x.png in Resources */,
 				2B60F2AA19A2089700ACAC82 /* AddFriends_AddFriendButton@2x.png in Resources */,
 				2BDFF1B919F7A4490002E710 /* Main_MoreInvitees@2x.png in Resources */,
@@ -1088,6 +1162,7 @@
 				2B059FE81998D35700144541 /* UIView+convenience.m in Sources */,
 				2BDFF1C719F7ABA40002E710 /* EventListTableView.m in Sources */,
 				2BB7B50D199159420062467E /* AppDelegate.m in Sources */,
+				2BF7709519FA641400A3897A /* LocationFeedViewController.m in Sources */,
 				2B059FE61998D35700144541 /* NSMutableArray+convenience.m in Sources */,
 				2B78152F19A0C480007C43C3 /* LocationSearchViewController.m in Sources */,
 				2BDFF1DB19F808500002E710 /* EventDetailsMapViewController.m in Sources */,
@@ -1098,6 +1173,7 @@
 				2B78154E19A13958007C43C3 /* AddFriendsViewController.m in Sources */,
 				2BDFF1D419F7E69F0002E710 /* EventDetailsTableView.m in Sources */,
 				2BDFF1C419F7AB810002E710 /* EventListViewController.m in Sources */,
+				2BF7709219FA640000A3897A /* EmptyContentView.m in Sources */,
 				2B78155119A14A44007C43C3 /* AddFriendsProxy.m in Sources */,
 				2B1B6CE4199E8FCC004A6614 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				2B913F2419A730BE008BDE64 /* Model.xcdatamodeld in Sources */,
